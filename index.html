@@ -386,6 +386,37 @@
       100% { transform: translateX(-50%); }
     }
 
+    /* ── Token / CA ── */
+    .token-bar {
+      background: var(--ink);
+      padding: 1.5rem 1.5rem;
+      margin-top: 0;
+    }
+    .token-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .token-label {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--purple);
+      flex-shrink: 0;
+    }
+    .token-ca {
+      font-size: 0.7rem;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.6);
+      word-break: break-all;
+      user-select: all;
+      cursor: text;
+    }
+
     /* ── Footer ── */
     footer {
       padding: 2.5rem 1.5rem 2rem;
@@ -413,6 +444,34 @@
     .footer-links a:focus-visible {
       outline: 3px solid var(--purple);
       outline-offset: 4px;
+    }
+    .footer-socials {
+      display: flex;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .footer-socials a {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.2s ease;
+      cursor: pointer;
+    }
+    .footer-socials a:hover { border-color: var(--purple); }
+    .footer-socials a:focus-visible {
+      outline: 3px solid var(--purple);
+      outline-offset: 4px;
+    }
+    .footer-socials .social-label {
+      font-size: 0.6rem;
+      color: var(--muted);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-right: 0.25rem;
     }
     .disclaimer {
       font-size: 0.6rem;
@@ -570,8 +629,20 @@
     </div>
   </div>
 
+  <!-- ── Token CA ── -->
+  <div class="token-bar">
+    <div class="token-inner">
+      <div class="token-label">CA</div>
+      <div class="token-ca">Ab26LYP16ZyXvUJQqFYKKPU75GHhdzvhVnYtVUBFpump</div>
+    </div>
+  </div>
+
   <!-- ── Footer ── -->
   <footer>
+    <div class="footer-socials">
+      <a href="https://x.com/GiveGlimpse" target="_blank" rel="noopener"><span class="social-label">Company</span> @GiveGlimpse</a>
+      <a href="https://x.com/DerrickWKing" target="_blank" rel="noopener"><span class="social-label">Founder</span> @DerrickWKing</a>
+    </div>
     <nav class="footer-links" aria-label="Footer navigation">
       <a href="/privacy">Privacy Policy</a>
       <a href="mailto:derrick@giveglimpse.com">Contact</a>
