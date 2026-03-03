@@ -253,6 +253,85 @@
       padding-top: 0.4rem;
     }
 
+    /* ── Pull quote ── */
+    .pull-quote {
+      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+      font-weight: 700;
+      line-height: 1.7;
+      color: var(--ink);
+      border-left: 6px solid var(--purple);
+      padding-left: 1.5rem;
+      max-width: 600px;
+    }
+
+    /* ── Stats ── */
+    .stats {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+    @media (min-width: 640px) {
+      .stats { grid-template-columns: 1fr 1fr; }
+    }
+    .stat {
+      background: var(--white);
+      border: 4px solid var(--black);
+      padding: 1.75rem 1.5rem;
+      box-shadow: 8px 8px 0 var(--purple);
+    }
+    .stat-number {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 700;
+      color: var(--purple);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+    .stat-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ── Seeker section ── */
+    .seeker-block {
+      background: var(--ink);
+      border: 4px solid var(--black);
+      padding: 2.5rem 2rem;
+      box-shadow: 8px 8px 0 var(--purple);
+      color: var(--white);
+    }
+    .seeker-block h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      color: var(--white);
+    }
+    .seeker-block p {
+      font-size: 0.85rem;
+      font-weight: 400;
+      line-height: 1.9;
+      color: rgba(255, 255, 255, 0.7);
+    }
+    .seeker-block p + p {
+      margin-top: 1rem;
+    }
+    .seeker-tag {
+      display: inline-block;
+      border: 2px solid var(--purple);
+      padding: 4px 14px;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: var(--purple);
+      text-transform: uppercase;
+      margin-top: 1.25rem;
+    }
+
     /* ── Founder ── */
     .founder-block {
       background: var(--white);
@@ -445,6 +524,39 @@
           <div class="step-num">5</div>
           <div class="step-text">Follow real updates in your message thread</div>
         </div>
+      </div>
+    </section>
+
+    <!-- ── Pull Quote ── -->
+    <section class="section" aria-label="Human connection">
+      <blockquote class="pull-quote reveal">
+        In a world of AI, human connection is forgotten. No one's building for this. We are.
+      </blockquote>
+    </section>
+
+    <!-- ── Market Stats ── -->
+    <section class="section" aria-label="Market data">
+      <div class="section-label reveal">The Opportunity</div>
+      <div class="stats">
+        <div class="stat reveal">
+          <div class="stat-number">65</div>
+          <div class="stat-label">Average age of a donor in the U.S. A trillion-dollar wealth transfer is coming. No one is serving the next generation.</div>
+        </div>
+        <div class="stat reveal">
+          <div class="stat-number">15% &rarr; 70%</div>
+          <div class="stat-label">Top 500 U.S. charities accepting crypto, 2020 to 2024. They accepted the money. They didn't accept the technology.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Seeker & Solana Mobile ── -->
+    <section class="section" aria-label="Built for Seeker">
+      <div class="section-label reveal">Built for Seeker</div>
+      <div class="seeker-block reveal">
+        <h3>Solana Mobile Exclusive</h3>
+        <p>Glimpse is built specifically for the Solana Seeker. Not a website ported to mobile. A native app designed for on-device wallet signing, instant USDC transfers, and the Solana dApp Store.</p>
+        <p>The goal: a Seeker in the hands of every trustworthy nonprofit in America. The device becomes the point of impact — receiving donations, uploading proof, connecting with donors. All from the phone.</p>
+        <div class="seeker-tag">Seeker Exclusive</div>
       </div>
     </section>
 
