@@ -4,38 +4,523 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Glimpse — Donate USDC. See the Impact.</title>
+  <meta name="description" content="Glimpse is a USDC donation app on Solana. Zero fees. Every transaction on-chain. Real updates from real people.">
+  <meta property="og:title" content="Glimpse — Donate USDC. See the Impact.">
+  <meta property="og:description" content="Zero fees. Every transaction on-chain. Real updates from real people. Built on Solana.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://giveglimpse.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
   <style>
+    /* ── Reset ── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    /* ── Tokens ── */
+    :root {
+      --bg: #0A1628;
+      --bg-elevated: rgba(30, 41, 59, 0.55);
+      --glass-border: rgba(255, 255, 255, 0.06);
+      --purple: #BF5AF2;
+      --teal: #40E0D0;
+      --text-primary: #F7FAFC;
+      --text-secondary: #A0AEC0;
+      --text-tertiary: #718096;
+      --gradient: linear-gradient(135deg, #BF5AF2, #40E0D0);
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-mono: 'Courier Prime', 'Courier New', monospace;
+      --radius-card: 16px;
+      --glow-purple: rgba(191, 90, 242, 0.08);
+      --glow-teal: rgba(64, 224, 208, 0.05);
+    }
+
+    /* ── Base ── */
+    html { scroll-behavior: smooth; }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-family: var(--font-mono);
+      background: var(--bg);
+      color: var(--text-primary);
+      line-height: 1.7;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Ambient background ── */
+    body::before {
+      content: '';
+      position: fixed;
+      top: -40%; left: -20%;
+      width: 80vw; height: 80vw;
+      background: radial-gradient(ellipse, var(--glow-purple), transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    body::after {
+      content: '';
+      position: fixed;
+      bottom: -30%; right: -15%;
+      width: 60vw; height: 60vw;
+      background: radial-gradient(ellipse, var(--glow-teal), transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── Layout ── */
+    .page { position: relative; z-index: 1; }
+    .section {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* ── Noise texture overlay ── */
+    .noise {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      pointer-events: none;
+      opacity: 0.03;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 256px 256px;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem 1.5rem;
+    }
+
+    .g-mark {
+      width: 72px; height: 72px;
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: fadeIn 1s ease-out 0.2s forwards;
+    }
+    .g-mark circle, .g-mark line {
+      stroke: var(--purple);
+    }
+
+    .wordmark {
+      font-family: var(--font-mono);
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 400;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--text-primary);
+      opacity: 0;
+      animation: fadeIn 1s ease-out 0.5s forwards;
+    }
+
+    .brand-line {
+      width: 0;
+      height: 2px;
+      background: var(--gradient);
+      margin: 1.25rem auto;
+      animation: lineExpand 1s ease-out 0.8s forwards;
+    }
+
+    .tagline {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--text-tertiary);
+      opacity: 0;
+      animation: fadeIn 0.8s ease-out 1.1s forwards;
+    }
+
+    .hero-copy {
+      font-family: var(--font-display);
+      font-size: clamp(1.15rem, 2.5vw, 1.4rem);
+      font-weight: 300;
+      color: var(--text-secondary);
+      max-width: 480px;
+      margin: 2.5rem auto 0;
+      line-height: 1.8;
+      opacity: 0;
+      animation: fadeUp 0.8s ease-out 1.4s forwards;
+    }
+
+    .badge {
+      display: inline-block;
+      margin-top: 2rem;
+      padding: 0.6rem 1.5rem;
+      border: 1px solid var(--glass-border);
+      border-radius: 999px;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-tertiary);
+      background: var(--bg-elevated);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      opacity: 0;
+      animation: fadeUp 0.8s ease-out 1.7s forwards;
+      transition: border-color 0.3s ease, color 0.3s ease;
+      cursor: default;
+    }
+    .badge:hover {
+      border-color: rgba(191, 90, 242, 0.3);
+      color: var(--text-secondary);
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0;
+      animation: fadeIn 1s ease-out 2.2s forwards, float 3s ease-in-out 3s infinite;
+    }
+    .scroll-hint svg {
+      width: 20px; height: 20px;
+      stroke: var(--text-tertiary);
+      stroke-width: 1.5;
+    }
+
+    /* ── Section headers ── */
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--text-tertiary);
+      margin-bottom: 2.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    /* ── What Glimpse Does ── */
+    .what { padding-top: 6rem; padding-bottom: 6rem; }
+    .cards {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    @media (min-width: 640px) {
+      .cards { grid-template-columns: repeat(3, 1fr); }
+    }
+    .card {
+      background: var(--bg-elevated);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-card);
+      padding: 1.75rem 1.5rem;
+      transition: border-color 0.3s ease, transform 0.3s ease;
+    }
+    .card:hover {
+      border-color: rgba(191, 90, 242, 0.15);
+      transform: translateY(-2px);
+    }
+    .card-icon {
+      width: 28px; height: 28px;
+      margin-bottom: 1rem;
+    }
+    .card-icon svg {
+      width: 100%; height: 100%;
+      stroke: var(--purple);
+      stroke-width: 1.5;
+      fill: none;
+    }
+    .card h3 {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--text-primary);
+    }
+    .card p {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    /* ── How It Works ── */
+    .how { padding-top: 4rem; padding-bottom: 6rem; }
+    .steps { counter-reset: step; }
+    .step {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.25rem;
+      padding: 1.25rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .step:last-child { border-bottom: none; }
+    .step-num {
+      counter-increment: step;
+      flex-shrink: 0;
+      width: 32px; height: 32px;
       display: flex;
       align-items: center;
       justify-content: center;
-      min-height: 100vh;
-      margin: 0;
-      background: #0a0a0a;
-      color: #fafafa;
-      text-align: center;
+      border-radius: 50%;
+      background: rgba(191, 90, 242, 0.1);
+      border: 1px solid rgba(191, 90, 242, 0.2);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--purple);
     }
-    .container { max-width: 480px; padding: 2rem; }
-    h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; letter-spacing: -0.02em; }
-    p { color: #999; font-size: 1.1rem; line-height: 1.6; }
-    .badge {
-      display: inline-block;
-      margin-top: 1.5rem;
-      padding: 0.5rem 1.25rem;
-      border: 1px solid #333;
-      border-radius: 999px;
+    .step-text {
+      font-family: var(--font-mono);
       font-size: 0.85rem;
-      color: #666;
-      letter-spacing: 0.05em;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      padding-top: 0.3rem;
+    }
+
+    /* ── Founder ── */
+    .founder { padding-top: 4rem; padding-bottom: 6rem; }
+    .founder-quote {
+      font-family: var(--font-display);
+      font-size: clamp(1.15rem, 2.5vw, 1.5rem);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--text-secondary);
+      line-height: 1.9;
+      margin-bottom: 2.5rem;
+      position: relative;
+      padding-left: 1.5rem;
+      border-left: 2px solid rgba(191, 90, 242, 0.3);
+    }
+    .founder-name {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--text-primary);
+      font-weight: 700;
+    }
+    .founder-detail {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-tertiary);
+      margin-top: 0.25rem;
+    }
+
+    /* ── Footer ── */
+    footer {
+      padding: 3rem 1.5rem 2.5rem;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.04);
+    }
+    .footer-inner {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .footer-links a {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-tertiary);
+      text-decoration: none;
+      transition: color 0.3s ease;
+      cursor: pointer;
+    }
+    .footer-links a:hover { color: var(--purple); }
+    .footer-links a:focus-visible {
+      outline: 2px solid var(--purple);
+      outline-offset: 4px;
+      border-radius: 2px;
+    }
+    .disclaimer {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--text-tertiary);
+      line-height: 1.8;
+      max-width: 520px;
+      margin: 0 auto;
+      opacity: 0.7;
+    }
+
+    /* ── Scroll animations ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── Keyframes ── */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes lineExpand {
+      from { width: 0; }
+      to { width: 56px; }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(6px); }
+    }
+
+    /* ── Reduced motion ── */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-delay: 0s !important;
+        transition-duration: 0.01ms !important;
+      }
+      .reveal { opacity: 1; transform: none; }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Glimpse</h1>
-    <p>Donate USDC directly to people in need. Zero fees. Real updates. Built on Solana.</p>
-    <span class="badge">AVAILABLE ON SOLANA dAPP STORE</span>
+  <div class="noise" aria-hidden="true"></div>
+  <div class="page">
+
+    <!-- ── Hero ── -->
+    <section class="hero" aria-label="Glimpse introduction">
+      <svg class="g-mark" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+        <circle cx="32" cy="32" r="28" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="140 36"/>
+        <line x1="32" y1="32" x2="48" y2="32" stroke-width="2.5" stroke-linecap="round"/>
+      </svg>
+      <h1 class="wordmark">Glimpse</h1>
+      <div class="brand-line" aria-hidden="true"></div>
+      <p class="tagline">Documenting Kindness</p>
+      <p class="hero-copy">
+        A USDC donation app where every dollar is recorded on Solana.
+        Zero fees. Real updates from real people.
+      </p>
+      <span class="badge">Available on Solana dApp Store</span>
+      <div class="scroll-hint" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 5v14M5 12l7 7 7-7"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- ── What Glimpse Does ── -->
+    <section class="section what" aria-label="What Glimpse does">
+      <div class="section-label reveal">What Glimpse Does</div>
+      <div class="cards">
+        <div class="card reveal">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M8 12l2.5 2.5L16 9"/>
+            </svg>
+          </div>
+          <h3>Zero Fees</h3>
+          <p>Every dollar goes toward helping people in need. No platform cut.</p>
+        </div>
+        <div class="card reveal">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2"/>
+              <path d="M3 9h18M9 3v18"/>
+            </svg>
+          </div>
+          <h3>On-Chain Proof</h3>
+          <p>Every donation recorded on Solana. Verifiable. Permanent.</p>
+        </div>
+        <div class="card reveal">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+            </svg>
+          </div>
+          <h3>Real Updates</h3>
+          <p>A message thread opens. You follow the impact of your gift.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── How It Works ── -->
+    <section class="section how" aria-label="How it works">
+      <div class="section-label reveal">How It Works</div>
+      <div class="steps">
+        <div class="step reveal">
+          <div class="step-num">1</div>
+          <div class="step-text">Connect your Seeker wallet</div>
+        </div>
+        <div class="step reveal">
+          <div class="step-num">2</div>
+          <div class="step-text">Pick a campaign and enter any USDC amount</div>
+        </div>
+        <div class="step reveal">
+          <div class="step-num">3</div>
+          <div class="step-text">Add context and a note for the recipient</div>
+        </div>
+        <div class="step reveal">
+          <div class="step-num">4</div>
+          <div class="step-text">Review the details and sign</div>
+        </div>
+        <div class="step reveal">
+          <div class="step-num">5</div>
+          <div class="step-text">Follow real updates in your message thread</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Founder ── -->
+    <section class="section founder" aria-label="About the founder">
+      <div class="section-label reveal">The Founder</div>
+      <blockquote class="founder-quote reveal">
+        I was at my desk looking at the Forbes Top Charities list. Billions of dollars. Zero visible impact. That was four years ago. In 2026, I built Glimpse myself — the app, the Solana integration, the backend. Every line of code. Solo.
+      </blockquote>
+      <div class="reveal">
+        <div class="founder-name">Derrick Woepking</div>
+        <div class="founder-detail">Muscatine, Iowa. Husband. Father.</div>
+      </div>
+    </section>
+
+    <!-- ── Footer ── -->
+    <footer>
+      <div class="footer-inner">
+        <nav class="footer-links" aria-label="Footer navigation">
+          <a href="/privacy">Privacy Policy</a>
+          <a href="mailto:derrick@giveglimpse.com">Contact</a>
+        </nav>
+        <p class="disclaimer">
+          Glimpse is not a nonprofit or 501(c)(3). Donations made through Glimpse are not tax-deductible.
+          Glimpse is a new company navigating an evolving regulatory landscape.
+        </p>
+      </div>
+    </footer>
+
   </div>
+
+  <!-- ── Scroll reveal ── -->
+  <script>
+    (function() {
+      var els = document.querySelectorAll('.reveal');
+      if (!('IntersectionObserver' in window)) {
+        els.forEach(function(el) { el.classList.add('visible'); });
+        return;
+      }
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+      els.forEach(function(el) { observer.observe(el); });
+    })();
+  </script>
 </body>
 </html>
