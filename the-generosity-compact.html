@@ -512,9 +512,37 @@ footer {
   body::before, .corner, .scanline, .ticker { display: none; }
   section { page-break-inside: avoid; }
 }
+.site-nav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding: 1.25rem 1.5rem;
+  z-index: 1001;
+}
+.site-nav a {
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.4rem 1rem;
+  border: 2px solid var(--purple);
+  transition: background 0.2s, color 0.2s;
+  margin-left: 0.5rem;
+}
+.site-nav a:hover {
+  background: var(--purple);
+  color: var(--white);
+}
 </style>
 </head>
 <body>
+
+<nav class="site-nav">
+  <a href="/">Home</a>
+  <a href="/how-it-works.html">How It Works</a>
+</nav>
 
 <div class="corner corner-tl"></div>
 <div class="corner corner-tr"></div>
