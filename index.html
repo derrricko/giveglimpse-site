@@ -501,9 +501,34 @@
       }
       .reveal { opacity: 1; transform: none; }
     }
+    .nav {
+      position: fixed;
+      top: 0;
+      right: 0;
+      padding: 1.25rem 1.5rem;
+      z-index: 100;
+    }
+    .nav a {
+      color: var(--ink);
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.4rem 1rem;
+      border: 2px solid var(--purple);
+      transition: border-color 0.2s;
+    }
+    .nav a:hover {
+      background: var(--purple);
+      color: var(--white);
+    }
   </style>
 </head>
 <body>
+  <nav class="nav">
+    <a href="/the-generosity-compact.html">The Compact</a>
+  </nav>
   <div class="scanline" aria-hidden="true"></div>
 
   <!-- ── Hero ── -->
