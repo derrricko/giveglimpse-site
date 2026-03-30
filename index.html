@@ -1,703 +1,353 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Glimpse — Donate USDC. See the Impact.</title>
-  <meta name="description" content="Glimpse is a USDC donation app on Solana. Zero fees. Every transaction on-chain. Real updates from real people.">
-  <meta property="og:title" content="Glimpse — Donate USDC. See the Impact.">
-  <meta property="og:description" content="Zero fees. Every transaction on-chain. Real updates from real people. Built on Solana.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://giveglimpse.com">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glimpse — The Trust Layer for Giving</title>
+<meta name="description" content="3 out of 4 donors never give again because nobody shows them what happened. Glimpse closes that gap with proof, follow-up, and zero-fee USDC donations.">
+<meta property="og:title" content="Glimpse — The Trust Layer for Giving">
+<meta property="og:description" content="Zero-fee USDC donations. On-chain proof. Real connection between donors and nonprofits.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://giveglimpse.com">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Glimpse — The Trust Layer for Giving">
+<meta name="twitter:description" content="3 out of 4 donors never give again because nobody shows them what happened. Glimpse closes that gap with proof and follow-up.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 
-    :root {
-      --purple: #5b5bd6;
-      --purple-glow: rgba(91, 91, 214, 0.35);
-      --bg: #f0e9ff;
-      --grid: rgba(91, 91, 214, 0.12);
-      --ink: #1a1a2e;
-      --white: #ffffff;
-      --black: #000000;
-      --muted: rgba(26, 26, 46, 0.5);
-    }
+:root {
+  --ink: #1a1a2e;
+  --ink-soft: #3d3d5c;
+  --ink-muted: #6e6e8a;
+  --cream: #F4F0FA;
+  --warm-white: #FFFFFF;
+  --accent: #5b5bd6;
+  --accent-light: #7272e0;
+  --accent-wash: rgba(91, 91, 214, 0.08);
+  --accent-deep: #2D2060;
+  --rule: rgba(91, 91, 214, 0.12);
+  --serif: 'Instrument Serif', Georgia, serif;
+  --sans: 'DM Sans', -apple-system, sans-serif;
+  --measure: 680px;
+  --page: 1100px;
+}
 
-    html { scroll-behavior: smooth; }
+html {
+  font-size: 18px;
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+}
 
-    body {
-      font-family: 'Space Mono', monospace;
-      background-color: var(--bg);
-      background-image:
-        linear-gradient(var(--grid) 1px, transparent 1px),
-        linear-gradient(90deg, var(--grid) 1px, transparent 1px);
-      background-size: 40px 40px;
-      color: var(--ink);
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
-    }
+body {
+  font-family: var(--sans);
+  color: var(--ink);
+  background: var(--cream);
+  line-height: 1.7;
+  font-weight: 300;
+  overflow-x: hidden;
+}
 
-    /* ── Scan line ── */
-    .scanline {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%;
-      height: 3px;
-      background: linear-gradient(90deg, transparent, var(--purple-glow), transparent);
-      animation: scan 6s ease-in-out infinite;
-      opacity: 0.4;
-      z-index: 999;
-      pointer-events: none;
-    }
-    @keyframes scan {
-      0%   { top: 0; }
-      50%  { top: 100%; }
-      100% { top: 0; }
-    }
+.container { max-width: var(--page); margin: 0 auto; padding: 0 2rem; }
+.narrow { max-width: var(--measure); margin: 0 auto; }
+section { padding: 3.5rem 0; }
 
-    /* ── Layout ── */
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
-    }
+h1, h2, h3 {
+  font-family: var(--serif);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
 
-    /* ── Hero ── */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      justify-content: center;
-      padding: 4rem 1.5rem;
-      max-width: 800px;
-      margin: 0 auto;
-    }
+h1 { font-size: clamp(2.8rem, 6vw, 4.2rem); }
+h2 { font-size: clamp(2rem, 4vw, 2.8rem); }
+h3 { font-size: 1.4rem; }
+p { color: var(--ink-soft); max-width: 600px; }
 
-    .logo {
-      font-size: clamp(3rem, 10vw, 5.5rem);
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      line-height: 1;
-      color: var(--ink);
-      position: relative;
-      display: inline-block;
-    }
-    .logo::after {
-      content: '';
-      position: absolute;
-      bottom: -8px;
-      left: 0;
-      width: 100%;
-      height: 6px;
-      background: var(--purple);
-    }
+.eyebrow {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1.2rem;
+}
 
-    .hero-tag {
-      display: inline-block;
-      border: 3px solid var(--purple);
-      padding: 6px 18px;
-      font-size: clamp(0.65rem, 1.5vw, 0.85rem);
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      color: var(--purple);
-      text-transform: uppercase;
-      margin-top: 2rem;
-    }
+.rule { width: 3rem; height: 1px; background: var(--accent); border: none; margin: 2rem 0; }
 
-    .hero-subtitle {
-      font-size: clamp(0.6rem, 1.2vw, 0.75rem);
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-top: 0.75rem;
-    }
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  max-width: var(--page);
+  margin: 0 auto;
+}
 
-    .hero-copy {
-      font-size: clamp(0.85rem, 1.8vw, 1.05rem);
-      font-weight: 400;
-      line-height: 1.8;
-      color: var(--ink);
-      max-width: 540px;
-      margin-top: 2rem;
-    }
+.logo {
+  font-family: var(--sans);
+  font-size: 1.05rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+  text-decoration: none;
+}
 
-    .hero-badge {
-      display: inline-block;
-      margin-top: 2rem;
-      background: var(--purple);
-      color: var(--white);
-      padding: 12px 28px;
-      font-size: clamp(0.65rem, 1.2vw, 0.8rem);
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      box-shadow: 6px 6px 0 var(--black);
-      text-decoration: none;
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
-      cursor: default;
-    }
-    .hero-badge:hover {
-      transform: translate(-2px, -2px);
-      box-shadow: 8px 8px 0 var(--black);
-    }
+nav .nav-links { display: flex; gap: 2rem; align-items: center; }
+nav .nav-links a {
+  font-size: 0.82rem;
+  font-weight: 400;
+  color: var(--ink-soft);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+nav .nav-links a:hover { color: var(--ink); }
+nav .nav-links a.accent-link {
+  color: var(--accent);
+  font-weight: 500;
+  border-bottom: 1px solid var(--accent);
+  padding-bottom: 2px;
+}
 
-    .scroll-hint {
-      margin-top: 3rem;
-      opacity: 0.3;
-      animation: float 3s ease-in-out infinite;
-    }
-    .scroll-hint svg {
-      width: 20px; height: 20px;
-      stroke: var(--ink);
-      stroke-width: 2;
-      fill: none;
-    }
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(6px); }
-    }
+/* HERO */
+.hero { padding: 5rem 0 3rem; }
+.hero h1 { margin-bottom: 1.5rem; }
+.hero h1 em { font-style: italic; color: var(--accent); }
+.hero p { font-size: 1.1rem; line-height: 1.8; margin-bottom: 1rem; }
 
-    /* ── Section shared ── */
-    .section {
-      padding: 5rem 0;
-    }
+.hero-ctas {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+  flex-wrap: wrap;
+}
 
-    .section-label {
-      font-size: 0.65rem;
-      font-weight: 700;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--purple);
-      margin-bottom: 2rem;
-      padding-bottom: 0.75rem;
-      border-bottom: 3px solid var(--purple);
-      display: inline-block;
-    }
+.cta-primary {
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--accent);
+  padding: 1rem 2.2rem;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.cta-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.15); }
 
-    /* ── What Glimpse Does ── */
-    .cards {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1.25rem;
-    }
-    @media (min-width: 640px) {
-      .cards { grid-template-columns: repeat(3, 1fr); }
-    }
-    .card {
-      background: var(--white);
-      border: 4px solid var(--black);
-      padding: 1.75rem 1.5rem;
-      box-shadow: 8px 8px 0 var(--purple);
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
-    }
-    .card:hover {
-      transform: translate(-3px, -3px);
-      box-shadow: 11px 11px 0 var(--purple);
-    }
-    .card-icon {
-      width: 32px; height: 32px;
-      margin-bottom: 1rem;
-    }
-    .card-icon svg {
-      width: 100%; height: 100%;
-      stroke: var(--purple);
-      stroke-width: 2;
-      fill: none;
-    }
-    .card h3 {
-      font-size: 0.9rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-bottom: 0.5rem;
-    }
-    .card p {
-      font-size: 0.8rem;
-      font-weight: 400;
-      line-height: 1.7;
-      color: var(--muted);
-    }
+.cta-secondary {
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: transparent;
+  padding: 1rem 2.2rem;
+  text-decoration: none;
+  border: 1px solid var(--accent);
+  transition: background 0.2s;
+}
+.cta-secondary:hover { background: var(--accent-wash); }
 
-    /* ── How It Works ── */
-    .steps { counter-reset: step; }
-    .step {
-      display: flex;
-      align-items: flex-start;
-      gap: 1.25rem;
-      padding: 1.25rem 0;
-      border-bottom: 2px solid rgba(91, 91, 214, 0.15);
-    }
-    .step:last-child { border-bottom: none; }
-    .step-num {
-      flex-shrink: 0;
-      width: 36px; height: 36px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: var(--purple);
-      color: var(--white);
-      font-size: 0.8rem;
-      font-weight: 700;
-    }
-    .step-text {
-      font-size: 0.85rem;
-      font-weight: 400;
-      color: var(--ink);
-      line-height: 1.7;
-      padding-top: 0.4rem;
-    }
+/* FEATURES */
+.features { background: var(--warm-white); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+.feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+.feature-card { background: var(--warm-white); padding: 2.5rem 2rem; }
+.feature-card h3 { margin-bottom: 0.6rem; font-size: 1.25rem; }
+.feature-card p { font-size: 0.88rem; line-height: 1.7; }
+@media (max-width: 768px) { .feature-grid { grid-template-columns: 1fr; } }
 
-    /* ── Pull quote ── */
-    .pull-quote {
-      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
-      font-weight: 700;
-      line-height: 1.7;
-      color: var(--ink);
-      border-left: 6px solid var(--purple);
-      padding-left: 1.5rem;
-      max-width: 600px;
-    }
+/* PROOF LOOP */
+.proof-loop h2 { margin-bottom: 1.5rem; }
+.proof-loop p { font-size: 1.05rem; line-height: 1.85; margin-bottom: 1rem; }
+.proof-steps {
+  list-style: none;
+  padding: 0;
+  margin: 2.5rem 0;
+}
+.proof-steps li {
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--rule);
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+}
+.proof-steps li:first-child { border-top: 1px solid var(--rule); }
+.step-num {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--accent);
+  letter-spacing: 0.06em;
+  flex-shrink: 0;
+  width: 1.5rem;
+}
 
-    /* ── Stats ── */
-    .stats {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1.25rem;
-    }
-    @media (min-width: 640px) {
-      .stats { grid-template-columns: 1fr 1fr; }
-    }
-    .stat {
-      background: var(--white);
-      border: 4px solid var(--black);
-      padding: 1.75rem 1.5rem;
-      box-shadow: 8px 8px 0 var(--purple);
-    }
-    .stat-number {
-      font-size: clamp(2rem, 5vw, 3rem);
-      font-weight: 700;
-      color: var(--purple);
-      line-height: 1;
-      margin-bottom: 0.5rem;
-    }
-    .stat-label {
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--muted);
-      line-height: 1.6;
-    }
+/* STAT BANNER */
+.stat-banner {
+  background: var(--accent-deep);
+  color: #fff;
+  text-align: center;
+  padding: 3.5rem 0;
+}
+.stat-banner h2 { color: #fff; margin-bottom: 1rem; }
+.stat-banner p { color: rgba(255,255,255,0.8); margin: 0 auto; font-size: 1.05rem; }
 
-    /* ── Seeker section ── */
-    .seeker-block {
-      background: var(--ink);
-      border: 4px solid var(--black);
-      padding: 2.5rem 2rem;
-      box-shadow: 8px 8px 0 var(--purple);
-      color: var(--white);
-    }
-    .seeker-block h3 {
-      font-size: 1rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-bottom: 1rem;
-      color: var(--white);
-    }
-    .seeker-block p {
-      font-size: 0.85rem;
-      font-weight: 400;
-      line-height: 1.9;
-      color: rgba(255, 255, 255, 0.7);
-    }
-    .seeker-block p + p {
-      margin-top: 1rem;
-    }
-    .seeker-tag {
-      display: inline-block;
-      border: 2px solid var(--purple);
-      padding: 4px 14px;
-      font-size: 0.65rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      color: var(--purple);
-      text-transform: uppercase;
-      margin-top: 1.25rem;
-    }
+/* CTA */
+.cta-section {
+  background: var(--ink);
+  color: #fff;
+  text-align: center;
+  padding: 3.5rem 0;
+}
+.cta-section h2 { color: #fff; margin-bottom: 1rem; }
+.cta-section p { color: rgba(255,255,255,0.7); margin: 0 auto 2.5rem; text-align: center; }
+.cta-button {
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink);
+  background: #fff;
+  padding: 1rem 2.5rem;
+  text-decoration: none;
+  transition: transform 0.2s;
+}
+.cta-button:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.3); }
 
-    /* ── Founder ── */
-    .founder-block {
-      background: var(--white);
-      border: 4px solid var(--black);
-      padding: 2rem 2rem;
-      box-shadow: 8px 8px 0 var(--purple);
-    }
-    .founder-name {
-      font-size: 0.9rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-    .founder-detail {
-      font-size: 0.75rem;
-      font-weight: 400;
-      color: var(--muted);
-      margin-top: 0.25rem;
-      margin-bottom: 1.25rem;
-    }
-    .founder-copy {
-      font-size: 0.85rem;
-      font-weight: 400;
-      line-height: 1.9;
-      color: var(--ink);
-    }
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 2.5rem 0;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  background: var(--ink);
+}
+footer p { font-size: 0.75rem; color: rgba(255,255,255,0.35); margin: 0 auto; }
+footer a { color: rgba(255,255,255,0.5); text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+.footer-links { margin-bottom: 0.8rem; }
+.footer-links a { margin: 0 0.6rem; }
 
-    /* ── Ticker ── */
-    .ticker {
-      background: var(--purple);
-      height: 40px;
-      display: flex;
-      align-items: center;
-      overflow: hidden;
-      margin-top: 5rem;
-    }
-    .ticker-content {
-      display: flex;
-      align-items: center;
-      gap: 48px;
-      white-space: nowrap;
-      animation: scroll-ticker 25s linear infinite;
-      color: var(--white);
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-    .ticker-content span { opacity: 0.5; }
-    @keyframes scroll-ticker {
-      0%   { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-
-    /* ── Token / CA ── */
-    .token-bar {
-      background: var(--ink);
-      padding: 1.5rem 1.5rem;
-      margin-top: 0;
-    }
-    .token-inner {
-      max-width: 800px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-    .token-label {
-      font-size: 0.6rem;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--purple);
-      flex-shrink: 0;
-    }
-    .token-ca {
-      font-size: 0.7rem;
-      font-weight: 400;
-      color: rgba(255, 255, 255, 0.6);
-      word-break: break-all;
-      user-select: all;
-      cursor: text;
-    }
-
-    /* ── Footer ── */
-    footer {
-      padding: 2.5rem 1.5rem 2rem;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    .footer-links {
-      display: flex;
-      gap: 2rem;
-      margin-bottom: 1.5rem;
-      flex-wrap: wrap;
-    }
-    .footer-links a {
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--purple);
-      text-decoration: none;
-      border-bottom: 2px solid transparent;
-      transition: border-color 0.2s ease;
-      cursor: pointer;
-    }
-    .footer-links a:hover { border-color: var(--purple); }
-    .footer-links a:focus-visible {
-      outline: 3px solid var(--purple);
-      outline-offset: 4px;
-    }
-    .footer-socials {
-      display: flex;
-      gap: 1.5rem;
-      margin-bottom: 1.5rem;
-      flex-wrap: wrap;
-    }
-    .footer-socials a {
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      color: var(--ink);
-      text-decoration: none;
-      border-bottom: 2px solid transparent;
-      transition: border-color 0.2s ease;
-      cursor: pointer;
-    }
-    .footer-socials a:hover { border-color: var(--purple); }
-    .footer-socials a:focus-visible {
-      outline: 3px solid var(--purple);
-      outline-offset: 4px;
-    }
-    .footer-socials .social-label {
-      font-size: 0.6rem;
-      color: var(--muted);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      margin-right: 0.25rem;
-    }
-    .disclaimer {
-      font-size: 0.6rem;
-      font-weight: 400;
-      color: var(--muted);
-      line-height: 1.8;
-      max-width: 520px;
-    }
-
-    /* ── Scroll reveal ── */
-    .reveal {
-      opacity: 0;
-      transform: translateY(16px);
-      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* ── Reduced motion ── */
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        animation-delay: 0s !important;
-        transition-duration: 0.01ms !important;
-      }
-      .reveal { opacity: 1; transform: none; }
-    }
-    .nav {
-      position: fixed;
-      top: 0;
-      right: 0;
-      padding: 1.25rem 1.5rem;
-      z-index: 100;
-    }
-    .nav a {
-      color: var(--ink);
-      text-decoration: none;
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 0.4rem 1rem;
-      border: 2px solid var(--purple);
-      transition: border-color 0.2s;
-      margin-left: 0.5rem;
-    }
-    .nav a:hover {
-      background: var(--purple);
-      color: var(--white);
-    }
-  </style>
+/* REVEAL */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.fade-in { opacity: 0; transform: translateY(18px); animation: fadeUp 0.7s ease forwards; }
+@keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.35s; }
+.stagger-4 { animation-delay: 0.5s; }
+</style>
 </head>
 <body>
-  <nav class="nav">
+
+<nav>
+  <a href="/" class="logo">Glimpse</a>
+  <div class="nav-links">
     <a href="/how-it-works.html">How It Works</a>
-    <a href="/the-generosity-compact.html">The Compact</a>
-  </nav>
-  <div class="scanline" aria-hidden="true"></div>
-
-  <!-- ── Hero ── -->
-  <section class="hero" aria-label="Glimpse introduction">
-    <div class="logo">Glimpse</div>
-    <div class="hero-tag">Built on Solana</div>
-    <div class="hero-subtitle">The Trust Layer for Giving</div>
-    <p class="hero-copy">
-      A USDC donation app where every dollar is recorded on-chain. Zero fees. Real updates from real people.
-    </p>
-    <div class="hero-badge">Coming Soon to Solana dApp Store</div>
-    <div class="scroll-hint" aria-hidden="true">
-      <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M12 5v14M5 12l7 7 7-7"/>
-      </svg>
-    </div>
-  </section>
-
-  <!-- ── What Glimpse Does ── -->
-  <div class="container">
-    <section class="section" aria-label="What Glimpse does">
-      <div class="section-label reveal">What Glimpse Does</div>
-      <div class="cards">
-        <div class="card reveal">
-          <div class="card-icon">
-            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"/>
-              <path d="M8 12l2.5 2.5L16 9"/>
-            </svg>
-          </div>
-          <h3>Zero Fees</h3>
-          <p>Every dollar goes toward helping people in need. No platform cut.</p>
-        </div>
-        <div class="card reveal">
-          <div class="card-icon">
-            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="3" y="3" width="18" height="18" rx="2"/>
-              <path d="M3 9h18M9 3v18"/>
-            </svg>
-          </div>
-          <h3>On-Chain Proof</h3>
-          <p>Every donation recorded on Solana. Verifiable. Permanent.</p>
-        </div>
-        <div class="card reveal">
-          <div class="card-icon">
-            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
-            </svg>
-          </div>
-          <h3>Real Updates</h3>
-          <p>A message thread opens. You follow the impact of your gift.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ── How It Works ── -->
-    <section class="section" aria-label="How it works">
-      <div class="section-label reveal">How It Works</div>
-      <div class="steps">
-        <div class="step reveal">
-          <div class="step-num">1</div>
-          <div class="step-text">Connect your Seeker wallet</div>
-        </div>
-        <div class="step reveal">
-          <div class="step-num">2</div>
-          <div class="step-text">Pick a campaign and enter any USDC amount</div>
-        </div>
-        <div class="step reveal">
-          <div class="step-num">3</div>
-          <div class="step-text">Add context and a note for the recipient</div>
-        </div>
-        <div class="step reveal">
-          <div class="step-num">4</div>
-          <div class="step-text">Review the details and sign</div>
-        </div>
-        <div class="step reveal">
-          <div class="step-num">5</div>
-          <div class="step-text">Follow real updates in your message thread</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ── Pull Quote ── -->
-    <section class="section" aria-label="Human connection">
-      <blockquote class="pull-quote reveal">
-        In a world of AI, human connection is forgotten. No one's building for this. We are.
-      </blockquote>
-    </section>
-
-    <!-- ── Market Stats ── -->
-    <section class="section" aria-label="Market data">
-      <div class="section-label reveal">The Opportunity</div>
-      <div class="stats">
-        <div class="stat reveal">
-          <div class="stat-number">65</div>
-          <div class="stat-label">Average age of a donor in the U.S. A trillion-dollar wealth transfer is coming. No one is serving the next generation.</div>
-        </div>
-        <div class="stat reveal">
-          <div class="stat-number">15% &rarr; 70%</div>
-          <div class="stat-label">Top 500 U.S. charities accepting crypto, 2020 to 2024. They accepted the money. They didn't accept the technology.</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ── Seeker & Solana Mobile ── -->
-    <section class="section" aria-label="Built for Seeker">
-      <div class="section-label reveal">Built for Seeker</div>
-      <div class="seeker-block reveal">
-        <h3>Solana Mobile Exclusive</h3>
-        <p>Glimpse is built specifically for the Solana Seeker. Not a website ported to mobile. A native app designed for on-device wallet signing, instant USDC transfers, and the Solana dApp Store.</p>
-        <p>The goal: a Seeker in the hands of every trustworthy nonprofit in America. The device becomes the point of impact — receiving donations, uploading proof, connecting with donors. All from the phone.</p>
-        <div class="seeker-tag">Seeker Exclusive</div>
-      </div>
-    </section>
-
+    <a href="/partners.html" class="accent-link">For Nonprofits</a>
   </div>
+</nav>
 
-  <!-- ── Ticker ── -->
-  <div class="ticker" aria-hidden="true">
-    <div class="ticker-content">
-      Glimpse <span>&#x2022;</span> Zero Fees <span>&#x2022;</span> USDC Donations <span>&#x2022;</span> On-Chain Receipts <span>&#x2022;</span> Built on Solana <span>&#x2022;</span> Real Updates <span>&#x2022;</span> Documenting Kindness <span>&#x2022;</span>
-      Glimpse <span>&#x2022;</span> Zero Fees <span>&#x2022;</span> USDC Donations <span>&#x2022;</span> On-Chain Receipts <span>&#x2022;</span> Built on Solana <span>&#x2022;</span> Real Updates <span>&#x2022;</span> Documenting Kindness <span>&#x2022;</span>
+<section class="hero">
+  <div class="container narrow">
+    <p class="eyebrow fade-in stagger-1">Built on Solana</p>
+    <h1 class="fade-in stagger-2">The trust layer<br><em>for giving.</em></h1>
+    <p class="fade-in stagger-3">3 out of 4 donors never give again. Not because they stopped caring. Because nobody showed them what happened.</p>
+    <p class="fade-in stagger-3">Glimpse closes that gap. Zero-fee donations. Permanent on-chain proof. A real conversation between donor and nonprofit after every gift.</p>
+    <div class="hero-ctas fade-in stagger-4">
+      <a href="/how-it-works.html" class="cta-primary">How It Works</a>
+      <a href="/partners.html" class="cta-secondary">I Run a Nonprofit</a>
     </div>
   </div>
+</section>
 
-  <!-- ── Token CA ── -->
-  <div class="token-bar">
-    <div class="token-inner">
-      <div class="token-label">CA</div>
-      <div class="token-ca">Ab26LYP16ZyXvUJQqFYKKPU75GHhdzvhVnYtVUBFpump</div>
+<section class="features">
+  <div class="container reveal">
+    <div class="feature-grid">
+      <div class="feature-card">
+        <h3>Zero Fees</h3>
+        <p>Every dollar goes forward. No platform cut. Not 3%. Not 2.9% + 30 cents. Zero. GoFundMe takes three percent. We take nothing.</p>
+      </div>
+      <div class="feature-card">
+        <h3>On-Chain Proof</h3>
+        <p>Every donation recorded permanently on Solana. Wallet, amount, timestamp. Verifiable by anyone. Immutable. The receipt can never be altered or deleted.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Real Connection</h3>
+        <p>A conversation opens after every donation. Not a templated email. Real updates from the nonprofit. You see exactly what your money did.</p>
+      </div>
     </div>
   </div>
+</section>
 
-  <!-- ── Footer ── -->
-  <footer>
-    <div class="footer-socials">
-      <a href="https://x.com/GiveGlimpse" target="_blank" rel="noopener"><span class="social-label">Company</span> @GiveGlimpse</a>
-      <a href="https://x.com/DerrickWKing" target="_blank" rel="noopener"><span class="social-label">Founder</span> @DerrickWKing</a>
-    </div>
-    <nav class="footer-links" aria-label="Footer navigation">
-      <a href="/terms">Terms of Service</a>
-      <a href="/privacy">Privacy Policy</a>
-      <a href="mailto:derrick@giveglimpse.com">Contact</a>
-    </nav>
-    <p class="disclaimer">
-      Glimpse is not a nonprofit or 501(c)(3). Donations made through Glimpse are not tax-deductible. Glimpse is a new company navigating an evolving regulatory landscape.
-    </p>
-  </footer>
+<section class="proof-loop">
+  <div class="container narrow reveal">
+    <p class="eyebrow">The proof loop</p>
+    <h2>Show people what happened, and they give again.</h2>
+    <p>New donor retention is 7.2%. But once a donor gives a second gift, retention jumps to 59%. The second gift is the inflection point. Proof is what triggers it.</p>
+    <ol class="proof-steps">
+      <li><span class="step-num">01</span> Donor gives USDC. Zero fees.</li>
+      <li><span class="step-num">02</span> Transaction recorded permanently on Solana.</li>
+      <li><span class="step-num">03</span> Impact documented with proof.</li>
+      <li><span class="step-num">04</span> Donor sees proof.</li>
+      <li><span class="step-num">05</span> Donor gives again.</li>
+    </ol>
+  </div>
+</section>
 
-  <!-- ── Scroll reveal ── -->
-  <script>
-    (function() {
-      var els = document.querySelectorAll('.reveal');
-      if (!('IntersectionObserver' in window)) {
-        els.forEach(function(el) { el.classList.add('visible'); });
-        return;
-      }
-      var observer = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
-      els.forEach(function(el) { observer.observe(el); });
-    })();
-  </script>
+<section class="stat-banner reveal">
+  <div class="container narrow">
+    <p class="eyebrow" style="color: rgba(255,255,255,0.5);">The opportunity</p>
+    <h2>$592.5 billion in U.S. charitable giving. The rails haven't changed.</h2>
+    <p>The problem is not just where money goes. It is whether donors ever get shown what happened after they give.</p>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="container narrow reveal">
+    <p class="eyebrow" style="color: rgba(255,255,255,0.5);">For nonprofits</p>
+    <h2>We help you turn real needs into funded, proof-backed donor relationships.</h2>
+    <p>Glimpse is a white-glove donor trust partnership for lean direct-service nonprofits. We capture your story, package real needs clearly, and make sure every donor gets updates and proof.</p>
+    <p style="color: rgba(255,255,255,0.55); margin-top: -1.5rem; margin-bottom: 2.2rem;">Additive to your existing fundraising. Not a replacement.</p>
+    <a href="/partners.html" class="cta-button">Learn About the Founding Five</a>
+  </div>
+</section>
+
+<footer>
+  <p class="footer-links">
+    <a href="/how-it-works.html">How It Works</a>
+    <a href="/partners.html">For Nonprofits</a>
+    <a href="/privacy">Privacy</a>
+    <a href="/terms">Terms</a>
+    <a href="mailto:derrick@giveglimpse.com">Contact</a>
+  </p>
+  <p>Glimpse &mdash; Public Benefit Corporation (Delaware) &middot; Not a nonprofit or 501(c)(3). Donations are not tax-deductible.</p>
+</footer>
+
+<script>
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+reveals.forEach(el => observer.observe(el));
+</script>
+
 </body>
 </html>
