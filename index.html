@@ -15,338 +15,278 @@
 <meta name="twitter:description" content="A nonprofit names one need under $500. $GIVE fees pay for it. The photo proves it.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 :root {
+  --purple: #5b5bd6;
+  --purple-deep: #2D2060;
+  --purple-glow: rgba(91, 91, 214, 0.35);
+  --bg: #f0e9ff;
+  --grid: rgba(91, 91, 214, 0.12);
   --ink: #1a1a2e;
-  --ink-soft: #3d3d5c;
-  --ink-muted: #6e6e8a;
-  --cream: #F4F0FA;
-  --warm-white: #FFFFFF;
-  --accent: #5b5bd6;
-  --accent-light: #7272e0;
-  --accent-wash: rgba(91, 91, 214, 0.08);
-  --accent-deep: #2D2060;
-  --rule: rgba(91, 91, 214, 0.12);
-  --serif: 'Instrument Serif', Georgia, serif;
-  --sans: 'DM Sans', -apple-system, sans-serif;
-  --measure: 680px;
-  --page: 1100px;
+  --white: #ffffff;
+  --black: #000000;
+  --muted: rgba(26, 26, 46, 0.55);
+  --green: #1f8a4c;
+  --amber: #b8860b;
 }
-
-html {
-  font-size: 18px;
-  -webkit-font-smoothing: antialiased;
-  scroll-behavior: smooth;
-}
-
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 body {
-  font-family: var(--sans);
+  font-family: 'Space Mono', ui-monospace, Menlo, monospace;
+  background-color: var(--bg);
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 40px 40px;
   color: var(--ink);
-  background: var(--cream);
-  line-height: 1.7;
-  font-weight: 300;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.7;
 }
+a { color: var(--purple); }
 
-.container { max-width: var(--page); margin: 0 auto; padding: 0 2rem; }
-.narrow { max-width: var(--measure); margin: 0 auto; }
-section { padding: 3.5rem 0; }
-
-h1, h2, h3 {
-  font-family: var(--serif);
-  font-weight: 400;
-  line-height: 1.15;
-  letter-spacing: -0.01em;
+/* scan line */
+.scanline {
+  position: fixed; top: 0; left: 0; width: 100%; height: 3px;
+  background: linear-gradient(90deg, transparent, var(--purple-glow), transparent);
+  animation: scan 6s ease-in-out infinite; opacity: 0.4; z-index: 999; pointer-events: none;
 }
+@keyframes scan { 0% { top: 0; } 50% { top: 100%; } 100% { top: 0; } }
 
-h1 { font-size: clamp(2.8rem, 6vw, 4.2rem); }
-h2 { font-size: clamp(2rem, 4vw, 2.8rem); }
-h3 { font-size: 1.4rem; }
-p { color: var(--ink-soft); max-width: 600px; }
-
-.eyebrow {
-  font-family: var(--sans);
-  font-size: 0.72rem;
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 1.2rem;
-}
-
-.rule { width: 3rem; height: 1px; background: var(--accent); border: none; margin: 2rem 0; }
-
+/* nav */
 nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.5rem 2rem;
-  max-width: var(--page);
-  margin: 0 auto;
+  display: flex; justify-content: space-between; align-items: center;
+  max-width: 860px; margin: 0 auto; padding: 1.1rem 1.25rem;
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
 }
+nav .brand { color: var(--ink); text-decoration: none; letter-spacing: 0.18em; }
+nav .links { display: flex; gap: 1.25rem; }
+nav .links a { color: var(--purple); text-decoration: none; border-bottom: 2px solid transparent; padding-bottom: 2px; white-space: nowrap; }
+nav .links a:hover { border-bottom-color: var(--purple); }
 
+.container { max-width: 860px; margin: 0 auto; padding: 0 1.25rem; }
+
+/* hero */
+.hero { padding: 3.5rem 0 3rem; }
 .logo {
-  font-family: var(--sans);
-  font-size: 1.05rem;
-  font-weight: 500;
-  letter-spacing: 0.04em;
-  color: var(--ink);
-  text-decoration: none;
+  font-size: clamp(3rem, 12vw, 5.5rem); font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+  line-height: 1; color: var(--ink); position: relative; display: inline-block;
 }
+.logo::after { content: ''; position: absolute; bottom: -8px; left: 0; width: 100%; height: 6px; background: var(--purple); }
+.hero-tag {
+  display: inline-block; border: 3px solid var(--purple); padding: 6px 14px; margin-top: 2rem;
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--purple);
+}
+.hero-sub { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-top: 0.75rem; }
+.hero h1 { font-size: clamp(1.35rem, 5vw, 2rem); font-weight: 700; line-height: 1.35; margin-top: 1.75rem; max-width: 640px; }
+.hero h1 em { font-style: normal; color: var(--purple); }
+.hero-copy { font-size: clamp(0.9rem, 2vw, 1rem); line-height: 1.8; max-width: 600px; margin-top: 1.25rem; }
+.hero-ctas { display: flex; flex-wrap: wrap; gap: 0.9rem; margin-top: 2rem; }
+.btn {
+  display: inline-block; padding: 12px 22px; text-decoration: none;
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.btn-solid { background: var(--purple); color: var(--white); box-shadow: 6px 6px 0 var(--black); }
+.btn-solid:hover { transform: translate(-2px, -2px); box-shadow: 8px 8px 0 var(--black); }
+.btn-line { border: 3px solid var(--purple); color: var(--purple); background: transparent; }
+.btn-line:hover { background: rgba(91,91,214,0.08); }
 
-nav .nav-links { display: flex; gap: 2rem; align-items: center; }
-nav .nav-links a {
-  font-size: 0.82rem;
-  font-weight: 400;
-  color: var(--ink-soft);
-  text-decoration: none;
-  transition: color 0.2s;
+/* sections */
+.section { padding: 3.5rem 0; }
+.section-label {
+  font-size: 0.65rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: var(--purple);
+  margin-bottom: 1.75rem; padding-bottom: 0.75rem; border-bottom: 3px solid var(--purple); display: inline-block;
 }
-nav .nav-links a:hover { color: var(--ink); }
-nav .nav-links a.accent-link {
-  color: var(--accent);
-  font-weight: 500;
-  border-bottom: 1px solid var(--accent);
-  padding-bottom: 2px;
-}
+.cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+.card { background: var(--white); border: 3px solid var(--ink); box-shadow: 8px 8px 0 var(--purple); padding: 1.5rem 1.25rem; }
+.card h3 { font-size: 0.85rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.6rem; }
+.card p { font-size: 0.85rem; line-height: 1.7; color: var(--ink); }
+@media (max-width: 720px) { .cards { grid-template-columns: 1fr; } }
 
-/* HERO */
-.hero { padding: 5rem 0 3rem; }
-.hero h1 { margin-bottom: 1.5rem; }
-.hero h1 em { font-style: italic; color: var(--accent); }
-.hero p { font-size: 1.1rem; line-height: 1.8; margin-bottom: 1rem; }
+/* receipt mockup */
+.receipt { background: var(--white); border: 3px solid var(--ink); box-shadow: 10px 10px 0 var(--purple); max-width: 560px; }
+.receipt-head { display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 1.1rem; border-bottom: 3px solid var(--ink); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
+.receipt-head .handle { color: var(--purple); }
+.receipt-row { display: grid; grid-template-columns: 6.5rem 1fr; gap: 0.75rem; padding: 0.9rem 1.1rem; border-bottom: 2px dashed rgba(26,26,46,0.2); align-items: start; }
+.receipt-row:last-child { border-bottom: none; }
+.receipt-row .k { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; padding-top: 2px; }
+.receipt-row .v { font-size: 0.82rem; line-height: 1.6; }
+.receipt-row .v small { display: block; color: var(--muted); font-size: 0.7rem; margin-top: 2px; }
+.k.posted { color: var(--ink); } .k.funded { color: var(--purple); } .k.bought { color: var(--amber); } .k.proven { color: var(--green); }
+.pending { display: inline-block; border: 2px solid var(--ink); padding: 1px 8px; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
+.receipt-note { font-size: 0.8rem; color: var(--muted); margin-top: 1.25rem; max-width: 560px; }
+@media (max-width: 480px) { .receipt-row { grid-template-columns: 1fr; gap: 0.25rem; } }
 
-.hero-ctas {
-  display: flex;
-  gap: 1.5rem;
-  margin-top: 2.5rem;
-  flex-wrap: wrap;
-}
+/* steps */
+.steps { display: grid; gap: 0; border-top: 3px solid var(--ink); }
+.step { display: grid; grid-template-columns: 2.5rem 1fr; gap: 1rem; align-items: center; padding: 1rem 0; border-bottom: 2px solid rgba(26,26,46,0.15); }
+.step-num { width: 2.5rem; height: 2.5rem; display: grid; place-items: center; background: var(--purple); color: var(--white); font-weight: 700; font-size: 0.85rem; }
+.step-text { font-size: 0.9rem; font-weight: 700; }
+.step-text span { display: block; font-weight: 400; font-size: 0.8rem; color: var(--muted); margin-top: 2px; }
 
-.cta-primary {
-  display: inline-block;
-  font-family: var(--sans);
-  font-size: 0.8rem;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: #fff;
-  background: var(--accent);
-  padding: 1rem 2.2rem;
-  text-decoration: none;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-.cta-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.15); }
+/* first $1000 */
+.list { border: 3px solid var(--ink); background: var(--white); box-shadow: 8px 8px 0 var(--purple); }
+.list-row { display: grid; grid-template-columns: 5rem 1fr; gap: 1rem; padding: 0.9rem 1.1rem; border-bottom: 2px solid rgba(26,26,46,0.12); align-items: baseline; }
+.list-row:last-child { border-bottom: none; }
+.list-row .amt { font-weight: 700; color: var(--purple); font-size: 1rem; }
+.list-row .what { font-size: 0.85rem; }
+.list-row .what small { display: block; color: var(--muted); font-size: 0.72rem; }
+.list-foot { font-size: 0.78rem; color: var(--muted); margin-top: 1rem; }
 
-.cta-secondary {
-  display: inline-block;
-  font-family: var(--sans);
-  font-size: 0.8rem;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--accent);
-  background: transparent;
-  padding: 1rem 2.2rem;
-  text-decoration: none;
-  border: 1px solid var(--accent);
-  transition: background 0.2s;
-}
-.cta-secondary:hover { background: var(--accent-wash); }
+/* honest block */
+.honest { background: var(--ink); color: var(--white); border: 3px solid var(--ink); box-shadow: 10px 10px 0 var(--purple); padding: 2rem 1.5rem; }
+.honest .section-label { color: var(--white); border-color: var(--purple); }
+.honest h2 { font-size: clamp(1.2rem, 4vw, 1.6rem); font-weight: 700; line-height: 1.35; margin-bottom: 1rem; }
+.honest p { font-size: 0.88rem; line-height: 1.8; color: rgba(255,255,255,0.85); max-width: 620px; }
+.honest p + p { margin-top: 0.9rem; }
+.honest .btn { margin-top: 1.5rem; background: var(--white); color: var(--ink); box-shadow: 6px 6px 0 var(--purple); }
 
-/* FEATURES */
-.features { background: var(--warm-white); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
-.feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
-.feature-card { background: var(--warm-white); padding: 2.5rem 2rem; }
-.feature-card h3 { margin-bottom: 0.6rem; font-size: 1.25rem; }
-.feature-card p { font-size: 0.88rem; line-height: 1.7; }
-@media (max-width: 768px) { .feature-grid { grid-template-columns: 1fr; } }
+/* ticker */
+.ticker { background: var(--purple); color: var(--white); overflow: hidden; white-space: nowrap; padding: 0.7rem 0; margin-top: 3rem; border-top: 3px solid var(--ink); border-bottom: 3px solid var(--ink); }
+.ticker-content { display: inline-block; animation: tick 38s linear infinite; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; }
+.ticker-content span { margin: 0 1.5rem; opacity: 0.6; }
+@keyframes tick { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-/* PROOF LOOP */
-.proof-loop h2 { margin-bottom: 1.5rem; }
-.proof-loop p { font-size: 1.05rem; line-height: 1.85; margin-bottom: 1rem; }
-.proof-steps {
-  list-style: none;
-  padding: 0;
-  margin: 2.5rem 0;
-}
-.proof-steps li {
-  font-family: var(--serif);
-  font-size: 1.2rem;
-  padding: 1rem 0;
-  border-bottom: 1px solid var(--rule);
-  display: flex;
-  align-items: baseline;
-  gap: 1rem;
-}
-.proof-steps li:first-child { border-top: 1px solid var(--rule); }
-.step-num {
-  font-family: var(--sans);
-  font-size: 0.7rem;
-  font-weight: 500;
-  color: var(--accent);
-  letter-spacing: 0.06em;
-  flex-shrink: 0;
-  width: 1.5rem;
-}
+/* CA bar */
+.token-bar { background: var(--ink); color: var(--white); padding: 0.9rem 0; }
+.token-inner { max-width: 860px; margin: 0 auto; padding: 0 1.25rem; display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; font-size: 0.72rem; }
+.token-label { color: var(--purple); font-weight: 700; letter-spacing: 0.2em; }
+.token-ca { font-weight: 700; word-break: break-all; }
+.token-ca.soon { color: rgba(255,255,255,0.6); font-weight: 400; }
 
-/* STAT BANNER */
-.stat-banner {
-  background: var(--accent-deep);
-  color: #fff;
-  text-align: center;
-  padding: 3.5rem 0;
-}
-.stat-banner h2 { color: #fff; margin-bottom: 1rem; }
-.stat-banner p { color: rgba(255,255,255,0.8); margin: 0 auto; font-size: 1.05rem; }
+/* footer */
+footer { padding: 2.5rem 0 3rem; }
+.footer-socials { display: flex; flex-wrap: wrap; gap: 1.5rem; font-size: 0.75rem; font-weight: 700; margin-bottom: 1rem; }
+.footer-socials a { color: var(--ink); text-decoration: none; }
+.footer-socials .social-label { color: var(--muted); font-weight: 400; margin-right: 0.4rem; text-transform: uppercase; letter-spacing: 0.15em; font-size: 0.62rem; }
+.footer-links { display: flex; flex-wrap: wrap; gap: 1.25rem; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 1.25rem; }
+.footer-links a { color: var(--purple); text-decoration: none; }
+.footer-legal { font-size: 0.7rem; color: var(--muted); line-height: 1.7; max-width: 640px; }
 
-/* CTA */
-.cta-section {
-  background: var(--ink);
-  color: #fff;
-  text-align: center;
-  padding: 3.5rem 0;
-}
-.cta-section h2 { color: #fff; margin-bottom: 1rem; }
-.cta-section p { color: rgba(255,255,255,0.7); margin: 0 auto 2.5rem; text-align: center; }
-.cta-button {
-  display: inline-block;
-  font-family: var(--sans);
-  font-size: 0.8rem;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--ink);
-  background: #fff;
-  padding: 1rem 2.5rem;
-  text-decoration: none;
-  transition: transform 0.2s;
-}
-.cta-button:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.3); }
-
-/* FOOTER */
-footer {
-  text-align: center;
-  padding: 2.5rem 0;
-  border-top: 1px solid rgba(255,255,255,0.06);
-  background: var(--ink);
-}
-footer p { font-size: 0.75rem; color: rgba(255,255,255,0.35); margin: 0 auto; }
-footer a { color: rgba(255,255,255,0.5); text-decoration: none; }
-footer a:hover { text-decoration: underline; }
-.footer-links { margin-bottom: 0.8rem; }
-.footer-links a { margin: 0 0.6rem; }
-
-/* REVEAL */
-.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
-.reveal.visible { opacity: 1; transform: translateY(0); }
-.fade-in { opacity: 0; transform: translateY(18px); animation: fadeUp 0.7s ease forwards; }
-@keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
-.stagger-1 { animation-delay: 0.1s; }
-.stagger-2 { animation-delay: 0.2s; }
-.stagger-3 { animation-delay: 0.35s; }
-.stagger-4 { animation-delay: 0.5s; }
+@media (prefers-reduced-motion: reduce) { .scanline, .ticker-content { animation: none; } }
 </style>
 </head>
 <body>
+<div class="scanline" aria-hidden="true"></div>
 
 <nav>
-  <a href="/" class="logo">Glimpse</a>
-  <div class="nav-links">
-    <a href="https://x.com/GiveGlimpse">Receipts on X</a>
-    <a href="https://x.com/DerrickWKing" class="accent-link">Why, from the founder</a>
+  <a href="/" class="brand">Glimpse</a>
+  <div class="links">
+    <a href="https://x.com/GiveGlimpse">Receipts</a>
+    <a href="https://x.com/DerrickWKing">Why</a>
   </div>
 </nav>
 
-<section class="hero">
-  <div class="container narrow">
-    <p class="eyebrow fade-in stagger-1">Chapter two</p>
-    <h1 class="fade-in stagger-2">A coin whose only job is<br><em>to fund things you can see.</em></h1>
-    <p class="fade-in stagger-3">A nonprofit names one thing it needs, under $500. Trading fees on $GIVE pay for it. A photo proves it happened.</p>
-    <p class="fade-in stagger-3">Every need is a thread on <a href="https://x.com/GiveGlimpse">@GiveGlimpse</a>. Posted, funded, bought, proven. If the photo doesn't come, the thread says "proof overdue" until it does.</p>
-    <div class="hero-ctas fade-in stagger-4">
-      <a href="https://x.com/GiveGlimpse" class="cta-primary">See the receipts</a>
-      <a href="https://x.com/DerrickWKing" class="cta-secondary">Read why</a>
+<section class="hero" aria-label="Glimpse introduction">
+  <div class="container">
+    <div class="logo">Glimpse</div>
+    <div class="hero-tag">$GIVE · Chapter two</div>
+    <div class="hero-sub">Decentralize giving. Document kindness.</div>
+    <h1>A coin whose only job is <em>to fund things you can see.</em></h1>
+    <p class="hero-copy">A nonprofit names one thing it needs, under $500. Trading fees on $GIVE pay for it. A photo proves it happened. Every need is a thread on @GiveGlimpse, and X is the ledger.</p>
+    <div class="hero-ctas">
+      <a href="https://x.com/GiveGlimpse" class="btn btn-solid">See the receipts</a>
+      <a href="https://x.com/DerrickWKing" class="btn btn-line">Read why</a>
     </div>
   </div>
 </section>
 
-<section class="features">
-  <div class="container reveal">
-    <div class="feature-grid">
-      <div class="feature-card">
+<div class="container">
+
+  <section class="section" aria-label="What a receipt looks like">
+    <div class="section-label">What a receipt looks like</div>
+    <div class="receipt" aria-label="Example need thread">
+      <div class="receipt-head"><span>Need #1</span><span class="handle">@GiveGlimpse</span></div>
+      <div class="receipt-row"><div class="k posted">Posted</div><div class="v">Bunkbeds for kids entering foster care. Atkinson, IL. $500.<small>Photo of the need. Never a face.</small></div></div>
+      <div class="receipt-row"><div class="k funded">Funded</div><div class="v">$500 in $GIVE fees arrived.<small>Quoted from @UsePaid's public payout reply.</small></div></div>
+      <div class="receipt-row"><div class="k bought">Bought</div><div class="v">Store receipt, dated, card digits covered.</div></div>
+      <div class="receipt-row"><div class="k proven">Proven</div><div class="v"><span class="pending">Pending</span><small>The org's photo of the beds in use. If it's late, the thread says "proof overdue" until it comes.</small></div></div>
+    </div>
+    <p class="receipt-note">Same four words every time, so anyone can read a receipt at a glance. Nothing hidden, nothing deleted.</p>
+  </section>
+
+  <section class="section" aria-label="How it works">
+    <div class="section-label">How it works</div>
+    <div class="cards">
+      <div class="card">
         <h3>Nonprofits do one thing</h3>
         <p>Name a need and send a photo. No wallet, no form, no bank rail, no account. The item shows up.</p>
       </div>
-      <div class="feature-card">
+      <div class="card">
         <h3>Fees do the funding</h3>
         <p>Every trade on $GIVE leaves a small fee behind. Paid routes it to the founder's X Money. Nobody has to decide to give.</p>
       </div>
-      <div class="feature-card">
+      <div class="card">
         <h3>X is the ledger</h3>
-        <p>Each payout is confirmed in public by @UsePaid. Each purchase and each photo lands in the need's thread. Nothing hidden, nothing deleted.</p>
+        <p>Each payout is confirmed in public by @UsePaid. Each purchase and each photo lands in the need's thread.</p>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="proof-loop">
-  <div class="container narrow reveal">
-    <p class="eyebrow">One need, four words</p>
-    <h2>Posted. Funded. Bought. Proven.</h2>
-    <p>The same four steps every time, so anyone can read a receipt at a glance.</p>
-    <ol class="proof-steps">
-      <li><span class="step-num">01</span> Posted &mdash; the org, the item, the price, a photo of the need.</li>
-      <li><span class="step-num">02</span> Funded &mdash; the fee payout, quoted from @UsePaid's public reply.</li>
-      <li><span class="step-num">03</span> Bought &mdash; the store receipt, dated.</li>
-      <li><span class="step-num">04</span> Proven &mdash; the org's photo of the item in use. Never a face.</li>
-    </ol>
-  </div>
-</section>
+  <section class="section" aria-label="The loop">
+    <div class="section-label">The loop</div>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><div class="step-text">A nonprofit names one need under $500<span>and sends one photo of it</span></div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-text">Fees accrue as $GIVE trades<span>Paid claims them and pays out at $5, $10, $20, $50, $100, $250, $500, $1,000</span></div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-text">The need is bought<span>receipt posted in the thread</span></div></div>
+      <div class="step"><div class="step-num">4</div><div class="step-text">The org sends the proof photo<span>thread marked proven; next need goes up</span></div></div>
+    </div>
+  </section>
 
-<section class="stat-banner reveal">
-  <div class="container narrow">
-    <p class="eyebrow" style="color: rgba(255,255,255,0.5);">The first $1,000</p>
-    <h2>Here is where it goes, in order, as each org says yes.</h2>
-    <p>$100, a starter dignity kit for a kid entering foster care. $100, a literacy kit for an after-school program. $250, a reentry starter kit. $500, bunkbeds for a foster-care supply org. Each becomes a thread the day it's funded.</p>
-  </div>
-</section>
+  <section class="section" aria-label="The first thousand dollars">
+    <div class="section-label">The first $1,000</div>
+    <div class="list">
+      <div class="list-row"><div class="amt">$100</div><div class="what">Starter dignity kit for a kid entering foster care<small>duffel, new clothes, toiletries</small></div></div>
+      <div class="list-row"><div class="amt">$100</div><div class="what">Literacy kit for an after-school program</div></div>
+      <div class="list-row"><div class="amt">$250</div><div class="what">Reentry starter kit</div></div>
+      <div class="list-row"><div class="amt">$500</div><div class="what">Bunkbeds for a foster-care supply org<small>their stated need</small></div></div>
+    </div>
+    <p class="list-foot">In this order, as each org says yes. Each becomes a thread the day it's funded.</p>
+  </section>
 
-<section class="cta-section">
-  <div class="container narrow reveal">
-    <p class="eyebrow" style="color: rgba(255,255,255,0.5);">The honest part</p>
-    <h2>Fees first. Donations later.</h2>
-    <p>Right now there is no donor. Fees from $GIVE come to Derrick Woepking personally through X Money, and he buys the need himself. Donations open once this is proven safe and real, under a structure built for it. Nothing is promised to anyone who holds $GIVE.</p>
-    <a href="https://x.com/DerrickWKing" class="cta-button">Read the founder's article</a>
+  <section class="section" aria-label="The honest part">
+    <div class="honest">
+      <div class="section-label">The honest part</div>
+      <h2>Fees first. Donations later.</h2>
+      <p>Right now there is no donor. Fees from $GIVE come to Derrick Woepking personally through X Money, and he buys the need himself. Every dollar in and out is posted.</p>
+      <p>Donations open once this is proven safe and real, under a structure built for it. Nothing is promised to anyone who holds $GIVE.</p>
+      <a href="https://x.com/DerrickWKing" class="btn">Read the founder's article</a>
+    </div>
+  </section>
+
+</div>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-content">
+    Glimpse <span>&#x2022;</span> $GIVE <span>&#x2022;</span> Posted <span>&#x2022;</span> Funded <span>&#x2022;</span> Bought <span>&#x2022;</span> Proven <span>&#x2022;</span> X is the ledger <span>&#x2022;</span> Decentralize giving <span>&#x2022;</span> Document kindness <span>&#x2022;</span>
+    Glimpse <span>&#x2022;</span> $GIVE <span>&#x2022;</span> Posted <span>&#x2022;</span> Funded <span>&#x2022;</span> Bought <span>&#x2022;</span> Proven <span>&#x2022;</span> X is the ledger <span>&#x2022;</span> Decentralize giving <span>&#x2022;</span> Document kindness <span>&#x2022;</span>
   </div>
-</section>
+</div>
+
+<div class="token-bar">
+  <div class="token-inner">
+    <div class="token-label">$GIVE CA</div>
+    <div class="token-ca soon">Launching on pump.fun. Contract address posted here and on @GiveGlimpse the moment it exists.</div>
+  </div>
+</div>
 
 <footer>
-  <p class="footer-links">
-    <a href="https://x.com/GiveGlimpse">@GiveGlimpse</a>
-    <a href="https://x.com/DerrickWKing">@DerrickWKing</a>
-    <a href="/privacy">Privacy</a>
-    <a href="/terms">Terms</a>
-    <a href="mailto:derrick@giveglimpse.com">Contact</a>
-  </p>
-  <p>Glimpse is not a nonprofit or 501(c)(3). Nothing here is tax-deductible. $GIVE is not an investment and confers no rights. Paid and X Money are independent services. Glimpse is not affiliated with X Corp.</p>
+  <div class="container">
+    <div class="footer-socials">
+      <a href="https://x.com/GiveGlimpse"><span class="social-label">Receipts</span>@GiveGlimpse</a>
+      <a href="https://x.com/DerrickWKing"><span class="social-label">Founder</span>@DerrickWKing</a>
+    </div>
+    <div class="footer-links">
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
+      <a href="mailto:derrick@giveglimpse.com">Contact</a>
+    </div>
+    <p class="footer-legal">Glimpse is not a nonprofit or 501(c)(3). Nothing here is tax-deductible. $GIVE is not an investment and confers no rights. Paid and X Money are independent services. Glimpse is not affiliated with X Corp.</p>
+  </div>
 </footer>
-
-<script>
-const reveals = document.querySelectorAll('.reveal');
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      observer.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
-reveals.forEach(el => observer.observe(el));
-</script>
 
 </body>
 </html>
