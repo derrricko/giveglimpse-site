@@ -51,14 +51,6 @@ a { color: var(--purple); }
   font-family: var(--display); font-weight: 700;
 }
 
-/* scan line */
-.scanline {
-  position: fixed; top: 0; left: 0; width: 100%; height: 3px;
-  background: linear-gradient(90deg, transparent, var(--purple-glow), transparent);
-  animation: scan 6s ease-in-out infinite; opacity: 0.4; z-index: 999; pointer-events: none;
-}
-@keyframes scan { 0% { top: 0; } 50% { top: 100%; } 100% { top: 0; } }
-
 /* nav */
 nav {
   display: flex; justify-content: space-between; align-items: center;
@@ -121,6 +113,18 @@ nav .links a:hover { border-bottom-color: var(--purple); }
 .story cite { display: block; font-style: normal; font-size: 0.8rem; color: var(--muted); margin-top: 1rem; }
 .story cite a { color: var(--purple); }
 
+/* timeline */
+.timeline { border-left: 3px solid var(--ink); margin-left: 0.5rem; padding-left: 0; }
+.tl { position: relative; padding: 0 0 1.6rem 1.6rem; }
+.tl:last-child { padding-bottom: 0; }
+.tl::before { content: ''; position: absolute; left: -9px; top: 0.45rem; width: 15px; height: 15px; background: var(--bg); border: 3px solid var(--ink); }
+.tl.now::before { background: var(--purple); border-color: var(--purple); }
+.tl.scar::before { background: var(--ink); }
+.tl .when { font-family: var(--display); font-weight: 700; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--purple); }
+.tl .what { font-size: 0.95rem; font-weight: 600; line-height: 1.45; margin-top: 0.2rem; }
+.tl .note { font-size: 0.85rem; color: var(--muted); line-height: 1.65; margin-top: 0.25rem; max-width: 560px; }
+.tl .note a { color: var(--purple); }
+
 /* receipt mockup */
 .receipt { background: var(--white); border: 3px solid var(--ink); box-shadow: 10px 10px 0 var(--purple); max-width: 560px; }
 .receipt-head { display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 1.1rem; border-bottom: 3px solid var(--ink); font-size: 0.74rem; letter-spacing: 0.1em; text-transform: uppercase; }
@@ -178,8 +182,6 @@ footer { padding: 2.5rem 0 3rem; }
 </style>
 </head>
 <body>
-<div class="scanline" aria-hidden="true"></div>
-
 <nav>
   <a href="/" class="brand">Glimpse</a>
   <div class="links">
@@ -234,6 +236,43 @@ footer { padding: 2.5rem 0 3rem; }
       <blockquote>I thought validating donations on the blockchain was an important problem to solve. Why did nobody else see it? The truth is they did. Many such projects exist. They just don't make money, so nobody invests in them.</blockquote>
       <blockquote>Why are we building separate apps and pulling attention off the largest social media app in the world, instead of building for it?</blockquote>
       <cite>Derrick Woepking, founder. <a href="https://x.com/DerrickWKing">The full story on X.</a></cite>
+    </div>
+  </section>
+
+  <!-- 3b. HOW WE GOT HERE -->
+  <section class="section" aria-label="How we got here">
+    <div class="section-label">How we got here</div>
+    <div class="timeline">
+      <div class="tl">
+        <div class="when">2022</div>
+        <div class="what">The idea: giving you can see.</div>
+        <div class="note">First as an NFT project, then a co-founder search, then traditional fundraising. None of it stuck. The idea did.</div>
+      </div>
+      <div class="tl">
+        <div class="when">Jan 18, 2026</div>
+        <div class="what">First line of code.</div>
+        <div class="note">No technical background. Learned to build with AI, starting that day.</div>
+      </div>
+      <div class="tl">
+        <div class="when">March 2026</div>
+        <div class="what">Chapter one: the Seeker app, the dApp Store, the first token.</div>
+        <div class="note">giveglimpse.com went up March 2. Submitted to the Solana dApp Store March 3. $GLIMPSE launched on pump.fun the same week for the Pump.fun × Solana hackathon. A working app, a live chart, and no closed loop.</div>
+      </div>
+      <div class="tl scar">
+        <div class="when">Spring 2026</div>
+        <div class="what">The chart, and the cost of it.</div>
+        <div class="note">Months of not sleeping over people with no faces. The founder made nothing on the launch and lost what he put in. Lesson kept: speculators are not donors. Belief follows proof.</div>
+      </div>
+      <div class="tl">
+        <div class="when">Summer 2026</div>
+        <div class="what">Back to the loop.</div>
+        <div class="note">A rebuilt engine: verified receipts, proof photos, one need at a time. Real nonprofits, none funded yet, because the money rail was the wall.</div>
+      </div>
+      <div class="tl now">
+        <div class="when">Sep 19, 2026</div>
+        <div class="what">Chapter two: $GIVE, Paid, X Money.</div>
+        <div class="note">Stop building apps that pull attention off X. Build for it. Fees fund the need, X is the ledger, the photo is the proof. First receipt is next.</div>
+      </div>
     </div>
   </section>
 
