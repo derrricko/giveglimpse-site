@@ -15,25 +15,26 @@
 <meta name="twitter:description" content="A nonprofit names one need under $500. $GIVE fees pay for it. The photo proves it.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 :root {
   --purple: #5b5bd6;
-  --purple-deep: #2D2060;
   --purple-glow: rgba(91, 91, 214, 0.35);
   --bg: #f0e9ff;
   --grid: rgba(91, 91, 214, 0.12);
   --ink: #1a1a2e;
   --white: #ffffff;
   --black: #000000;
-  --muted: rgba(26, 26, 46, 0.55);
+  --muted: rgba(26, 26, 46, 0.6);
   --green: #1f8a4c;
-  --amber: #b8860b;
+  --amber: #a8760a;
+  --display: 'Space Mono', ui-monospace, Menlo, monospace;
+  --text: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
 }
 html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 body {
-  font-family: 'Space Mono', ui-monospace, Menlo, monospace;
+  font-family: var(--text);
   background-color: var(--bg);
   background-image:
     linear-gradient(var(--grid) 1px, transparent 1px),
@@ -46,6 +47,9 @@ body {
   line-height: 1.7;
 }
 a { color: var(--purple); }
+.label, .btn, nav, .logo, .hero-tag, .hero-sub, .section-label, .ticker-content, .receipt-head, .k, .amt, .step-num, .token-label, .footer-links, .social-label {
+  font-family: var(--display); font-weight: 700;
+}
 
 /* scan line */
 .scanline {
@@ -59,7 +63,7 @@ a { color: var(--purple); }
 nav {
   display: flex; justify-content: space-between; align-items: center;
   max-width: 860px; margin: 0 auto; padding: 1.1rem 1.25rem;
-  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+  font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;
 }
 nav .brand { color: var(--ink); text-decoration: none; letter-spacing: 0.18em; }
 nav .links { display: flex; gap: 1.25rem; }
@@ -69,24 +73,24 @@ nav .links a:hover { border-bottom-color: var(--purple); }
 .container { max-width: 860px; margin: 0 auto; padding: 0 1.25rem; }
 
 /* hero */
-.hero { padding: 3.5rem 0 3rem; }
+.hero { padding: 3rem 0 2.5rem; }
 .logo {
-  font-size: clamp(3rem, 12vw, 5.5rem); font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+  font-size: clamp(3rem, 12vw, 5.5rem); letter-spacing: 0.18em; text-transform: uppercase;
   line-height: 1; color: var(--ink); position: relative; display: inline-block;
 }
 .logo::after { content: ''; position: absolute; bottom: -8px; left: 0; width: 100%; height: 6px; background: var(--purple); }
 .hero-tag {
   display: inline-block; border: 3px solid var(--purple); padding: 6px 14px; margin-top: 2rem;
-  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--purple);
+  font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--purple);
 }
-.hero-sub { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-top: 0.75rem; }
-.hero h1 { font-size: clamp(1.35rem, 5vw, 2rem); font-weight: 700; line-height: 1.35; margin-top: 1.75rem; max-width: 640px; }
+.hero-sub { font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-top: 0.85rem; }
+.hero h1 { font-family: var(--text); font-size: clamp(1.4rem, 5vw, 2.1rem); font-weight: 600; line-height: 1.35; margin-top: 1.75rem; max-width: 640px; }
 .hero h1 em { font-style: normal; color: var(--purple); }
-.hero-copy { font-size: clamp(0.9rem, 2vw, 1rem); line-height: 1.8; max-width: 600px; margin-top: 1.25rem; }
+.hero-copy { font-size: clamp(0.95rem, 2vw, 1.05rem); line-height: 1.8; max-width: 600px; margin-top: 1.25rem; }
 .hero-ctas { display: flex; flex-wrap: wrap; gap: 0.9rem; margin-top: 2rem; }
 .btn {
-  display: inline-block; padding: 12px 22px; text-decoration: none;
-  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  display: inline-block; padding: 13px 22px; text-decoration: none;
+  font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase;
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 .btn-solid { background: var(--purple); color: var(--white); box-shadow: 6px 6px 0 var(--black); }
@@ -95,76 +99,80 @@ nav .links a:hover { border-bottom-color: var(--purple); }
 .btn-line:hover { background: rgba(91,91,214,0.08); }
 
 /* sections */
-.section { padding: 3.5rem 0; }
+.section { padding: 3.25rem 0; }
 .section-label {
-  font-size: 0.65rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: var(--purple);
-  margin-bottom: 1.75rem; padding-bottom: 0.75rem; border-bottom: 3px solid var(--purple); display: inline-block;
+  font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--purple);
+  margin-bottom: 1.5rem; padding-bottom: 0.7rem; border-bottom: 3px solid var(--purple); display: inline-block;
 }
+
+/* three cards */
 .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
 .card { background: var(--white); border: 3px solid var(--ink); box-shadow: 8px 8px 0 var(--purple); padding: 1.5rem 1.25rem; }
-.card h3 { font-size: 0.85rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.6rem; }
-.card p { font-size: 0.85rem; line-height: 1.7; color: var(--ink); }
+.card .n { font-family: var(--display); font-weight: 700; color: var(--purple); font-size: 0.8rem; letter-spacing: 0.1em; margin-bottom: 0.5rem; }
+.card h3 { font-family: var(--text); font-size: 1.05rem; font-weight: 600; line-height: 1.35; margin-bottom: 0.6rem; }
+.card p { font-size: 0.9rem; line-height: 1.7; }
+.card p small { display: block; color: var(--muted); font-size: 0.8rem; margin-top: 0.5rem; }
 @media (max-width: 720px) { .cards { grid-template-columns: 1fr; } }
+
+/* story */
+.story { border-left: 6px solid var(--purple); padding-left: 1.25rem; max-width: 640px; }
+.story blockquote { font-size: clamp(1rem, 2.4vw, 1.2rem); font-weight: 500; line-height: 1.65; }
+.story blockquote + blockquote { margin-top: 1.5rem; }
+.story cite { display: block; font-style: normal; font-size: 0.8rem; color: var(--muted); margin-top: 1rem; }
+.story cite a { color: var(--purple); }
 
 /* receipt mockup */
 .receipt { background: var(--white); border: 3px solid var(--ink); box-shadow: 10px 10px 0 var(--purple); max-width: 560px; }
-.receipt-head { display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 1.1rem; border-bottom: 3px solid var(--ink); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
-.receipt-head .handle { color: var(--purple); }
+.receipt-head { display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 1.1rem; border-bottom: 3px solid var(--ink); font-size: 0.74rem; letter-spacing: 0.1em; text-transform: uppercase; }
+.receipt-head .handle { font-family: var(--text); font-weight: 600; text-transform: none; letter-spacing: 0; color: var(--purple); }
 .receipt-row { display: grid; grid-template-columns: 6.5rem 1fr; gap: 0.75rem; padding: 0.9rem 1.1rem; border-bottom: 2px dashed rgba(26,26,46,0.2); align-items: start; }
 .receipt-row:last-child { border-bottom: none; }
-.receipt-row .k { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; padding-top: 2px; }
-.receipt-row .v { font-size: 0.82rem; line-height: 1.6; }
-.receipt-row .v small { display: block; color: var(--muted); font-size: 0.7rem; margin-top: 2px; }
+.k { font-size: 0.74rem; letter-spacing: 0.12em; text-transform: uppercase; padding-top: 3px; }
+.receipt-row .v { font-size: 0.9rem; line-height: 1.6; }
+.receipt-row .v small { display: block; color: var(--muted); font-size: 0.78rem; margin-top: 3px; }
 .k.posted { color: var(--ink); } .k.funded { color: var(--purple); } .k.bought { color: var(--amber); } .k.proven { color: var(--green); }
-.pending { display: inline-block; border: 2px solid var(--ink); padding: 1px 8px; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
-.receipt-note { font-size: 0.8rem; color: var(--muted); margin-top: 1.25rem; max-width: 560px; }
+.pending { display: inline-block; border: 2px solid var(--ink); padding: 1px 8px; font-family: var(--display); font-weight: 700; font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase; }
+.receipt-note { font-size: 0.85rem; color: var(--muted); margin-top: 1.25rem; max-width: 560px; }
 @media (max-width: 480px) { .receipt-row { grid-template-columns: 1fr; gap: 0.25rem; } }
-
-/* steps */
-.steps { display: grid; gap: 0; border-top: 3px solid var(--ink); }
-.step { display: grid; grid-template-columns: 2.5rem 1fr; gap: 1rem; align-items: center; padding: 1rem 0; border-bottom: 2px solid rgba(26,26,46,0.15); }
-.step-num { width: 2.5rem; height: 2.5rem; display: grid; place-items: center; background: var(--purple); color: var(--white); font-weight: 700; font-size: 0.85rem; }
-.step-text { font-size: 0.9rem; font-weight: 700; }
-.step-text span { display: block; font-weight: 400; font-size: 0.8rem; color: var(--muted); margin-top: 2px; }
 
 /* first $1000 */
 .list { border: 3px solid var(--ink); background: var(--white); box-shadow: 8px 8px 0 var(--purple); }
 .list-row { display: grid; grid-template-columns: 5rem 1fr; gap: 1rem; padding: 0.9rem 1.1rem; border-bottom: 2px solid rgba(26,26,46,0.12); align-items: baseline; }
 .list-row:last-child { border-bottom: none; }
-.list-row .amt { font-weight: 700; color: var(--purple); font-size: 1rem; }
-.list-row .what { font-size: 0.85rem; }
-.list-row .what small { display: block; color: var(--muted); font-size: 0.72rem; }
-.list-foot { font-size: 0.78rem; color: var(--muted); margin-top: 1rem; }
+.amt { color: var(--purple); font-size: 1rem; }
+.list-row .what { font-size: 0.9rem; }
+.list-row .what small { display: block; color: var(--muted); font-size: 0.78rem; }
+.list-foot { font-size: 0.85rem; color: var(--muted); margin-top: 1rem; }
 
 /* honest block */
 .honest { background: var(--ink); color: var(--white); border: 3px solid var(--ink); box-shadow: 10px 10px 0 var(--purple); padding: 2rem 1.5rem; }
 .honest .section-label { color: var(--white); border-color: var(--purple); }
-.honest h2 { font-size: clamp(1.2rem, 4vw, 1.6rem); font-weight: 700; line-height: 1.35; margin-bottom: 1rem; }
-.honest p { font-size: 0.88rem; line-height: 1.8; color: rgba(255,255,255,0.85); max-width: 620px; }
+.honest h2 { font-family: var(--text); font-size: clamp(1.25rem, 4vw, 1.65rem); font-weight: 600; line-height: 1.35; margin-bottom: 1rem; }
+.honest p { font-size: 0.92rem; line-height: 1.8; color: rgba(255,255,255,0.88); max-width: 620px; }
 .honest p + p { margin-top: 0.9rem; }
 .honest .btn { margin-top: 1.5rem; background: var(--white); color: var(--ink); box-shadow: 6px 6px 0 var(--purple); }
 
 /* ticker */
 .ticker { background: var(--purple); color: var(--white); overflow: hidden; white-space: nowrap; padding: 0.7rem 0; margin-top: 3rem; border-top: 3px solid var(--ink); border-bottom: 3px solid var(--ink); }
-.ticker-content { display: inline-block; animation: tick 38s linear infinite; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; }
+.ticker-content { display: inline-block; animation: tick 38s linear infinite; font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; }
 .ticker-content span { margin: 0 1.5rem; opacity: 0.6; }
 @keyframes tick { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
 /* CA bar */
 .token-bar { background: var(--ink); color: var(--white); padding: 0.9rem 0; }
-.token-inner { max-width: 860px; margin: 0 auto; padding: 0 1.25rem; display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; font-size: 0.72rem; }
-.token-label { color: var(--purple); font-weight: 700; letter-spacing: 0.2em; }
-.token-ca { font-weight: 700; word-break: break-all; }
-.token-ca.soon { color: rgba(255,255,255,0.6); font-weight: 400; }
+.token-inner { max-width: 860px; margin: 0 auto; padding: 0 1.25rem; display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; font-size: 0.8rem; }
+.token-label { color: var(--purple); letter-spacing: 0.16em; }
+.token-ca { font-weight: 600; word-break: break-all; }
+.token-ca.soon { color: rgba(255,255,255,0.65); font-weight: 400; }
 
 /* footer */
 footer { padding: 2.5rem 0 3rem; }
-.footer-socials { display: flex; flex-wrap: wrap; gap: 1.5rem; font-size: 0.75rem; font-weight: 700; margin-bottom: 1rem; }
+.footer-socials { display: flex; flex-wrap: wrap; gap: 1.5rem; font-size: 0.85rem; font-weight: 600; margin-bottom: 1rem; }
 .footer-socials a { color: var(--ink); text-decoration: none; }
-.footer-socials .social-label { color: var(--muted); font-weight: 400; margin-right: 0.4rem; text-transform: uppercase; letter-spacing: 0.15em; font-size: 0.62rem; }
-.footer-links { display: flex; flex-wrap: wrap; gap: 1.25rem; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 1.25rem; }
+.social-label { color: var(--muted); font-weight: 700; margin-right: 0.4rem; text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.66rem; }
+.footer-links { display: flex; flex-wrap: wrap; gap: 1.25rem; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1.25rem; }
 .footer-links a { color: var(--purple); text-decoration: none; }
-.footer-legal { font-size: 0.7rem; color: var(--muted); line-height: 1.7; max-width: 640px; }
+.footer-legal { font-size: 0.78rem; color: var(--muted); line-height: 1.7; max-width: 640px; }
 
 @media (prefers-reduced-motion: reduce) { .scanline, .ticker-content { animation: none; } }
 </style>
@@ -180,6 +188,7 @@ footer { padding: 2.5rem 0 3rem; }
   </div>
 </nav>
 
+<!-- 1. HOOK -->
 <section class="hero" aria-label="Glimpse introduction">
   <div class="container">
     <div class="logo">Glimpse</div>
@@ -196,6 +205,39 @@ footer { padding: 2.5rem 0 3rem; }
 
 <div class="container">
 
+  <!-- 2. MECHANISM -->
+  <section class="section" aria-label="How it works">
+    <div class="section-label">How it works</div>
+    <div class="cards">
+      <div class="card">
+        <div class="n">01</div>
+        <h3>Nonprofits do one thing.</h3>
+        <p>Name a need and send a photo. No wallet, no form, no bank rail, no account. The item shows up.</p>
+      </div>
+      <div class="card">
+        <div class="n">02</div>
+        <h3>Fees do the funding.</h3>
+        <p>Every trade on $GIVE leaves a small fee behind. Paid routes it to the founder's X Money. Nobody has to decide to give.<small>Paid pays out as the balance crosses $5, $10, $20, $50, $100, $250, $500, $1,000.</small></p>
+      </div>
+      <div class="card">
+        <div class="n">03</div>
+        <h3>X is the ledger.</h3>
+        <p>Each payout is confirmed in public by @UsePaid. Each purchase and each photo lands in the need's thread. Nothing hidden, nothing deleted.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. THE TURN -->
+  <section class="section" aria-label="Why chapter two">
+    <div class="section-label">Why chapter two</div>
+    <div class="story">
+      <blockquote>I thought validating donations on the blockchain was an important problem to solve. Why did nobody else see it? The truth is they did. Many such projects exist. They just don't make money, so nobody invests in them.</blockquote>
+      <blockquote>Why are we building separate apps and pulling attention off the largest social media app in the world, instead of building for it?</blockquote>
+      <cite>Derrick Woepking, founder. <a href="https://x.com/DerrickWKing">The full story on X.</a></cite>
+    </div>
+  </section>
+
+  <!-- 4. PROOF -->
   <section class="section" aria-label="What a receipt looks like">
     <div class="section-label">What a receipt looks like</div>
     <div class="receipt" aria-label="Example need thread">
@@ -205,37 +247,10 @@ footer { padding: 2.5rem 0 3rem; }
       <div class="receipt-row"><div class="k bought">Bought</div><div class="v">Store receipt, dated, card digits covered.</div></div>
       <div class="receipt-row"><div class="k proven">Proven</div><div class="v"><span class="pending">Pending</span><small>The org's photo of the beds in use. If it's late, the thread says "proof overdue" until it comes.</small></div></div>
     </div>
-    <p class="receipt-note">Same four words every time, so anyone can read a receipt at a glance. Nothing hidden, nothing deleted.</p>
+    <p class="receipt-note">Same four words every time, so anyone can read a receipt at a glance.</p>
   </section>
 
-  <section class="section" aria-label="How it works">
-    <div class="section-label">How it works</div>
-    <div class="cards">
-      <div class="card">
-        <h3>Nonprofits do one thing</h3>
-        <p>Name a need and send a photo. No wallet, no form, no bank rail, no account. The item shows up.</p>
-      </div>
-      <div class="card">
-        <h3>Fees do the funding</h3>
-        <p>Every trade on $GIVE leaves a small fee behind. Paid routes it to the founder's X Money. Nobody has to decide to give.</p>
-      </div>
-      <div class="card">
-        <h3>X is the ledger</h3>
-        <p>Each payout is confirmed in public by @UsePaid. Each purchase and each photo lands in the need's thread.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" aria-label="The loop">
-    <div class="section-label">The loop</div>
-    <div class="steps">
-      <div class="step"><div class="step-num">1</div><div class="step-text">A nonprofit names one need under $500<span>and sends one photo of it</span></div></div>
-      <div class="step"><div class="step-num">2</div><div class="step-text">Fees accrue as $GIVE trades<span>Paid claims them and pays out at $5, $10, $20, $50, $100, $250, $500, $1,000</span></div></div>
-      <div class="step"><div class="step-num">3</div><div class="step-text">The need is bought<span>receipt posted in the thread</span></div></div>
-      <div class="step"><div class="step-num">4</div><div class="step-text">The org sends the proof photo<span>thread marked proven; next need goes up</span></div></div>
-    </div>
-  </section>
-
+  <!-- 5. THE OFFER -->
   <section class="section" aria-label="The first thousand dollars">
     <div class="section-label">The first $1,000</div>
     <div class="list">
@@ -247,6 +262,7 @@ footer { padding: 2.5rem 0 3rem; }
     <p class="list-foot">In this order, as each org says yes. Each becomes a thread the day it's funded.</p>
   </section>
 
+  <!-- 6. OBJECTIONS + CTA -->
   <section class="section" aria-label="The honest part">
     <div class="honest">
       <div class="section-label">The honest part</div>
