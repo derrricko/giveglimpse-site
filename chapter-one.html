@@ -4,89 +4,117 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Glimpse — Chapter one</title>
-<meta name="description" content="The first token, the first app, the first streams. Feb–Mar 2026, kept in full. $GLIMPSE is not $GIVE.">
+<meta name="description" content="How Glimpse got here, in the founder's own words: a gas station in 2021, a video in 2024, a token he didn't plan, an app that got told no. Kept in full.">
 <meta property="og:title" content="Glimpse — Chapter one">
-<meta property="og:description" content="The first token, the first app, the first streams. Kept in full so nobody has to ask.">
+<meta property="og:description" content="How Glimpse got here, in the founder's own words. Kept in full so nobody has to ask.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://giveglimpse.com/chapter-one.html">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@GiveGlimpse">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 :root {
   --purple: #5b5bd6; --bg: #f0e9ff; --grid: rgba(91, 91, 214, 0.12); --ink: #1a1a2e; --white: #ffffff; --black: #000000;
-  --muted: rgba(26, 26, 46, 0.6);
+  --muted: rgba(26, 26, 46, 0.62);
   --display: 'Space Mono', ui-monospace, Menlo, monospace; --text: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
+  --shadow: 6px 6px 0 var(--purple);
 }
+@media (min-width: 720px) { :root { --shadow: 8px 8px 0 var(--purple); } }
 html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 body {
   font-family: var(--text); background-color: var(--bg);
   background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
-  background-size: 40px 40px; color: var(--ink); overflow-x: hidden; -webkit-font-smoothing: antialiased; font-size: 16px; line-height: 1.7;
+  background-size: 40px 40px; color: var(--ink); overflow-x: hidden; -webkit-font-smoothing: antialiased;
+  font-size: 16px; line-height: 1.55;
 }
+@media (min-width: 720px) { body { font-size: 17px; line-height: 1.6; } }
 a { color: var(--purple); }
-nav, .btn, .section-label, .logo, .hero-tag, .k, .token-label, .footer-links, .social-label { font-family: var(--display); font-weight: 700; }
-nav { display: flex; justify-content: space-between; align-items: center; max-width: 860px; margin: 0 auto; padding: 1.1rem 1.25rem; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; }
+.disp { font-family: var(--display); font-weight: 700; }
+
+nav { display: flex; justify-content: space-between; align-items: center; max-width: 900px; margin: 0 auto; padding: 1.1rem 1.25rem; font-family: var(--display); font-weight: 700; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; }
 nav .brand { color: var(--ink); text-decoration: none; letter-spacing: 0.18em; }
 nav .links { display: flex; gap: 1.25rem; }
 nav .links a { color: var(--purple); text-decoration: none; border-bottom: 2px solid transparent; padding-bottom: 2px; white-space: nowrap; }
 nav .links a:hover { border-bottom-color: var(--purple); }
-.container { max-width: 860px; margin: 0 auto; padding: 0 1.25rem; }
-.hero { padding: 2.5rem 0 1.5rem; }
-.hero-tag { display: inline-block; border: 3px solid var(--purple); padding: 6px 14px; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--purple); }
-.hero h1 { font-size: clamp(1.5rem, 5vw, 2.3rem); font-weight: 600; line-height: 1.3; margin-top: 1.25rem; max-width: 640px; }
-.hero p { font-size: 1rem; line-height: 1.8; max-width: 600px; margin-top: 1rem; }
-.section { padding: 2.75rem 0; }
-.section-label { font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--purple); margin-bottom: 1.5rem; padding-bottom: 0.7rem; border-bottom: 3px solid var(--purple); display: inline-block; }
+.wrap { max-width: 900px; margin: 0 auto; padding: 0 1.25rem; }
 
-/* two-token box */
-.two { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
-.tok { background: var(--white); border: 3px solid var(--ink); box-shadow: 8px 8px 0 var(--purple); padding: 1.4rem 1.25rem; }
-.tok.now { background: var(--ink); color: var(--white); box-shadow: 8px 8px 0 var(--purple); }
-.tok .k { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--purple); }
-.tok h3 { font-size: 1.3rem; font-weight: 600; margin: 0.3rem 0 0.6rem; }
-.tok p { font-size: 0.88rem; line-height: 1.7; }
-.tok .ca { font-size: 0.72rem; word-break: break-all; margin-top: 0.75rem; color: var(--muted); }
-.tok.now .ca { color: rgba(255,255,255,0.65); }
+/* intro */
+.intro { padding: 2rem 0 1.5rem; }
+.tag { display: inline-block; border: 3px solid var(--purple); padding: 6px 14px; font-family: var(--display); font-weight: 700; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--purple); }
+.intro h1 { font-family: var(--display); font-size: clamp(1.4rem, 6vw, 2.4rem); line-height: 1.25; margin-top: 1.1rem; max-width: 720px; }
+.intro p { margin-top: 0.9rem; max-width: 600px; color: var(--muted); font-size: 0.95rem; }
+
+/* two tokens strip */
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0 0.5rem; }
+.tok { background: var(--white); border: 3px solid var(--ink); box-shadow: var(--shadow); padding: 1.1rem 1.1rem; }
+.tok.now { background: var(--ink); color: var(--white); }
+.tok .k { font-family: var(--display); font-weight: 700; font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--purple); }
+.tok h3 { font-size: 1.2rem; font-weight: 600; margin: 0.25rem 0 0.45rem; }
+.tok p { font-size: 0.85rem; line-height: 1.6; }
 .tok.now p { color: rgba(255,255,255,0.88); }
-@media (max-width: 720px) { .two { grid-template-columns: 1fr; } }
+.tok .ca { font-size: 0.68rem; word-break: break-all; margin-top: 0.6rem; color: var(--muted); }
+.tok.now .ca { color: rgba(255,255,255,0.6); }
+@media (max-width: 640px) { .two { grid-template-columns: 1fr; } }
 
-/* streams */
-.stream { background: var(--white); border: 3px solid var(--ink); box-shadow: 8px 8px 0 var(--purple); margin-bottom: 1.75rem; }
-.stream-head { padding: 0.9rem 1.1rem; border-bottom: 3px solid var(--ink); display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; align-items: baseline; }
-.stream-head .k { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--purple); }
-.stream-head .len { font-size: 0.78rem; color: var(--muted); }
-.stream-body { padding: 1rem 1.1rem; }
-.stream-body p { font-size: 0.88rem; line-height: 1.7; }
-.frame { position: relative; width: 100%; aspect-ratio: 16 / 9; background: #0e0e1a; border-top: 3px solid var(--ink); }
+/* acts */
+.act { padding-bottom: 1rem; }
+.act-head { position: sticky; top: 0; z-index: 5; background: var(--ink); color: var(--white); border-bottom: 3px solid var(--purple); }
+.act-head .wrap { display: flex; justify-content: space-between; align-items: baseline; padding-top: 0.7rem; padding-bottom: 0.7rem; }
+.act-head .n { font-family: var(--display); font-weight: 700; font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--purple); }
+.act-head .t { font-family: var(--display); font-weight: 700; font-size: 0.85rem; letter-spacing: 0.06em; text-transform: uppercase; }
+.act-head .r { font-size: 0.72rem; color: rgba(255,255,255,0.6); white-space: nowrap; }
+
+/* spine + beats */
+.spine { position: relative; padding: 2rem 0 2.5rem 1.35rem; }
+.spine::before { content: ''; position: absolute; left: 0.45rem; top: 0; bottom: 0; width: 3px; background: var(--ink); }
+@media (min-width: 720px) { .spine { padding-left: 2rem; } .spine::before { left: 0.7rem; } }
+.beat { position: relative; margin-bottom: 3rem; }
+@media (min-width: 720px) { .beat { margin-bottom: 4.5rem; } }
+.beat:last-child { margin-bottom: 0; }
+.beat::before { content: ''; position: absolute; left: -1.35rem; top: 0.35rem; width: 15px; height: 15px; background: var(--bg); border: 3px solid var(--ink); transform: translateX(-4px); }
+@media (min-width: 720px) { .beat::before { left: -2rem; transform: translateX(-1px); } }
+.beat.mark::before { background: var(--purple); border-color: var(--purple); }
+.beat.dark::before { background: var(--ink); }
+.when { font-family: var(--display); font-weight: 700; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--purple); }
+.beat h2 { font-family: var(--display); font-size: clamp(1.3rem, 5.5vw, 1.7rem); line-height: 1.25; margin-top: 0.3rem; max-width: 640px; }
+@media (min-width: 720px) { .beat h2 { font-size: clamp(1.7rem, 2.6vw, 2.2rem); } }
+.quote { margin-top: 0.9rem; border-left: 4px solid var(--purple); padding: 0.1rem 0 0.1rem 0.9rem; max-width: 640px; }
+.quote p { font-size: 1.02rem; line-height: 1.6; font-weight: 500; }
+@media (min-width: 720px) { .quote p { font-size: 1.15rem; } }
+.quote cite { display: block; font-style: normal; font-size: 0.74rem; color: var(--muted); margin-top: 0.45rem; }
+.quote cite a { color: var(--muted); }
+.media { margin-top: 1.1rem; max-width: 640px; }
+.card { background: var(--white); border: 3px solid var(--ink); box-shadow: var(--shadow); overflow: hidden; }
+.card .cap { padding: 0.65rem 0.9rem; border-top: 3px solid var(--ink); font-size: 0.76rem; color: var(--muted); display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+.frame { position: relative; width: 100%; aspect-ratio: 16 / 9; background: #0e0e1a; }
 .frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
-.frame .soon { position: absolute; inset: 0; display: grid; place-items: center; color: rgba(255,255,255,0.7); font-family: var(--display); font-weight: 700; font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; text-align: center; padding: 1rem; }
+.frame .soon { position: absolute; inset: 0; display: grid; place-items: center; color: rgba(255,255,255,0.7); font-family: var(--display); font-weight: 700; font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; text-align: center; padding: 1rem; }
+.xslot { min-height: 200px; padding: 0.75rem 0.75rem 0.25rem; }
+.xslot blockquote.twitter-tweet { margin: 0; }
+.xslot a.fb { display: inline-block; font-size: 0.8rem; margin-bottom: 0.5rem; }
+.so { margin-top: 0.9rem; font-size: 0.92rem; font-weight: 600; max-width: 640px; }
+.so span { color: var(--muted); font-weight: 400; }
 
-/* x clips */
-.clips { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
-.clip { background: var(--white); border: 3px solid var(--ink); box-shadow: 6px 6px 0 var(--purple); padding: 1rem 1rem 0.5rem; }
-.clip .k { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--purple); }
-.clip .t { font-size: 0.88rem; font-weight: 600; margin: 0.2rem 0 0.5rem; }
-.clip blockquote.twitter-tweet { margin: 0 0 0.5rem; }
-.clip a.fallback { font-size: 0.8rem; }
-@media (max-width: 720px) { .clips { grid-template-columns: 1fr; } }
+/* door */
+.door { background: var(--ink); color: var(--white); border: 3px solid var(--ink); box-shadow: 10px 10px 0 var(--purple); padding: 1.75rem 1.4rem; margin: 2rem 0 3rem; }
+.door .k { font-family: var(--display); font-weight: 700; font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--purple); }
+.door h2 { font-family: var(--display); font-size: clamp(1.3rem, 5vw, 1.9rem); line-height: 1.3; margin: 0.4rem 0 0.8rem; }
+.door p { font-size: 0.95rem; line-height: 1.7; color: rgba(255,255,255,0.88); max-width: 620px; }
+.btn { display: inline-block; margin-top: 1.25rem; padding: 13px 22px; text-decoration: none; font-family: var(--display); font-weight: 700; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; background: var(--white); color: var(--ink); box-shadow: 6px 6px 0 var(--purple); }
 
-/* docs */
-.doclist { border: 3px solid var(--ink); background: var(--white); box-shadow: 8px 8px 0 var(--purple); }
-.doc { display: grid; grid-template-columns: 7rem 1fr; gap: 1rem; padding: 0.85rem 1.1rem; border-bottom: 2px solid rgba(26,26,46,0.12); font-size: 0.88rem; }
-.doc:last-child { border-bottom: none; }
-.doc .k { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--purple); padding-top: 3px; }
-.doc small { display: block; color: var(--muted); font-size: 0.78rem; }
-@media (max-width: 480px) { .doc { grid-template-columns: 1fr; gap: 0.2rem; } }
-
-.btn { display: inline-block; padding: 13px 22px; text-decoration: none; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; background: var(--purple); color: var(--white); box-shadow: 6px 6px 0 var(--black); }
-footer { padding: 2.5rem 0 3rem; }
-.footer-links { display: flex; flex-wrap: wrap; gap: 1.25rem; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1.25rem; }
+footer { padding: 1rem 0 3rem; }
+.footer-links { display: flex; flex-wrap: wrap; gap: 1.25rem; font-family: var(--display); font-weight: 700; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1.25rem; }
 .footer-links a { color: var(--purple); text-decoration: none; }
 .footer-legal { font-size: 0.78rem; color: var(--muted); line-height: 1.7; max-width: 640px; }
+
+/* motion: enhancement only */
+@media (prefers-reduced-motion: no-preference) {
+  .js .beat { transform: translateY(10px); opacity: 0.85; transition: transform 0.5s ease, opacity 0.5s ease; }
+  .js .beat.in { transform: none; opacity: 1; }
+}
 </style>
 </head>
 <body>
@@ -99,95 +127,267 @@ footer { padding: 2.5rem 0 3rem; }
   </div>
 </nav>
 
-<section class="hero">
-  <div class="container">
-    <div class="hero-tag">Chapter one · Feb–Mar 2026</div>
-    <h1>The first token, the first app, the first streams. Kept in full.</h1>
-    <p>Nothing here is hidden or deleted. This is what was built, said, and lost before chapter two, so nobody has to ask.</p>
-  </div>
-</section>
+<section class="intro">
+  <div class="wrap">
+    <div class="tag">Chapter one · 2021 → 2026</div>
+    <h1>How Glimpse got here, in the founder's own words.</h1>
+    <p>A gas station in 2021. A video in 2024. A token he didn't plan. An app that got told no. Every line below is dated and sourced, most of it from the streams themselves. Nothing hidden, nothing deleted.</p>
 
-<div class="container">
-
-  <section class="section" aria-label="Two tokens">
-    <div class="section-label">Two tokens, one answer</div>
     <div class="two">
       <div class="tok">
-        <div class="k">Chapter one · Feb 25, 2026</div>
+        <div class="k">The first token · Feb 24, 2026</div>
         <h3>$GLIMPSE</h3>
-        <p>Launched on pump.fun the day the Seeker app went in for review. Dev supply locked on Streamflow. It was tied to that app and that era. pump.fun won't route its creator fees, so it can't fund needs. It stays exactly as it is. Nothing is promised for it.</p>
+        <p>Launched on pump.fun during the first stream, the week the Seeker app went in for review. Dev supply locked on Streamflow. It belongs to that era. pump.fun won't route its creator fees, so it can't fund needs. It stays exactly as it is. Nothing is promised for it.</p>
         <div class="ca">CA Ab26LYP16ZyXvUJQqFYKKPU75GHhdzvhVnYtVUBFpump</div>
       </div>
       <div class="tok now">
         <div class="k">Chapter two · Sep 2026</div>
         <h3>$GIVE</h3>
-        <p>The coin whose only job is to fund things you can see. Creator fees route through Paid to X Money, buy one nonprofit need at a time, and every receipt is a thread on @GiveGlimpse.</p>
-        <div class="ca">CA posted on the home page the moment it exists.</div>
+        <p>The coin whose only job is to fund things you can see. Fees route through Paid to X Money and buy one nonprofit need at a time. Every receipt is a thread on @GiveGlimpse.</p>
+        <div class="ca">CA on the home page the moment it exists.</div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="section" aria-label="The streams">
-    <div class="section-label">The streams, uncut</div>
+<!-- PROLOGUE -->
+<section class="act" id="before">
+  <div class="act-head"><div class="wrap"><span class="n">Prologue</span><span class="t">Before the app</span><span class="r">2021 → 2025</span></div></div>
+  <div class="wrap"><div class="spine">
 
-    <div class="stream">
-      <div class="stream-head"><span class="k">Feb 24, 2026 · night before launch</span><span class="len">61 min</span></div>
-      <div class="frame" data-yt=""><div class="soon">Uploading · check back</div></div>
-      <div class="stream-body"><p>The app was hours from submission. What Glimpse was supposed to be, said out loud before the chart existed.</p></div>
+    <div class="beat mark">
+      <div class="when">Late November 2021 · a gas station in Iowa</div>
+      <h2>Emmanuel.</h2>
+      <div class="quote">
+        <p>"I ran into an Ethiopian migrant at the gas station. It was late November and it was really cold. I was on break from college, and I was prompted by the Lord to give him a ride."</p>
+        <p style="margin-top:0.6rem">"I gave him a car. It was a $3,500 Toyota that I put new tires on and paid for the first few months of insurance, but this changed the trajectory of his life."</p>
+        <cite>Derrick, on stream, Mar 2 and Feb 25, 2026</cite>
+      </div>
+      <p class="so">His life didn't change because of a gala or a matching program. <span>"It's because one singular person showed up. That's the goal of Glimpse."</span></p>
     </div>
 
-    <div class="stream">
-      <div class="stream-head"><span class="k">Feb 25, 2026 · launch day, 8 PM CST</span><span class="len">61 min</span></div>
-      <div class="frame" data-yt=""><div class="soon">Uploading · check back</div></div>
-      <div class="stream-body"><p>$GLIMPSE goes live. Contract address, the Streamflow locks, the tokenomics, the Build-in-Public submission. The room fills.</p></div>
+    <div class="beat">
+      <div class="when">January 18, 2022</div>
+      <h2>Consumed.</h2>
+      <div class="quote">
+        <p>"I spent legitimately probably four to six months of my life, 10 to 12 hours a day in Discords, on Twitter, watching YouTube. Completely and utterly consumed with this technology."</p>
+        <cite>The original video, Jan 2024</cite>
+      </div>
+      <p class="so">Tried to build it as an NFT project. <span>"None of it worked because the tech wasn't ready, the tooling wasn't ready, and I couldn't find a technical founder. And I tried to fundraise and that didn't work."</span></p>
     </div>
 
-    <div class="stream">
-      <div class="stream-head"><span class="k">Feb 27, 2026</span><span class="len">38 min</span></div>
-      <div class="frame" data-yt=""><div class="soon">Uploading · check back</div></div>
-      <div class="stream-body"><p>"The vision has always been the same." Skip to 17 minutes for the early versions of Glimpse, from the NFT idea forward.</p></div>
+    <div class="beat mark">
+      <div class="when">January 24, 2024</div>
+      <h2>The original video.</h2>
+      <div class="quote">
+        <p>"I walked around with this piece of paper in the front of my Carhartt for probably six months to a year, hoping that someone would randomly stop me on the street and I would be able to explain to them the seven-page document of how I plan to change the world. And that's the first time I've ever said that out loud."</p>
+        <cite>"This will reshape the crypto industry," 17:16</cite>
+      </div>
+      <div class="media"><div class="card">
+        <div class="frame"><iframe src="https://www.youtube-nocookie.com/embed/j9T9OfV4Y-U" title="This will reshape the crypto industry" allow="accelerometer; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
+        <div class="cap"><span>28 minutes, two years before the first line of code.</span><span>Jan 24, 2024</span></div>
+      </div></div>
+      <p class="so">"Can I commit to this for 10 years? It's a long time. I think I can."</p>
     </div>
 
-    <div class="stream">
-      <div class="stream-head"><span class="k">Mar 2, 2026 · final tests</span><span class="len">49 min</span></div>
-      <div class="frame" data-yt=""><div class="soon">Uploading · check back</div></div>
-      <div class="stream-body"><p>The app gets submitted to the Solana dApp Store on stream. Top 10 on pump.fun that week. No closed loop yet.</p></div>
+    <div class="beat">
+      <div class="when">2023 → 2025</div>
+      <h2>Three years door to door.</h2>
+      <div class="quote">
+        <p>"I door-knocked for three years. Coding for fourteen to sixteen hours a day and building this app is a walk in the park."</p>
+        <cite>On stream, Feb 27, 2026</cite>
+      </div>
+      <p class="so">August 2025: a one-page brand kit for "glimpse." Still no code. <span>Married, a son born October 2024, a sales job, and the same seven pages.</span></p>
     </div>
-  </section>
 
-  <section class="section" aria-label="Clips already on X">
-    <div class="section-label">Clips, as posted</div>
-    <div class="clips">
-      <div class="clip"><div class="k">Feb 24</div><div class="t">Coming soon to the dApp Store</div><blockquote class="twitter-tweet" data-dnt="true"><a class="fallback" href="https://x.com/GiveGlimpse/status/2026445817859424677">Watch on X</a></blockquote></div>
-      <div class="clip"><div class="k">Feb 25</div><div class="t">Human to human connection is the real alpha</div><blockquote class="twitter-tweet" data-dnt="true"><a class="fallback" href="https://x.com/GiveGlimpse/status/2026556134027411586">Watch on X</a></blockquote></div>
-      <div class="clip"><div class="k">Feb 25</div><div class="t">Structure and tokenomics</div><blockquote class="twitter-tweet" data-dnt="true"><a class="fallback" href="https://x.com/GiveGlimpse/status/2026784067274854683">Watch on X</a></blockquote></div>
-      <div class="clip"><div class="k">Mar 4</div><div class="t">"Only possible because of the Seeker"</div><blockquote class="twitter-tweet" data-dnt="true"><a class="fallback" href="https://x.com/GiveGlimpse/status/2029014203806188022">Watch on X</a></blockquote></div>
-      <div class="clip"><div class="k">Mar 7</div><div class="t">Giving should feel like texting a friend</div><blockquote class="twitter-tweet" data-dnt="true"><a class="fallback" href="https://x.com/GiveGlimpse/status/2030274451573559363">Watch on X</a></blockquote></div>
-      <div class="clip"><div class="k">Mar 9</div><div class="t">Monolith hackathon demo</div><blockquote class="twitter-tweet" data-dnt="true"><a class="fallback" href="https://x.com/GiveGlimpse/status/2031061047906357406">Watch on X</a></blockquote></div>
+  </div></div>
+</section>
+
+<!-- ACT I -->
+<section class="act" id="build">
+  <div class="act-head"><div class="wrap"><span class="n">Act I</span><span class="t">The build</span><span class="r">Jan → Feb 2026</span></div></div>
+  <div class="wrap"><div class="spine">
+
+    <div class="beat mark">
+      <div class="when">January 18–19, 2026</div>
+      <h2>First line of code.</h2>
+      <div class="quote">
+        <p>"Until late 2025, early 2026, there was no capability of me being able to build this app. Now, with the capabilities of Opus and Codex, I have a functional app that I'm still working out the kinks on, because vibe coding an app on the blockchain is super difficult."</p>
+        <cite>On stream, Feb 24, 2026</cite>
+      </div>
+      <p class="so">Four years to the week after the first NFT. <span>No technical background. AI as the teacher.</span></p>
     </div>
-  </section>
 
-  <section class="section" aria-label="The record">
-    <div class="section-label">The record</div>
-    <div class="doclist">
-      <div class="doc"><div class="k">Jan 24, 2024</div><div>The original video: "This will reshape the crypto industry."<small><a href="https://youtu.be/j9T9OfV4Y-U">28 minutes on YouTube</a></small></div></div>
-      <div class="doc"><div class="k">Feb 7, 2026</div><div>@GiveGlimpse account opens.</div></div>
-      <div class="doc"><div class="k">Feb 25</div><div>$GLIMPSE launches. Dev supply locked. <small><a href="https://x.com/GiveGlimpse/status/2026536592085561489">The CA post</a> · <a href="https://x.com/GiveGlimpse/status/2026524280528277522">114M locked</a></small></div></div>
-      <div class="doc"><div class="k">Feb 26</div><div>"before the app all there was a little boy who just wanted to help."<small><a href="https://x.com/GiveGlimpse/status/2027063417219973333">The post</a></small></div></div>
-      <div class="doc"><div class="k">Mar 3</div><div>Submitted to the Solana dApp Store.</div></div>
-      <div class="doc"><div class="k">Mar 8</div><div>Submitted to Monolith, the Solana Mobile hackathon by RadiantsDAO.<small><a href="https://x.com/GiveGlimpse/status/2030443165270863969">The post</a></small></div></div>
-      <div class="doc"><div class="k">Mar 11</div><div>"I am not going to fake certainty to sound impressive. No fake dates. No fake promises."<small><a href="https://x.com/GiveGlimpse/status/2031529228999536934">The thread</a></small></div></div>
-      <div class="doc"><div class="k">Mar 15–16</div><div>Two articles on X.<small><a href="https://x.com/i/article/2029303767535935488">Article one</a> · <a href="https://x.com/i/article/2033625897220120576">Article two</a></small></div></div>
-      <div class="doc"><div class="k">Mar 25</div><div>"Submitting an app is not for the faint of heart. Only the beginning."<small><a href="https://x.com/GiveGlimpse/status/2036604575327899881">The post</a></small></div></div>
-      <div class="doc"><div class="k">Mar 27</div><div>dApp Store review comes back: not approved. Last post for five months follows on Mar 30.</div></div>
+    <div class="beat">
+      <div class="when">Mid-February 2026 · Salt Lake City</div>
+      <h2>mtnDAO.</h2>
+      <div class="quote">
+        <p>"I sold the Seeker that I got airdropped so I could go to Salt Lake City, spend a week away from my one-year-old and my wife, so I could build this app."</p>
+        <p style="margin-top:0.6rem">"Met the majority of the entire Solana Mobile team, workshopped my idea around. This is probably like the fifth or sixth version."</p>
+        <cite>On stream, Feb 25 and Feb 27, 2026</cite>
+      </div>
+      <p class="so">Fourteen-hour days for a week. <span>"The head of BD at Solana Mobile is the reason for how simple the app is now."</span></p>
     </div>
-    <p style="margin-top:1.5rem"><a href="/" class="btn">Chapter two starts here</a></p>
-  </section>
 
+    <div class="beat dark">
+      <div class="when">February 24, 2026 · 9:46 PM</div>
+      <h2>The first stream, and the token he didn't plan.</h2>
+      <div class="quote">
+        <p>"I wasn't even planning on launching on pump.fun, to be honest. This project was only created for Solana Mobile. I really didn't have a desire to create a token behind it."</p>
+        <p style="margin-top:0.6rem">"I made a presentation, I started reading it off, and the whole chat thought that I was AI. That's why I tanked right away. I didn't even read the chat."</p>
+        <cite>On stream, Feb 25, 2026, looking back one day</cite>
+      </div>
+      <div class="media"><div class="card">
+        <div class="frame" data-yt=""><div class="soon">Full stream · uploading</div></div>
+        <div class="cap"><span>The first stream. $GLIMPSE goes live; supply gets locked on air.</span><span>61 min</span></div>
+      </div></div>
+      <p class="so">"I have no idea how it's going to work. I can guarantee, however, that your donation will go directly to the person in need."</p>
+    </div>
+
+  </div></div>
+</section>
+
+<!-- ACT II -->
+<section class="act" id="chart">
+  <div class="act-head"><div class="wrap"><span class="n">Act II</span><span class="t">The chart</span><span class="r">Feb 25 → Mar 11</span></div></div>
+  <div class="wrap"><div class="spine">
+
+    <div class="beat mark">
+      <div class="when">February 25, 2026 · 8 PM CST</div>
+      <h2>Launch day.</h2>
+      <div class="quote">
+        <p>"I've never launched a token before. I have no idea what you guys are talking about. So let's work on this together."</p>
+        <cite>On stream, Feb 25, 2026, 53:46</cite>
+      </div>
+      <div class="media"><div class="card">
+        <div class="frame" data-yt=""><div class="soon">Full stream · uploading</div></div>
+        <div class="cap"><span>Launch day. Tokenomics, the locks, the Build-in-Public submission.</span><span>61 min</span></div>
+      </div></div>
+      <p class="so">"Ten-year vision, guys. This is kind of audacious." <span>Contract address posted. 114 million locked.</span></p>
+    </div>
+
+    <div class="beat">
+      <div class="when">February 26, 2026</div>
+      <h2>The little boy.</h2>
+      <div class="quote">
+        <p>"before the app all there was a little boy who just wanted to help. Glimpse is just me catching up to who I was created to be."</p>
+        <cite><a href="https://x.com/GiveGlimpse/status/2027063417219973333">@GiveGlimpse, Feb 26</a> · sent from a Solana Seeker</cite>
+      </div>
+      <div class="media"><div class="card"><div class="xslot">
+        <blockquote class="twitter-tweet" data-dnt="true" data-theme="light"><a class="fb" href="https://x.com/GiveGlimpse/status/2027063417219973333">See the post on X</a></blockquote>
+      </div></div></div>
+      <p class="so">"When I was a kid, my parents supported this little girl in Africa through our church. I can remember the notes we would get back from them."</p>
+    </div>
+
+    <div class="beat">
+      <div class="when">February 27, 2026</div>
+      <h2>"I was created to create this."</h2>
+      <div class="quote">
+        <p>"It's been on my mind, in my heart for years. I feel like I was literally created to create this."</p>
+        <p style="margin-top:0.6rem">"Purpose isn't found in a 5x, purpose isn't found in money. When I lay in bed and I see them both sleeping next to me, they're the only things that matter."</p>
+        <cite>On stream, Feb 27, 2026</cite>
+      </div>
+      <div class="media"><div class="card">
+        <div class="frame" data-yt=""><div class="soon">Full stream · uploading</div></div>
+        <div class="cap"><span>Demo, and the early versions from minute 17.</span><span>38 min</span></div>
+      </div></div>
+      <p class="so">"No work on Sunday. Tomorrow, head down. Got to get this app out by March 2nd."</p>
+    </div>
+
+    <div class="beat mark">
+      <div class="when">March 2, 2026</div>
+      <h2>Live.</h2>
+      <div class="quote">
+        <p>"Glimpse is finally live after over a month of development, sleepless nights, countless hours spent on the computer. It's live and it can process donations."</p>
+        <p style="margin-top:0.6rem">"One of the biggest things that held me back up until this point was legislation uncertainty. Who owns the token, how will you be taxed, will the donors get exemptions? I don't have a law degree."</p>
+        <cite>On stream, Mar 2, 2026</cite>
+      </div>
+      <div class="media"><div class="card">
+        <div class="frame" data-yt=""><div class="soon">Full stream · uploading</div></div>
+        <div class="cap"><span>Final tests. Submitted to the Solana dApp Store on air.</span><span>49 min</span></div>
+      </div></div>
+      <p class="so">Top 10 on pump.fun that week. giveglimpse.com goes up. <span>Still no closed loop.</span></p>
+    </div>
+
+    <div class="beat">
+      <div class="when">March 8–9, 2026</div>
+      <h2>Monolith.</h2>
+      <div class="quote">
+        <p>"I just submitted to Monolith, a Solana Mobile hackathon powered by RadiantsDAO. Follow along for updates!"</p>
+        <cite><a href="https://x.com/GiveGlimpse/status/2030443165270863969">@GiveGlimpse, Mar 8</a></cite>
+      </div>
+      <div class="media"><div class="card"><div class="xslot">
+        <blockquote class="twitter-tweet" data-dnt="true" data-theme="light"><a class="fb" href="https://x.com/GiveGlimpse/status/2031061047906357406">Watch the demo on X</a></blockquote>
+      </div></div></div>
+      <p class="so">Deadline extended a day. Demo shipped. <span>"The goal is a Seeker in the hands of every nonprofit in America."</span></p>
+    </div>
+
+    <div class="beat dark">
+      <div class="when">March 11, 2026</div>
+      <h2>No fake dates. No fake promises.</h2>
+      <div class="quote">
+        <p>"Glimpse is not a nonprofit today. Donations are not tax-deductible. The legal structure is still being built carefully. I am not going to fake certainty to sound impressive. No fake dates. No fake promises. I would rather build this right than fast."</p>
+        <cite><a href="https://x.com/GiveGlimpse/status/2031529228999536934">@GiveGlimpse, Mar 11</a></cite>
+      </div>
+      <p class="so">The three-entity plan, quadratic voting, the disclaimers. <span>The most honest thread of the era, and the last big one.</span></p>
+    </div>
+
+  </div></div>
+</section>
+
+<!-- ACT III -->
+<section class="act" id="cost">
+  <div class="act-head"><div class="wrap"><span class="n">Act III</span><span class="t">The cost</span><span class="r">Mar 25 → Aug 2026</span></div></div>
+  <div class="wrap"><div class="spine">
+
+    <div class="beat dark">
+      <div class="when">March 25–27, 2026</div>
+      <h2>Not for the faint of heart.</h2>
+      <div class="quote">
+        <p>"Submitting an app is not for the faint of heart. V1 of the app is supposed to be bare bones. From here we build from the ground up. There are many unknowns. Only the beginning."</p>
+        <cite><a href="https://x.com/GiveGlimpse/status/2036604575327899881">@GiveGlimpse, Mar 25</a></cite>
+      </div>
+      <div class="media"><div class="card"><div class="xslot">
+        <blockquote class="twitter-tweet" data-dnt="true" data-theme="light"><a class="fb" href="https://x.com/GiveGlimpse/status/2036604575327899881">See the post on X</a></blockquote>
+      </div></div></div>
+      <p class="so">March 27: the dApp Store says no. <span>March 30: the last post for five months.</span></p>
+    </div>
+
+    <div class="beat dark">
+      <div class="when">Spring 2026</div>
+      <h2>The chart, and what it cost.</h2>
+      <div class="quote">
+        <p>"It was very hard accepting the fact that my idea just was not good enough. I wanted to will it to success, but at times it felt like pushing a square peg into a round hole."</p>
+        <cite>Derrick, Sep 2026</cite>
+      </div>
+      <p class="so">He made nothing on the launch and lost what he put in. <span>Months of not sleeping over people with no faces. Lesson kept: speculators are not donors. Belief follows proof.</span></p>
+    </div>
+
+    <div class="beat">
+      <div class="when">July 6, 2026</div>
+      <h2>Grateful, never greedy.</h2>
+      <div class="quote">
+        <p>"I have a kid, a wife, and I start a new role in AI training and enablement at a Fortune 1000. The goal is the same. I am going to make it. Same grinder from 2021 with a different mentality. Grateful, never greedy."</p>
+        <cite><a href="https://x.com/DerrickWKing/status/2074145037168918771">@DerrickWKing, Jul 6</a></cite>
+      </div>
+      <p class="so">Over the summer, a rebuilt engine: verified receipts, proof photos, one need at a time. <span>Nonprofits found. None funded. The money rail was the wall.</span></p>
+    </div>
+
+  </div></div>
+</section>
+
+<div class="wrap">
+  <div class="door">
+    <div class="k">Chapter two · September 19, 2026</div>
+    <h2>Build for X, not beside it.</h2>
+    <p>"Why are we creating separate applications and trying to take attention off of the largest social media app in the world, instead of building for it?"</p>
+    <p style="margin-top:0.8rem">$GIVE. Fees fund the need. X is the ledger. The photo is the proof. First receipt is next.</p>
+    <a href="/" class="btn">Chapter two starts here</a>
+  </div>
 </div>
 
 <footer>
-  <div class="container">
+  <div class="wrap">
     <div class="footer-links">
       <a href="/">Home</a>
       <a href="https://x.com/GiveGlimpse">@GiveGlimpse</a>
@@ -195,17 +395,23 @@ footer { padding: 2.5rem 0 3rem; }
       <a href="/privacy">Privacy</a>
       <a href="/terms">Terms</a>
     </div>
-    <p class="footer-legal">Glimpse is not a nonprofit or 501(c)(3). Nothing here is tax-deductible. Neither $GLIMPSE nor $GIVE is an investment; neither confers rights. Paid and X Money are independent services. Glimpse is not affiliated with X Corp.</p>
+    <p class="footer-legal">Quotes are transcribed from the recordings named beside them, lightly punctuated. Glimpse is not a nonprofit or 501(c)(3). Nothing here is tax-deductible. Neither $GLIMPSE nor $GIVE is an investment; neither confers rights. Paid and X Money are independent services. Glimpse is not affiliated with X Corp.</p>
   </div>
 </footer>
 
 <script>
-// Fill stream frames when a YouTube id is set on data-yt (edit in HTML after upload).
+document.documentElement.classList.add('js');
+// YouTube slots: set data-yt="<id>" after upload.
 document.querySelectorAll('.frame[data-yt]').forEach(function (f) {
   var id = f.getAttribute('data-yt');
   if (!id) return;
   f.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + id + '" title="Stream" allow="accelerometer; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe>';
 });
+// Progressive reveal: content is fully visible without this.
+if ('IntersectionObserver' in window) {
+  var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { rootMargin: '0px 0px -10% 0px' });
+  document.querySelectorAll('.beat').forEach(function (b) { io.observe(b); });
+} else { document.querySelectorAll('.beat').forEach(function (b) { b.classList.add('in'); }); }
 </script>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </body>
