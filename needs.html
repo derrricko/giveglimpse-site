@@ -65,14 +65,13 @@
       </div>
     </div>
     <div class="legend" aria-label="What the statuses mean">
-      <span><span class="k queued">Queued</span>named and priced, waiting on the organization</span>
       <span><span class="k posted">Posted</span>on X with a photo of the need</span>
       <span><span class="k funded">Funded</span>fees covered it</span>
       <span><span class="k bought">Bought</span>receipt in the thread</span>
       <span><span class="k proven">Proven</span>photo of it in use</span>
       <span><span class="k overdue">Overdue</span>bought, photo not yet in</span>
     </div>
-    <p class="small" style="margin-top:0.9rem;max-width:640px">Organizations are named when they confirm. A need enters the list when it is posted on @GiveGlimpse with a photo.</p>
+    <p class="small" style="margin-top:0.9rem;max-width:640px">A need enters the list when it is posted on @GiveGlimpse with a photo.</p>
   </div>
 </section>
 
@@ -106,19 +105,14 @@
 <script>
 // The list. One object per need. Edit this array; the page renders itself.
 // status: queued | posted | funded | bought | proven | overdue   thread: the X post URL
-var NEEDS = [
-  { n: 1, need: "Bunkbeds for kids entering foster care", org: "Foster-care supply org, Illinois", amount: 500, status: "queued", date: "", thread: "" },
-  { n: 2, need: "Starter dignity kit for a kid entering foster care", org: "Foster closet, Illinois", amount: 100, status: "queued", date: "", thread: "" },
-  { n: 3, need: "Literacy kit for an after-school program", org: "Children's group, Iowa", amount: 100, status: "queued", date: "", thread: "" },
-  { n: 4, need: "Reentry starter kit", org: "Reentry org, Iowa", amount: 250, status: "queued", date: "", thread: "" }
-];
+var NEEDS = [];
 var UPDATED = "Sep 20, 2026";
 
 (function () {
   var rows = document.getElementById('rows');
   var funded = 0, dollars = 0, proven = 0;
   var order = { queued: 0, posted: 1, funded: 2, bought: 3, proven: 4, overdue: 3 };
-  if (!NEEDS.length) rows.innerHTML = '<tr><td colspan="7" class="empty">The first need opens the list.</td></tr>';
+  if (!NEEDS.length) rows.innerHTML = '<tr><td colspan="7" class="empty">Needs appear here as they are funded and shown.</td></tr>';
   NEEDS.forEach(function (x) {
     if (order[x.status] >= 2) { funded += 1; dollars += x.amount; }
     if (x.status === 'proven') proven += 1;
