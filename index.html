@@ -4,17 +4,17 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Glimpse — The trust layer for giving</title>
-<meta name="description" content="Real needs, funded and proven. Someone names one need under $500 and sends a photo. It gets bought, the receipt gets posted, the photo proves it. Every step is public.">
+<meta name="description" content="Real needs, funded and proven. Someone names a need and sends a photo. It gets bought, the receipt gets posted, the photo proves it. Every step public, nothing deleted.">
 <link rel="canonical" href="https://giveglimpse.com/">
 <meta property="og:title" content="Glimpse — The trust layer for giving">
-<meta property="og:description" content="Real needs, funded and proven. Someone names one need under $500 and sends a photo. It gets bought, the receipt gets posted, the photo proves it. Every step is public.">
+<meta property="og:description" content="Real needs, funded and proven. Every step public, nothing deleted.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://giveglimpse.com/">
 <meta property="og:image" content="https://giveglimpse.com/og.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@GiveGlimpse">
 <meta name="twitter:title" content="Glimpse — The trust layer for giving">
-<meta name="twitter:description" content="Real needs, funded and proven. Every step is public.">
+<meta name="twitter:description" content="Real needs, funded and proven. Every step public, nothing deleted.">
 <meta name="twitter:image" content="https://giveglimpse.com/og.png">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%235b5bd6'/%3E%3Ctext x='32' y='44' font-family='Menlo,monospace' font-weight='700' font-size='36' fill='white' text-anchor='middle'%3EG%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,9 +23,12 @@
 <link rel="stylesheet" href="./styles.css">
 <style>
 .hero { padding: 2.25rem 0 0; }
-.hero .tag { margin-top: 1.5rem; font-size: 0.72rem; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; font-family: var(--display); font-weight: 700; }
-.hero .card { margin-top: 2.5rem; }
-#give { scroll-margin-top: 1rem; }
+.hero .tag { margin-top: 1.25rem; font-size: 0.72rem; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; font-family: var(--display); font-weight: 700; }
+.steps.tight .step { padding: 0.95rem 0; }
+.steps.tight .step p { margin-top: 0.2rem; }
+.door .ca { font-size: 0.8rem; color: rgba(255,255,255,0.7); word-break: break-all; margin-top: 0.6rem; }
+.door .more { margin-top: 1rem; font-size: 0.85rem; }
+.door .more a { color: rgba(255,255,255,0.85); }
 </style>
 </head>
 <body>
@@ -41,23 +44,10 @@
 
 <section class="hero">
   <div class="wrap">
-    <span class="eyebrow">$GIVE · Chapter two</span>
+    <span class="eyebrow">$GIVE</span>
     <h1>The trust layer for giving.</h1>
-    <p class="lede">Real needs, funded and proven. Someone names one thing they need, under $500, and sends a photo. Fees from $GIVE pay for it today. The item gets bought, the receipt gets posted, and they show it in use.</p>
-    <div class="ctas">
-      <a href="#give" class="btn" id="get-give">Get $GIVE</a>
-      <a href="./needs.html" class="btn line">See the needs</a>
-    </div>
+    <p class="lede">Real needs, funded and proven. Every step public, nothing deleted.</p>
     <div class="tag">Decentralize giving. Document kindness.</div>
-
-    <div class="card">
-      <div class="status" aria-label="Current totals">
-        <div><div class="n">0</div><div class="l">Needs funded</div></div>
-        <div><div class="n">$0</div><div class="l">Dollars routed</div></div>
-        <div><div class="n">0</div><div class="l">Proven</div></div>
-      </div>
-      <p class="status-foot">Updated Sep 20, 2026. Numbers change only when a need is funded and shown.</p>
-    </div>
   </div>
 </section>
 
@@ -65,79 +55,49 @@
   <div class="wrap">
     <h2>How it works</h2>
     <div class="card">
-      <div class="steps">
+      <div class="steps tight">
         <div class="step"><div class="num">01</div><div>
-          <h3>Someone names one need under $500 and sends one photo.</h3>
-          <p>A person, a family, an organization. No wallet, no form, no bank account required. The item shows up.</p>
+          <h3>Someone names a need and sends a photo.</h3>
+          <p>A person, a family, an organization. No wallet, no form, no account.</p>
         </div></div>
         <div class="step"><div class="num">02</div><div>
-          <h3>Trading fees become dollars.</h3>
-          <p>Paid claims the creator fees on chain and pays 80% to the founder's X Money account at each milestone, from $5 up to $1,000.</p>
-          <p class="small">The other 20% is Paid's, used to buy and burn its own token. Paid's rule for every token on its rail.</p>
+          <h3>Fees from $GIVE pay for it.</h3>
+          <p>Every trade leaves a small fee. Paid turns the fees into dollars and posts each payout in public.</p>
         </div></div>
         <div class="step"><div class="num">03</div><div>
-          <h3>The need is bought and the proof is posted.</h3>
-          <p>Posted, funded, bought, proven. Same four words every time. A late photo shows as "proof overdue" until it arrives. Nothing is deleted.</p>
+          <h3>It gets bought, and the proof gets posted.</h3>
+          <p>The receipt, then the photo of it in use. Posted, funded, bought, proven. A late photo says "proof overdue" until it arrives.</p>
         </div></div>
       </div>
     </div>
-    <details class="more">
-      <summary>Where the money is, at each step</summary>
-      <div class="flow">
-        <div class="row"><div class="who">On chain</div><div>A trade on $GIVE leaves a creator fee. It sits in the token's fee account until claimed.</div></div>
-        <div class="row"><div class="who">Paid</div><div>Paid claims it, converts it to dollars, and holds the dollars in its own X Money balance until a payout milestone.<span class="small">Paid's custody, Paid's rules. <a href="https://usepaid.app/capital-flow">Its capital-flow page.</a></span></div></div>
-        <div class="row"><div class="who">The founder</div><div>The payout lands in Derrick Woepking's personal X Money account, and Paid replies publicly on X with the amount.<span class="small">Personal income. Not a donation, not tax-deductible for anyone.</span></div></div>
-        <div class="row"><div class="who">The store</div><div>The exact item that was named gets bought. The dated receipt gets posted.</div></div>
-        <div class="row"><div class="who">The recipient</div><div>Receives the item and sends a photo of it in use. The entry is marked proven.</div></div>
-      </div>
-    </details>
   </div>
 </section>
 
 <section class="section">
   <div class="wrap">
-    <h2>What an entry looks like</h2>
+    <h2>One need, start to finish</h2>
     <div class="card">
       <div class="receipt">
-        <div class="head"><span>Need #1 · example</span><span>@GiveGlimpse</span></div>
-        <div class="row"><div class="k posted">Posted</div><div class="v">Bunkbeds for kids entering foster care. $500.<span class="small">Photo of the need. Never a face.</span></div></div>
-        <div class="row"><div class="k funded">Funded</div><div class="v">$500 in $GIVE fees arrived.<span class="small">Linked to Paid's public payout reply.</span></div></div>
+        <div class="head"><span>Example</span><span>@GiveGlimpse</span></div>
+        <div class="row"><div class="k posted">Posted</div><div class="v">Bunkbeds for kids entering foster care.<span class="small">Photo of the need. Never a face.</span></div></div>
+        <div class="row"><div class="k funded">Funded</div><div class="v">Fees from $GIVE covered it.<span class="small">Linked to Paid's public payout reply.</span></div></div>
         <div class="row"><div class="k bought">Bought</div><div class="v">Store receipt, dated, card digits covered.</div></div>
-        <div class="row"><div class="k proven">Proven</div><div class="v"><span class="pending">Pending</span><span class="small">The org's photo of the beds in use.</span></div></div>
+        <div class="row"><div class="k proven">Proven</div><div class="v"><span class="pending">Pending</span><span class="small">The photo of the beds in use.</span></div></div>
       </div>
     </div>
+    <p class="small" style="margin-top:0.9rem">Real entries live on the <a href="./needs.html">needs page</a> and on <a href="https://x.com/GiveGlimpse">@GiveGlimpse</a>.</p>
   </div>
 </section>
 
 <div class="wrap">
-  <div class="door">
-    <span class="eyebrow">Fees first. Donations later.</span>
-    <h2>No donations are taken today. That is the design.</h2>
-    <p>Fees fund the needs while the loop is proven in public. Donations open after that, under a structure built to hold other people's money. The plan, the evidence, and the commitments are on the vision page.</p>
-    <a href="./vision.html" class="btn">The vision</a>
+  <div class="door" id="give">
+    <span class="eyebrow">$GIVE</span>
+    <h2>The coin whose only job is to fund things you can see.</h2>
+    <p>Fees fund needs today. Donations later, under a structure built to hold other people's money. Not a nonprofit. Not an investment.</p>
+    <p class="ca"><strong>Contract:</strong> <span id="ca">posted here and on @GiveGlimpse the moment it exists.</span></p>
+    <p class="more"><a href="./vision.html">Where this goes, and why it works.</a></p>
   </div>
 </div>
-
-<section class="section" id="give">
-  <div class="wrap">
-    <h2>$GIVE</h2>
-    <p><strong>Contract address:</strong> <span id="ca">posted here and on @GiveGlimpse the moment it exists.</span></p>
-    <p class="small">$GIVE trades on pump.fun. Its only job is to fund things you can see. It is not an investment and confers no rights, revenue, or governance. Most coins go to zero.</p>
-  </div>
-</section>
-
-<section class="section last">
-  <div class="wrap">
-    <h2>Disclosures</h2>
-    <ul class="disclosures">
-      <li>Glimpse is not a nonprofit or 501(c)(3). Nothing here is tax-deductible.</li>
-      <li>Fees from $GIVE are paid to the founder, Derrick Woepking, personally through X Money and are his income. He buys each need himself.</li>
-      <li>$GIVE is not an investment and confers no rights, revenue, or governance.</li>
-      <li>Paid and X Money are independent services with their own terms. Glimpse is not affiliated with X Corp.</li>
-      <li>$GLIMPSE, the coin from chapter one, is separate. See the <a href="./vision.html#coins">note on the two coins</a>.</li>
-    </ul>
-  </div>
-</section>
 
 <footer>
   <div class="wrap">
@@ -151,17 +111,14 @@
       <a href="./terms/">Terms</a>
       <a href="mailto:derrick@giveglimpse.com">Contact</a>
     </div>
-    <p class="footer-legal">Glimpse · Muscatine, Iowa.</p>
+    <p class="footer-legal">Glimpse is not a nonprofit or 501(c)(3). Nothing here is tax-deductible. Fees from $GIVE are paid to the founder, Derrick Woepking, through X Money and are his income; he buys each need himself. Neither $GLIMPSE nor $GIVE is an investment; neither confers rights. Paid and X Money are independent services. Glimpse is not affiliated with X Corp. Glimpse · Muscatine, Iowa.</p>
   </div>
 </footer>
 
 <script>
-// When the coin exists, set CA here. The button and the address line update themselves.
+// When the coin exists, set CA here. The address line updates itself.
 var GIVE_CA = "";
-if (GIVE_CA) {
-  document.getElementById('ca').textContent = GIVE_CA;
-  document.getElementById('get-give').href = 'https://pump.fun/coin/' + GIVE_CA;
-}
+if (GIVE_CA) { document.getElementById('ca').textContent = GIVE_CA; }
 </script>
 </body>
 </html>
