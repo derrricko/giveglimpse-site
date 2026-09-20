@@ -22,8 +22,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./styles.css">
 <style>
-.hero { padding: 2.25rem 0 1.5rem; }
-.hero .tag { margin-top: 0.9rem; font-size: 0.8rem; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; font-family: var(--display); font-weight: 700; }
+.hero { padding: 2.25rem 0 0; }
+.hero .tag { margin-top: 1.5rem; font-size: 0.72rem; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; font-family: var(--display); font-weight: 700; }
+.hero .card { margin-top: 2.5rem; }
 #give { scroll-margin-top: 1rem; }
 </style>
 </head>
@@ -42,79 +43,84 @@
   <div class="wrap">
     <span class="eyebrow">$GIVE · Chapter two</span>
     <h1>Every trade puts something real in a nonprofit's hands.</h1>
-    <p class="lede">A nonprofit names one thing it needs, under $500, and sends a photo. Trading fees on $GIVE pay for it. The item gets bought, the receipt gets posted, and the nonprofit posts a photo of it in use. Every step is public on <a href="https://x.com/GiveGlimpse">@GiveGlimpse</a> and listed under <a href="./needs.html">Needs</a>.</p>
-    <div class="tag">Decentralize giving. Document kindness.</div>
+    <p class="lede">A nonprofit names one thing it needs, under $500, and sends a photo. Trading fees on $GIVE pay for it. The item gets bought, the receipt gets posted, and the nonprofit shows it in use.</p>
     <div class="ctas">
       <a href="#give" class="btn" id="get-give">Get $GIVE</a>
       <a href="./needs.html" class="btn line">See the needs</a>
     </div>
+    <div class="tag">Decentralize giving. Document kindness.</div>
 
-    <div class="status" aria-label="Current totals">
-      <div><div class="n">0</div><div class="l">Needs funded</div></div>
-      <div><div class="n">$0</div><div class="l">Dollars routed</div></div>
-      <div><div class="n">4</div><div class="l">Needs queued</div></div>
+    <div class="card">
+      <div class="status" aria-label="Current totals">
+        <div><div class="n">0</div><div class="l">Needs funded</div></div>
+        <div><div class="n">$0</div><div class="l">Dollars routed</div></div>
+        <div><div class="n">4</div><div class="l">Needs queued</div></div>
+      </div>
+      <p class="status-foot">Updated Sep 20, 2026. The first need opens the list. Until then the numbers stay at zero.</p>
     </div>
-    <p class="status-foot">Updated Sep 20, 2026. The first need opens the list. Until then the numbers stay at zero.</p>
   </div>
 </section>
 
 <section class="section" id="how">
   <div class="wrap">
-    <span class="eyebrow">How it works</span>
-    <div class="steps">
-      <div class="step"><div class="num">01</div><div>
-        <h3>A nonprofit names one need under $500 and sends one photo.</h3>
-        <p>No wallet, no form, no bank account required. The item shows up.</p>
-      </div></div>
-      <div class="step"><div class="num">02</div><div>
-        <h3>Trading fees become dollars.</h3>
-        <p>Paid claims the creator fees on chain and pays 80% to the founder's X Money account as the balance crosses $5, $10, $20, $50, $100, $250, $500, and $1,000. The other 20% is Paid's, used to buy and burn its own token.</p>
-        <p class="small">Paid's rule, applied to every token on its rail.</p>
-      </div></div>
-      <div class="step"><div class="num">03</div><div>
-        <h3>The need is bought and the proof is posted.</h3>
-        <p>Posted, funded, bought, proven. Same four words every time. A late photo shows as "proof overdue" until it arrives. Nothing is deleted.</p>
-      </div></div>
+    <h2>How it works</h2>
+    <div class="card">
+      <div class="steps">
+        <div class="step"><div class="num">01</div><div>
+          <h3>A nonprofit names one need under $500 and sends one photo.</h3>
+          <p>No wallet, no form, no bank account required. The item shows up.</p>
+        </div></div>
+        <div class="step"><div class="num">02</div><div>
+          <h3>Trading fees become dollars.</h3>
+          <p>Paid claims the creator fees on chain and pays 80% to the founder's X Money account at each milestone, from $5 up to $1,000.</p>
+          <p class="small">The other 20% is Paid's, used to buy and burn its own token. Paid's rule for every token on its rail.</p>
+        </div></div>
+        <div class="step"><div class="num">03</div><div>
+          <h3>The need is bought and the proof is posted.</h3>
+          <p>Posted, funded, bought, proven. Same four words every time. A late photo shows as "proof overdue" until it arrives. Nothing is deleted.</p>
+        </div></div>
+      </div>
+    </div>
+    <details class="more">
+      <summary>Where the money is, at each step</summary>
+      <div class="flow">
+        <div class="row"><div class="who">On chain</div><div>A trade on $GIVE leaves a creator fee. It sits in the token's fee account until claimed.</div></div>
+        <div class="row"><div class="who">Paid</div><div>Paid claims it, converts it to dollars, and holds the dollars in its own X Money balance until a payout milestone.<span class="small">Paid's custody, Paid's rules. <a href="https://usepaid.app/capital-flow">Its capital-flow page.</a></span></div></div>
+        <div class="row"><div class="who">The founder</div><div>The payout lands in Derrick Woepking's personal X Money account, and Paid replies publicly on X with the amount.<span class="small">Personal income. Not a donation, not tax-deductible for anyone.</span></div></div>
+        <div class="row"><div class="who">The store</div><div>The exact item the nonprofit named gets bought. The dated receipt gets posted.</div></div>
+        <div class="row"><div class="who">The nonprofit</div><div>Receives the item and sends a photo of it in use. The entry is marked proven.</div></div>
+      </div>
+    </details>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <h2>What an entry looks like</h2>
+    <div class="card">
+      <div class="receipt">
+        <div class="head"><span>Need #1 · example</span><span>@GiveGlimpse</span></div>
+        <div class="row"><div class="k posted">Posted</div><div class="v">Bunkbeds for kids entering foster care. $500.<span class="small">Photo of the need. Never a face.</span></div></div>
+        <div class="row"><div class="k funded">Funded</div><div class="v">$500 in $GIVE fees arrived.<span class="small">Linked to Paid's public payout reply.</span></div></div>
+        <div class="row"><div class="k bought">Bought</div><div class="v">Store receipt, dated, card digits covered.</div></div>
+        <div class="row"><div class="k proven">Proven</div><div class="v"><span class="pending">Pending</span><span class="small">The org's photo of the beds in use.</span></div></div>
+      </div>
     </div>
   </div>
 </section>
 
 <section class="section">
   <div class="wrap">
-    <span class="eyebrow">Where the money is, at each step</span>
-    <div class="flow">
-      <div class="row"><div class="who">On chain</div><div>A trade on $GIVE leaves a creator fee. It sits in the token's fee account until claimed.</div></div>
-      <div class="row"><div class="who">Paid</div><div>Paid claims it, converts it to dollars, and holds the dollars in its own X Money balance until a payout milestone.<span class="small">Paid's custody, Paid's rules. <a href="https://usepaid.app/capital-flow">Its capital-flow page.</a></span></div></div>
-      <div class="row"><div class="who">The founder</div><div>The payout lands in Derrick Woepking's personal X Money account, and Paid replies publicly on X with the amount.<span class="small">Personal income. Not a donation, not tax-deductible for anyone.</span></div></div>
-      <div class="row"><div class="who">The store</div><div>The exact item the nonprofit named gets bought. The dated receipt gets posted.</div></div>
-      <div class="row"><div class="who">The nonprofit</div><div>Receives the item and sends a photo of it in use. The entry is marked proven.</div></div>
+    <h2>The first $1,000, in order</h2>
+    <div class="card">
+      <div class="list">
+        <div class="row"><div class="amt">$100</div><div class="what">Starter dignity kit for a kid entering foster care<span class="small">duffel, new clothes, toiletries</span></div></div>
+        <div class="row"><div class="amt">$100</div><div class="what">Literacy kit for an after-school program</div></div>
+        <div class="row"><div class="amt">$250</div><div class="what">Reentry starter kit</div></div>
+        <div class="row"><div class="amt">$500</div><div class="what">Bunkbeds for a foster-care supply org<span class="small">their stated need</span></div></div>
+      </div>
+      <p class="small foot">Each becomes an entry the day its organization confirms and it gets funded. Organizations are named when they confirm.</p>
     </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="wrap">
-    <span class="eyebrow">What an entry looks like</span>
-    <div class="receipt">
-      <div class="head"><span>Need #1 · example</span><span>@GiveGlimpse</span></div>
-      <div class="row"><div class="k posted">Posted</div><div class="v">Bunkbeds for kids entering foster care. $500.<span class="small">Photo of the need. Never a face.</span></div></div>
-      <div class="row"><div class="k funded">Funded</div><div class="v">$500 in $GIVE fees arrived.<span class="small">Linked to Paid's public payout reply.</span></div></div>
-      <div class="row"><div class="k bought">Bought</div><div class="v">Store receipt, dated, card digits covered.</div></div>
-      <div class="row"><div class="k proven">Proven</div><div class="v"><span class="pending">Pending</span><span class="small">The org's photo of the beds in use.</span></div></div>
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="wrap">
-    <span class="eyebrow">The first $1,000, in order</span>
-    <div class="list">
-      <div class="row"><div class="amt">$100</div><div class="what">Starter dignity kit for a kid entering foster care<span class="small">duffel, new clothes, toiletries</span></div></div>
-      <div class="row"><div class="amt">$100</div><div class="what">Literacy kit for an after-school program</div></div>
-      <div class="row"><div class="amt">$250</div><div class="what">Reentry starter kit</div></div>
-      <div class="row"><div class="amt">$500</div><div class="what">Bunkbeds for a foster-care supply org<span class="small">their stated need</span></div></div>
-    </div>
-    <p class="small" style="margin-top:0.8rem">Each becomes an entry the day its organization confirms and it gets funded. Organizations are named when they confirm.</p>
   </div>
 </section>
 
@@ -127,17 +133,17 @@
   </div>
 </div>
 
-<section class="section" style="padding-top:0" id="give">
+<section class="section" id="give">
   <div class="wrap">
-    <span class="eyebrow">$GIVE</span>
+    <h2>$GIVE</h2>
     <p><strong>Contract address:</strong> <span id="ca">posted here and on @GiveGlimpse the moment it exists.</span></p>
     <p class="small">$GIVE trades on pump.fun. Its only job is to fund things you can see. It is not an investment and confers no rights, revenue, or governance. Most coins go to zero.</p>
   </div>
 </section>
 
-<section class="section" style="padding-top:0">
+<section class="section last">
   <div class="wrap">
-    <span class="eyebrow">Disclosures</span>
+    <h2>Disclosures</h2>
     <ul class="disclosures">
       <li>Glimpse is not a nonprofit or 501(c)(3). Nothing here is tax-deductible.</li>
       <li>Fees from $GIVE are paid to the founder, Derrick Woepking, personally through X Money and are his income. He buys each need himself.</li>

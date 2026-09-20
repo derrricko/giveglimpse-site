@@ -19,6 +19,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./styles.css">
+<style>
+.hero { padding: 2.25rem 0 0; }
+.hero .card { margin-top: 2rem; }
+.card.table { max-width: none; }
+</style>
 </head>
 <body>
 
@@ -31,49 +36,49 @@
   </div>
 </nav>
 
-<section class="section" style="padding-top:2.25rem">
+<section class="hero">
   <div class="wrap">
     <span class="eyebrow">Needs</span>
     <h1>Every need, in the open.</h1>
     <p class="lede">One row per need: what it is, who it's for, what it cost, and the thread on X where it happened. Rows are never removed.</p>
 
-    <div class="status" aria-label="Totals">
-      <div><div class="n" id="t-funded">0</div><div class="l">Needs funded</div></div>
-      <div><div class="n" id="t-dollars">$0</div><div class="l">Dollars routed</div></div>
-      <div><div class="n" id="t-proven">0</div><div class="l">Proven</div></div>
-    </div>
-    <p class="status-foot" id="updated">Updated Sep 20, 2026.</p>
-  </div>
-</section>
-
-<section class="section" style="padding-top:0">
-  <div class="wrap">
-    <div class="ledger-wrap">
-      <table class="ledger" id="ledger">
-        <thead><tr><th>#</th><th>Need</th><th>For</th><th>Amount</th><th>Status</th><th>Date</th><th>Thread</th></tr></thead>
-        <tbody id="rows"></tbody>
-      </table>
-    </div>
-    <p class="small" style="margin-top:0.8rem">Queued: named and priced, waiting on the organization's confirmation. Organizations are named when they confirm. A need enters the list when it is posted on @GiveGlimpse with a photo.</p>
-  </div>
-</section>
-
-<section class="section" style="padding-top:0">
-  <div class="wrap">
-    <span class="eyebrow">What the statuses mean</span>
-    <div class="receipt">
-      <div class="row"><div class="k posted">Posted</div><div class="v">The organization, the item, the price, a photo of the need.</div></div>
-      <div class="row"><div class="k funded">Funded</div><div class="v">The fee payout that covers it. Paid's public reply on X is in the thread.</div></div>
-      <div class="row"><div class="k bought">Bought</div><div class="v">The store receipt, dated, in the thread.</div></div>
-      <div class="row"><div class="k proven">Proven</div><div class="v">The organization's photo of the item in use.</div></div>
-      <div class="row"><div class="k overdue">Overdue</div><div class="v">Bought, and the photo hasn't come yet. Stays marked until it does.</div></div>
+    <div class="card">
+      <div class="status" aria-label="Totals">
+        <div><div class="n" id="t-funded">0</div><div class="l">Needs funded</div></div>
+        <div><div class="n" id="t-dollars">$0</div><div class="l">Dollars routed</div></div>
+        <div><div class="n" id="t-proven">0</div><div class="l">Proven</div></div>
+      </div>
+      <p class="status-foot" id="updated">Updated Sep 20, 2026.</p>
     </div>
   </div>
 </section>
 
-<section class="section" style="padding-top:0">
+<section class="section">
   <div class="wrap">
-    <span class="eyebrow">Where the money is, at each step</span>
+    <h2>The list</h2>
+    <div class="card table">
+      <div class="ledger-wrap">
+        <table class="ledger" id="ledger">
+          <thead><tr><th>#</th><th>Need</th><th>For</th><th>Amount</th><th>Status</th><th>Date</th><th>Thread</th></tr></thead>
+          <tbody id="rows"></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="legend" aria-label="What the statuses mean">
+      <span><span class="k queued">Queued</span>named and priced, waiting on the organization</span>
+      <span><span class="k posted">Posted</span>on X with a photo of the need</span>
+      <span><span class="k funded">Funded</span>fees covered it</span>
+      <span><span class="k bought">Bought</span>receipt in the thread</span>
+      <span><span class="k proven">Proven</span>photo of it in use</span>
+      <span><span class="k overdue">Overdue</span>bought, photo not yet in</span>
+    </div>
+    <p class="small" style="margin-top:0.9rem;max-width:640px">Organizations are named when they confirm. A need enters the list when it is posted on @GiveGlimpse with a photo.</p>
+  </div>
+</section>
+
+<section class="section last">
+  <div class="wrap">
+    <h2>Where the money is, at each step</h2>
     <div class="flow">
       <div class="row"><div class="who">On chain</div><div>A trade on $GIVE leaves a creator fee in the token's fee account.</div></div>
       <div class="row"><div class="who">Paid</div><div>Claims the fee, converts it to dollars, holds until a payout milestone. <span class="small"><a href="https://usepaid.app/payments">Paid's public payments ledger.</a></span></div></div>
@@ -102,10 +107,10 @@
 // The list. One object per need. Edit this array; the page renders itself.
 // status: queued | posted | funded | bought | proven | overdue   thread: the X post URL
 var NEEDS = [
-  { n: 1, need: "Bunkbeds for kids entering foster care", org: "Foster-care supply org, Illinois (named on confirmation)", amount: 500, status: "queued", date: "", thread: "" },
-  { n: 2, need: "Starter dignity kit for a kid entering foster care", org: "Foster closet, Illinois (named on confirmation)", amount: 100, status: "queued", date: "", thread: "" },
-  { n: 3, need: "Literacy kit for an after-school program", org: "Children's group, Iowa (named on confirmation)", amount: 100, status: "queued", date: "", thread: "" },
-  { n: 4, need: "Reentry starter kit", org: "Reentry org, Iowa (named on confirmation)", amount: 250, status: "queued", date: "", thread: "" }
+  { n: 1, need: "Bunkbeds for kids entering foster care", org: "Foster-care supply org, Illinois", amount: 500, status: "queued", date: "", thread: "" },
+  { n: 2, need: "Starter dignity kit for a kid entering foster care", org: "Foster closet, Illinois", amount: 100, status: "queued", date: "", thread: "" },
+  { n: 3, need: "Literacy kit for an after-school program", org: "Children's group, Iowa", amount: 100, status: "queued", date: "", thread: "" },
+  { n: 4, need: "Reentry starter kit", org: "Reentry org, Iowa", amount: 250, status: "queued", date: "", thread: "" }
 ];
 var UPDATED = "Sep 20, 2026";
 
@@ -119,13 +124,13 @@ var UPDATED = "Sep 20, 2026";
     if (x.status === 'proven') proven += 1;
     var tr = document.createElement('tr');
     tr.innerHTML =
-      '<td>' + x.n + '</td>' +
-      '<td>' + x.need + '</td>' +
-      '<td>' + x.org + '</td>' +
-      '<td class="amt">$' + x.amount + '</td>' +
-      '<td><span class="k ' + x.status + '">' + x.status + '</span></td>' +
-      '<td>' + (x.date || '<span class="small">—</span>') + '</td>' +
-      '<td>' + (x.thread ? '<a href="' + x.thread + '">on X</a>' : '<span class="small">—</span>') + '</td>';
+      '<td class="n" data-l="#">' + x.n + '</td>' +
+      '<td class="need" data-l="Need"><span class="mob-n">' + x.n + '. </span>' + x.need + '</td>' +
+      '<td data-l="For">' + x.org + '</td>' +
+      '<td class="amt" data-l="Amount">$' + x.amount + '</td>' +
+      '<td data-l="Status"><span class="k ' + x.status + '">' + x.status + '</span></td>' +
+      '<td data-l="Date">' + (x.date || '<span class="small">—</span>') + '</td>' +
+      '<td data-l="Thread">' + (x.thread ? '<a href="' + x.thread + '">on X</a>' : '<span class="small">—</span>') + '</td>';
     rows.appendChild(tr);
   });
   document.getElementById('t-funded').textContent = funded;

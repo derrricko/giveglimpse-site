@@ -20,15 +20,17 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./styles.css">
 <style>
-.loop { max-width: 640px; border-top: 2px solid var(--ink); }
+.hero { padding: 2.25rem 0 0; }
 .loop .row { display: grid; grid-template-columns: 2.2rem 1fr; gap: 0.8rem; padding: 0.85rem 0; border-bottom: 1px solid var(--rule); font-size: 0.95rem; }
 .loop .num { font-family: var(--display); font-weight: 700; color: var(--purple); font-size: 0.85rem; padding-top: 3px; }
 .loop .row strong { display: block; font-weight: 600; }
-.commit { max-width: 640px; padding: 0.9rem 0; border-top: 1px solid var(--rule); display: grid; grid-template-columns: 2.2rem 1fr; gap: 0.8rem; }
+.commit { max-width: 600px; padding: 1rem 0; border-top: 1px solid var(--rule); display: grid; grid-template-columns: 2.2rem 1fr; gap: 0.8rem; }
 .commit:last-of-type { border-bottom: 1px solid var(--rule); }
 .commit .num { font-family: var(--display); font-weight: 700; color: var(--purple); font-size: 0.85rem; padding-top: 3px; }
 .commit h3 { font-size: 1rem; }
 .commit p { margin-top: 0.25rem; font-size: 0.92rem; }
+.card .quote { margin-top: 1.25rem; padding-top: 1.25rem; border-top: 1px solid var(--rule); }
+.card .quote p { font-size: 1.05rem; }
 </style>
 </head>
 <body>
@@ -42,7 +44,7 @@
   </div>
 </nav>
 
-<section class="section" style="padding-top:2.25rem">
+<section class="hero">
   <div class="wrap">
     <span class="eyebrow">The vision</span>
     <h1>A better way to give. Built for the people on both ends of it.</h1>
@@ -50,51 +52,57 @@
   </div>
 </section>
 
-<section class="section" style="padding-top:0">
+<section class="section">
   <div class="wrap">
-    <span class="eyebrow">The problem</span>
-    <div class="fact"><div class="n">$592.5B</div><div class="t">Given to charity in the United States in 2024.<span class="small">Giving USA 2025.</span></div></div>
-    <div class="fact"><div class="n">19%</div><div class="t">Of first-time donors give a second time. Four out of five never come back.<span class="small">Fundraising Effectiveness Project, 2024 panel. <a href="https://bloomerang.com/blog/whats-the-impact-of-improving-1st-time-donor-retention/">Source.</a></span></div></div>
-    <div class="quote">
-      <p>Not because they stopped caring. Because nobody showed them what happened.</p>
-      <cite>Glimpse, Monolith hackathon deck, March 2026.</cite>
+    <h2>The problem</h2>
+    <div class="card">
+      <div class="fact"><div class="n">$592.5B</div><div class="t">Given to charity in the United States in 2024.<span class="small">Giving USA 2025.</span></div></div>
+      <div class="fact"><div class="n">19%</div><div class="t">Of first-time donors give a second time. Four out of five never come back.<span class="small">Fundraising Effectiveness Project, 2024 panel. <a href="https://bloomerang.com/blog/whats-the-impact-of-improving-1st-time-donor-retention/">Source.</a></span></div></div>
+      <div class="quote">
+        <p>Not because they stopped caring. Because nobody showed them what happened.</p>
+        <cite>Glimpse, Monolith hackathon deck, March 2026.</cite>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="section" style="padding-top:0">
+<section class="section">
   <div class="wrap">
-    <span class="eyebrow">A better way</span>
-    <p>A need is named before a dollar moves. The dollar comes from trading fees, so nobody has to be asked. The item is bought, not wired. The photo closes it. Then the next need goes up.</p>
-    <div class="loop" style="margin-top:1.25rem">
-      <div class="row"><div class="num">01</div><div><strong>A trade on $GIVE leaves a fee.</strong> Small, automatic, every time.</div></div>
-      <div class="row"><div class="num">02</div><div><strong>The fee buys a need.</strong> One nonprofit, one item under $500, named in advance.</div></div>
-      <div class="row"><div class="num">03</div><div><strong>The receipt is posted.</strong> Posted, funded, bought, proven, with the photo.</div></div>
-      <div class="row"><div class="num">04</div><div><strong>The receipt is the content.</strong> A real thing, bought for a real organization, shown. That is what people share.</div></div>
-      <div class="row"><div class="num">05</div><div><strong>The content brings the next trade.</strong> Which leaves the next fee. Which buys the next need.</div></div>
+    <h2>A better way</h2>
+    <p class="lead-in">A need is named before a dollar moves. The dollar comes from trading fees, so nobody has to be asked. The item is bought, not wired. The photo closes it. Then the next need goes up.</p>
+    <div class="card">
+      <div class="loop">
+        <div class="row"><div class="num">01</div><div><strong>A trade on $GIVE leaves a fee.</strong> Small, automatic, every time.</div></div>
+        <div class="row"><div class="num">02</div><div><strong>The fee buys a need.</strong> One nonprofit, one item under $500, named in advance.</div></div>
+        <div class="row"><div class="num">03</div><div><strong>The receipt is posted.</strong> Posted, funded, bought, proven, with the photo.</div></div>
+        <div class="row"><div class="num">04</div><div><strong>The receipt is the content.</strong> A real thing, bought for a real organization, shown. That is what people share.</div></div>
+        <div class="row"><div class="num">05</div><div><strong>The content brings the next trade.</strong> Which leaves the next fee. Which buys the next need.</div></div>
+      </div>
     </div>
     <p style="margin-top:1.25rem">Content drives fees. Proof drives more. In chapter one the distribution was a phone: 116,000 Seekers in 50 countries. In chapter two the distribution is X, the largest social app in the world, and Paid is the rail that turns attention into dollars.</p>
   </div>
 </section>
 
-<section class="section" style="padding-top:0">
+<section class="section">
   <div class="wrap">
-    <span class="eyebrow">Why now</span>
-    <p>Giving is already the most viral behavior on the internet. The evidence is not subtle.</p>
-    <div class="fact" style="margin-top:1rem"><div class="n">$220M</div><div class="t">Raised worldwide by the Ice Bucket Challenge in about three weeks of 2014, from 17 million videos.<span class="small"><a href="https://en.wikipedia.org/wiki/Ice_Bucket_Challenge">Source.</a></span></div></div>
-    <div class="fact"><div class="n">3×</div><div class="t">GoFundMe campaigns shared on social raise three times more. One share adds about $13.<span class="small">GoFundMe's own data. <a href="https://www.gofundme.com/c/crowdfunding-lessons/sharing">Source.</a></span></div></div>
-    <div class="fact"><div class="n">$41M</div><div class="t">TeamWater, 2025: 100,000+ donors, $12 million of it in a single livestream.<span class="small"><a href="https://www.newsweek.com/mrbeast-charity-livestream-raises-12m-155-hours-2114144">Source.</a></span></div></div>
-    <div class="fact"><div class="n">$4.0B</div><div class="t">GivingTuesday 2025, in one day, from 38 million people.<span class="small"><a href="https://www.givingtuesday.org/blog/2025-results/">Source.</a></span></div></div>
-    <p style="margin-top:1.25rem">And proof is what turns a moment into a habit.</p>
-    <div class="fact" style="margin-top:1rem"><div class="n">2025</div><div class="t">A peer-reviewed study across 1,900 people: showing donors the actual impact of a gift raised both the willingness to give again and the size of the next gift.<span class="small">Journal of Experimental Social Psychology. <a href="https://www.sciencedirect.com/science/article/pii/S0022103125000010">Source.</a></span></div></div>
-    <div class="fact"><div class="n">171,000+</div><div class="t">Projects charity: water has funded with a GPS pin and a photo on every one. The closest working model to posted, funded, bought, proven.<span class="small"><a href="https://www.charitywater.org/our-approach/100-percent-model">Source.</a></span></div></div>
+    <h2>Why now</h2>
+    <p class="lead-in">Giving is already the most viral behavior on the internet, and proof is what turns a moment into a habit.</p>
+    <div class="card">
+      <div class="fact"><div class="n">$220M</div><div class="t">Raised worldwide by the Ice Bucket Challenge in about three weeks of 2014, from 17 million videos.<span class="small"><a href="https://en.wikipedia.org/wiki/Ice_Bucket_Challenge">Source.</a></span></div></div>
+      <div class="fact"><div class="n">3×</div><div class="t">GoFundMe campaigns shared on social raise three times more. One share adds about $13.<span class="small">GoFundMe's own data. <a href="https://www.gofundme.com/c/crowdfunding-lessons/sharing">Source.</a></span></div></div>
+      <div class="fact"><div class="n">$41M</div><div class="t">TeamWater, 2025: 100,000+ donors, $12 million of it in a single livestream.<span class="small"><a href="https://www.newsweek.com/mrbeast-charity-livestream-raises-12m-155-hours-2114144">Source.</a></span></div></div>
+      <div class="fact"><div class="n">$4.0B</div><div class="t">GivingTuesday 2025, in one day, from 38 million people.<span class="small"><a href="https://www.givingtuesday.org/blog/2025-results/">Source.</a></span></div></div>
+      <hr class="divider">
+      <div class="fact"><div class="n">2025</div><div class="t">A peer-reviewed study across 1,900 people: showing donors the actual impact of a gift raised both the willingness to give again and the size of the next gift.<span class="small">Journal of Experimental Social Psychology. <a href="https://www.sciencedirect.com/science/article/pii/S0022103125000010">Source.</a></span></div></div>
+      <div class="fact"><div class="n">171,000+</div><div class="t">Projects charity: water has funded with a GPS pin and a photo on every one. The closest working model to posted, funded, bought, proven.<span class="small"><a href="https://www.charitywater.org/our-approach/100-percent-model">Source.</a></span></div></div>
+    </div>
     <p style="margin-top:1.25rem">A campaign ends. The Ice Bucket Challenge raised $220 million in 2014 and about $500,000 when it was rerun in 2015. A loop doesn't end. Every need is its own proof event, and the next one starts the day the photo lands.</p>
   </div>
 </section>
 
-<section class="section" style="padding-top:0">
+<section class="section">
   <div class="wrap">
-    <span class="eyebrow">Commitments</span>
+    <h2>Commitments</h2>
     <div class="commit"><div class="num">01</div><div><h3>Named items only.</h3><p>Every need is a specific thing, priced, for a specific organization. No cash drops.</p></div></div>
     <div class="commit"><div class="num">02</div><div><h3>A photo for every need.</h3><p>Of the need before, and of the item in use after. Never a face.</p></div></div>
     <div class="commit"><div class="num">03</div><div><h3>Every payout is public.</h3><p>Paid replies on X with each payout. Each purchase is a dated store receipt. Each entry links to its thread.</p></div></div>
@@ -103,9 +111,9 @@
   </div>
 </section>
 
-<section class="section" style="padding-top:0">
+<section class="section">
   <div class="wrap">
-    <span class="eyebrow">In order</span>
+    <h2>In order</h2>
     <div class="phase">
       <span class="eyebrow">Now</span>
       <h3>Fees fund needs. Every dollar posted.</h3>
@@ -128,27 +136,27 @@
   </div>
 </section>
 
-<section class="section" id="coins" style="padding-top:0">
-  <div class="wrap">
-    <span class="eyebrow">A note on the two coins</span>
-    <p><strong>$GLIMPSE</strong> is the coin from chapter one, launched February 24, 2026 on the founder's first stream. It belongs to that era. pump.fun won't route its fees, so it can't fund needs. It stays exactly as it is, and nothing is promised for it. Contract: <span class="small" style="word-break:break-all">Ab26LYP16ZyXvUJQqFYKKPU75GHhdzvhVnYtVUBFpump</span></p>
-    <p><strong>$GIVE</strong> is chapter two: the coin whose only job is to fund things you can see. Contract on the home page the moment it exists.</p>
-  </div>
-</section>
-
 <div class="wrap">
   <div class="door">
     <span class="eyebrow">Chapter two</span>
     <h2>Build for X, not beside it.</h2>
     <p>"Why are we creating separate applications and trying to take attention off of the largest social media app in the world instead of building for it?"</p>
-    <p style="margin-top:0.6rem" class="small" >Derrick Woepking, founder. <a href="./chapter-one.html" style="color:rgba(255,255,255,0.8)">The full story.</a></p>
+    <p style="margin-top:0.6rem" class="small">Derrick Woepking, founder. <a href="./chapter-one.html" style="color:rgba(255,255,255,0.8)">The full story.</a></p>
     <a href="./needs.html" class="btn">See the needs</a>
   </div>
 </div>
 
-<section class="section" style="padding-top:0">
+<section class="section" id="coins">
   <div class="wrap">
-    <span class="eyebrow">Sources</span>
+    <h2>A note on the two coins</h2>
+    <p><strong>$GLIMPSE</strong> is the coin from chapter one, launched February 24, 2026 on the founder's first stream. It belongs to that era. pump.fun won't route its fees, so it can't fund needs. It stays exactly as it is, and nothing is promised for it. Contract: <span class="small" style="word-break:break-all">Ab26LYP16ZyXvUJQqFYKKPU75GHhdzvhVnYtVUBFpump</span></p>
+    <p><strong>$GIVE</strong> is chapter two: the coin whose only job is to fund things you can see. Contract on the home page the moment it exists.</p>
+  </div>
+</section>
+
+<section class="section last">
+  <div class="wrap">
+    <h2>Sources</h2>
     <ul class="sources">
       <li>Giving USA 2025 (2024 US giving, $592.5B).</li>
       <li><a href="https://bloomerang.com/blog/whats-the-impact-of-improving-1st-time-donor-retention/">Fundraising Effectiveness Project via Bloomerang: first-time donor retention.</a></li>
