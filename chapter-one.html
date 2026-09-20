@@ -8,9 +8,13 @@
 <meta property="og:title" content="Glimpse — Chapter one">
 <meta property="og:description" content="How I got here, in my own words. Kept in full so nobody has to ask.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://giveglimpse.com/chapter-one.html">
-<meta name="twitter:card" content="summary">
+<meta property="og:url" content="https://derrricko.github.io/giveglimpse-site/chapter-one.html">
+<meta property="og:image" content="https://derrricko.github.io/giveglimpse-site/og.png">
+<link rel="canonical" href="https://derrricko.github.io/giveglimpse-site/chapter-one.html">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@GiveGlimpse">
+<meta name="twitter:image" content="https://derrricko.github.io/giveglimpse-site/og.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%235b5bd6'/%3E%3Ctext x='32' y='44' font-family='Menlo,monospace' font-weight='700' font-size='36' fill='white' text-anchor='middle'%3EG%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -18,7 +22,7 @@
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 :root {
   --purple: #5b5bd6; --bg: #f0e9ff; --ink: #1a1a2e; --white: #ffffff;
-  --muted: rgba(26, 26, 46, 0.6); --rule: rgba(26, 26, 46, 0.18);
+  --muted: #4a4a5e; --rule: rgba(26, 26, 46, 0.18);
   --display: 'Space Mono', ui-monospace, Menlo, monospace; --text: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
 }
 html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
@@ -27,9 +31,9 @@ body { font-family: var(--text); background: var(--bg); color: var(--ink); overf
 a { color: var(--purple); }
 
 nav { display: flex; justify-content: space-between; align-items: center; max-width: 760px; margin: 0 auto; padding: 1.1rem 1.25rem; font-family: var(--display); font-weight: 700; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; }
-nav .brand { color: var(--ink); text-decoration: none; letter-spacing: 0.18em; }
+nav .brand { color: var(--ink); text-decoration: none; letter-spacing: 0.18em; display: inline-block; padding: 12px 4px; }
 nav .links { display: flex; gap: 1.25rem; }
-nav .links a { color: var(--purple); text-decoration: none; white-space: nowrap; }
+nav .links a { color: var(--purple); text-decoration: none; white-space: nowrap; display: inline-block; padding: 12px 4px; }
 .wrap { max-width: 760px; margin: 0 auto; padding: 0 1.25rem; }
 
 .intro { padding: 2.5rem 0 2rem; }
@@ -56,7 +60,7 @@ nav .links a { color: var(--purple); text-decoration: none; white-space: nowrap;
 .q p { font-size: 1.06rem; line-height: 1.6; font-weight: 500; }
 @media (min-width: 720px) { .q p { font-size: 1.2rem; } }
 .q p + p { margin-top: 0.7rem; }
-.q cite { display: block; font-style: normal; font-size: 0.74rem; color: var(--muted); margin-top: 0.55rem; }
+.q cite { display: block; font-style: normal; font-size: 0.8rem; color: var(--muted); margin-top: 0.55rem; }
 .q cite a { color: var(--muted); }
 .media { margin-top: 1.1rem; max-width: 600px; }
 .media + .media { margin-top: 0.9rem; }
@@ -64,7 +68,7 @@ video { display: block; width: 100%; background: #0e0e1a; aspect-ratio: 16 / 9; 
 .frame { position: relative; width: 100%; aspect-ratio: 16 / 9; background: #0e0e1a; }
 .frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 .frame .soon { position: absolute; inset: 0; display: grid; place-items: center; color: rgba(255,255,255,0.6); font-family: var(--display); font-weight: 700; font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; text-align: center; padding: 1rem; }
-.cap { margin-top: 0.5rem; font-size: 0.76rem; color: var(--muted); display: flex; justify-content: space-between; gap: 1rem; }
+.cap { margin-top: 0.5rem; font-size: 0.8rem; color: var(--muted); display: flex; justify-content: space-between; gap: 1rem; }
 .cap a { color: var(--muted); }
 .xslot { min-height: 160px; max-width: 550px; }
 .xslot blockquote.twitter-tweet { margin: 0; }
@@ -85,8 +89,8 @@ video { display: block; width: 100%; background: #0e0e1a; aspect-ratio: 16 / 9; 
 
 footer { padding: 1rem 0 3rem; border-top: 1px solid var(--rule); margin-top: 1rem; }
 .footer-links { display: flex; flex-wrap: wrap; gap: 1.25rem; font-family: var(--display); font-weight: 700; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; margin: 1.5rem 0 1rem; }
-.footer-links a { color: var(--purple); text-decoration: none; }
-.footer-legal { font-size: 0.76rem; color: var(--muted); line-height: 1.7; max-width: 600px; }
+.footer-links a { color: var(--purple); text-decoration: none; display: inline-block; padding: 10px 2px; }
+.footer-legal { font-size: 0.82rem; color: var(--muted); line-height: 1.7; max-width: 600px; }
 
 @media (prefers-reduced-motion: no-preference) {
   .js .beat { transform: translateY(8px); opacity: 0.9; transition: transform 0.45s ease, opacity 0.45s ease; }
@@ -97,10 +101,11 @@ footer { padding: 1rem 0 3rem; border-top: 1px solid var(--rule); margin-top: 1r
 <body>
 
 <nav>
-  <a href="/" class="brand">Glimpse</a>
+  <a href="./" class="brand">Glimpse</a>
   <div class="links">
-    <a href="/">Chapter two</a>
-    <a href="https://x.com/GiveGlimpse">Receipts</a>
+    <a href="./chapter-one.html" aria-current="page" style="border-bottom:2px solid var(--purple)">Story</a>
+    <a href="./vision.html">Vision</a>
+    <a href="./receipts.html">Receipts</a>
   </div>
 </nav>
 
@@ -127,7 +132,7 @@ footer { padding: 1rem 0 3rem; border-top: 1px solid var(--rule); margin-top: 1r
         <cite>Me, on stream, Feb 25, 2026, 11:53. Clip below.</cite>
       </div>
       <div class="media">
-        <video controls preload="metadata" playsinline poster="/clips/emmanuel-feb25.jpg" src="/clips/emmanuel-feb25.mp4"></video>
+        <video controls preload="metadata" playsinline poster="./clips/emmanuel-feb25.jpg" src="./clips/emmanuel-feb25.mp4"></video>
         <div class="cap"><span>Feb 25, 2026 · 11:53 → 12:43</span><span>51s</span></div>
       </div>
       <p class="so">His life didn't change because of a gala or a matching program. <span>One person showed up. That's the goal of Glimpse.</span></p>
@@ -141,7 +146,7 @@ footer { padding: 1rem 0 3rem; border-top: 1px solid var(--rule); margin-top: 1r
         <cite><a href="https://youtu.be/j9T9OfV4Y-U?t=1036">"This will reshape the crypto industry," 17:16</a></cite>
       </div>
       <div class="media">
-        <div class="frame"><iframe src="https://www.youtube-nocookie.com/embed/j9T9OfV4Y-U?start=1036" title="This will reshape the crypto industry" allow="accelerometer; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
+        <button class="frame yt" type="button" data-yt-src="https://www.youtube-nocookie.com/embed/j9T9OfV4Y-U?start=1036&autoplay=1" style="background:#0e0e1a url('https://i.ytimg.com/vi/j9T9OfV4Y-U/hqdefault.jpg') center / cover no-repeat;border:0;cursor:pointer;width:100%" aria-label="Play: This will reshape the crypto industry, from 17:16"><span class="soon" style="background:rgba(14,14,26,0.35);color:#fff">▶ Play from 17:16</span></button>
         <div class="cap"><span>Starts at the quote. <a href="https://youtu.be/j9T9OfV4Y-U">Full video, 28 min.</a></span><span>Jan 2024</span></div>
       </div>
       <p class="so">I'd already tried it as an NFT project in 2022. <span>The tech wasn't ready, the tooling wasn't ready, I couldn't find a technical founder, and the fundraise went nowhere.</span></p>
@@ -155,7 +160,7 @@ footer { padding: 1rem 0 3rem; border-top: 1px solid var(--rule); margin-top: 1r
         <cite>On stream, Feb 27, 2026, 29:30. Clip below.</cite>
       </div>
       <div class="media">
-        <video controls preload="metadata" playsinline poster="/clips/door-to-door-feb27.jpg" src="/clips/door-to-door-feb27.mp4"></video>
+        <video controls preload="metadata" playsinline poster="./clips/door-to-door-feb27.jpg" src="./clips/door-to-door-feb27.mp4"></video>
         <div class="cap"><span>Feb 27, 2026 · 29:30</span><span>16s</span></div>
       </div>
       <p class="so">Married. A son, October 2024. A sales job. <span>And the same seven pages.</span></p>
@@ -177,7 +182,7 @@ footer { padding: 1rem 0 3rem; border-top: 1px solid var(--rule); margin-top: 1r
         <cite>On stream, Feb 24, 2026, 1:13. Clip below.</cite>
       </div>
       <div class="media">
-        <video controls preload="metadata" playsinline poster="/clips/first-code-feb24.jpg" src="/clips/first-code-feb24.mp4"></video>
+        <video controls preload="metadata" playsinline poster="./clips/first-code-feb24.jpg" src="./clips/first-code-feb24.mp4"></video>
         <div class="cap"><span>Feb 24, 2026 · 1:13</span><span>27s</span></div>
       </div>
       <p class="so">No technical background. AI as the teacher. <span>Four years to the week after I bought my first NFT.</span></p>
@@ -191,7 +196,7 @@ footer { padding: 1rem 0 3rem; border-top: 1px solid var(--rule); margin-top: 1r
         <cite>On stream, Feb 27, 2026, 19:38. Clip below.</cite>
       </div>
       <div class="media">
-        <video controls preload="metadata" playsinline poster="/clips/mtndao-feb27.jpg" src="/clips/mtndao-feb27.mp4"></video>
+        <video controls preload="metadata" playsinline poster="./clips/mtndao-feb27.jpg" src="./clips/mtndao-feb27.mp4"></video>
         <div class="cap"><span>Feb 27, 2026 · 19:38</span><span>30s</span></div>
       </div>
       <p class="so">I sold the Seeker I'd been airdropped to pay for the trip, and spent a week away from my wife and my one-year-old. <span>Fourteen-hour days. The app came back simple.</span></p>
@@ -205,7 +210,7 @@ footer { padding: 1rem 0 3rem; border-top: 1px solid var(--rule); margin-top: 1r
         <cite>On stream, Feb 25, 2026, 6:03. Clip below.</cite>
       </div>
       <div class="media">
-        <video controls preload="metadata" playsinline poster="/clips/no-plan-feb25.jpg" src="/clips/no-plan-feb25.mp4"></video>
+        <video controls preload="metadata" playsinline poster="./clips/no-plan-feb25.jpg" src="./clips/no-plan-feb25.mp4"></video>
         <div class="cap"><span>Feb 25, 2026 · 6:03</span><span>22s</span></div>
       </div>
       <div class="q">
@@ -213,7 +218,7 @@ footer { padding: 1rem 0 3rem; border-top: 1px solid var(--rule); margin-top: 1r
         <cite>On stream, Feb 25, 2026, 17:15. Clip below.</cite>
       </div>
       <div class="media">
-        <video controls preload="metadata" playsinline poster="/clips/tanked-feb25.jpg" src="/clips/tanked-feb25.mp4"></video>
+        <video controls preload="metadata" playsinline poster="./clips/tanked-feb25.jpg" src="./clips/tanked-feb25.mp4"></video>
         <div class="cap"><span>Feb 25, 2026 · 17:15</span><span>25s</span></div>
       </div>
       <div class="media">
@@ -239,7 +244,7 @@ footer { padding: 1rem 0 3rem; border-top: 1px solid var(--rule); margin-top: 1r
         <cite>On stream, Feb 25, 2026, 53:46. Clip below.</cite>
       </div>
       <div class="media">
-        <video controls preload="metadata" playsinline poster="/clips/launch-feb25.jpg" src="/clips/launch-feb25.mp4"></video>
+        <video controls preload="metadata" playsinline poster="./clips/launch-feb25.jpg" src="./clips/launch-feb25.mp4"></video>
         <div class="cap"><span>Feb 25, 2026 · 53:41</span><span>12s</span></div>
       </div>
       <div class="media">
@@ -270,7 +275,7 @@ footer { padding: 1rem 0 3rem; border-top: 1px solid var(--rule); margin-top: 1r
         <cite>On stream, Feb 27, 2026, 6:39. Clip below.</cite>
       </div>
       <div class="media">
-        <video controls preload="metadata" playsinline poster="/clips/created-feb27.jpg" src="/clips/created-feb27.mp4"></video>
+        <video controls preload="metadata" playsinline poster="./clips/created-feb27.jpg" src="./clips/created-feb27.mp4"></video>
         <div class="cap"><span>Feb 27, 2026 · 6:39</span><span>19s</span></div>
       </div>
       <div class="media">
@@ -288,7 +293,7 @@ footer { padding: 1rem 0 3rem; border-top: 1px solid var(--rule); margin-top: 1r
         <cite>On stream, Mar 2, 2026, 0:00. Clip below.</cite>
       </div>
       <div class="media">
-        <video controls preload="metadata" playsinline poster="/clips/live-mar02.jpg" src="/clips/live-mar02.mp4"></video>
+        <video controls preload="metadata" playsinline poster="./clips/live-mar02.jpg" src="./clips/live-mar02.mp4"></video>
         <div class="cap"><span>Mar 2, 2026 · 0:00</span><span>19s</span></div>
       </div>
       <div class="media">
@@ -368,7 +373,7 @@ footer { padding: 1rem 0 3rem; border-top: 1px solid var(--rule); margin-top: 1r
     <h2>Build for X, not beside it.</h2>
     <p>"Why are we creating separate applications and trying to take attention off of the largest social media app in the world, instead of building for it?"</p>
     <p style="margin-top:0.8rem">$GIVE. Trading fees fund one nonprofit need at a time. X is the ledger. The photo is the proof. The first receipt is next.</p>
-    <a href="/" class="btn">Chapter two starts here</a>
+    <a href="./" class="btn">Chapter two starts here</a>
   </div>
 
   <div class="note">
@@ -382,11 +387,11 @@ footer { padding: 1rem 0 3rem; border-top: 1px solid var(--rule); margin-top: 1r
 <footer>
   <div class="wrap">
     <div class="footer-links">
-      <a href="/">Home</a>
+      <a href="./">Home</a>
       <a href="https://x.com/GiveGlimpse">@GiveGlimpse</a>
       <a href="https://x.com/DerrickWKing">@DerrickWKing</a>
-      <a href="/privacy">Privacy</a>
-      <a href="/terms">Terms</a>
+      <a href="./privacy/">Privacy</a>
+      <a href="./terms/">Terms</a>
     </div>
     <p class="footer-legal">Quotes are transcribed from the clips and posts beside them, lightly punctuated. Glimpse is not a nonprofit or 501(c)(3). Nothing here is tax-deductible. Neither $GLIMPSE nor $GIVE is an investment; neither confers rights. Paid and X Money are independent services. Glimpse is not affiliated with X Corp.</p>
   </div>
@@ -394,6 +399,16 @@ footer { padding: 1rem 0 3rem; border-top: 1px solid var(--rule); margin-top: 1r
 
 <script>
 document.documentElement.classList.add('js');
+// Click-to-load YouTube: nothing from YouTube loads until the play button is pressed.
+document.querySelectorAll('.yt[data-yt-src]').forEach(function (b) {
+  b.addEventListener('click', function () {
+    var wrap = document.createElement('div'); wrap.className = 'frame';
+    var f = document.createElement('iframe');
+    f.src = b.getAttribute('data-yt-src'); f.title = b.getAttribute('aria-label') || 'Video';
+    f.setAttribute('allow', 'accelerometer; autoplay; encrypted-media; picture-in-picture'); f.setAttribute('allowfullscreen', '');
+    wrap.appendChild(f); b.replaceWith(wrap);
+  }, { once: true });
+});
 document.querySelectorAll('.frame[data-yt]').forEach(function (f) {
   var id = f.getAttribute('data-yt');
   if (!id) return;
