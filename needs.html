@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glimpse — Needs</title>
+<meta name="description" content="Every need, in the open. What it is, who it's for, what it cost, and the thread where it happened.">
+<link rel="canonical" href="https://derrricko.github.io/giveglimpse-site/needs.html">
+<meta property="og:title" content="Glimpse — Needs">
+<meta property="og:description" content="Every need, in the open. What it is, who it's for, what it cost, and the thread where it happened.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://derrricko.github.io/giveglimpse-site/needs.html">
+<meta property="og:image" content="https://derrricko.github.io/giveglimpse-site/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@GiveGlimpse">
+<meta name="twitter:image" content="https://derrricko.github.io/giveglimpse-site/og.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%235b5bd6'/%3E%3Ctext x='32' y='44' font-family='Menlo,monospace' font-weight='700' font-size='36' fill='white' text-anchor='middle'%3EG%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+
+<nav>
+  <a href="./" class="brand">Glimpse</a>
+  <div class="links">
+    <a href="./chapter-one.html">Story</a>
+    <a href="./vision.html">Vision</a>
+    <a href="./needs.html" aria-current="page">Needs</a>
+  </div>
+</nav>
+
+<section class="section" style="padding-top:2.25rem">
+  <div class="wrap">
+    <span class="eyebrow">Needs</span>
+    <h1>Every need, in the open.</h1>
+    <p class="lede">One row per need: what it is, who it's for, what it cost, and the thread on X where it happened. Rows are never removed.</p>
+
+    <div class="status" aria-label="Totals">
+      <div><div class="n" id="t-funded">0</div><div class="l">Needs funded</div></div>
+      <div><div class="n" id="t-dollars">$0</div><div class="l">Dollars routed</div></div>
+      <div><div class="n" id="t-proven">0</div><div class="l">Proven</div></div>
+    </div>
+    <p class="status-foot" id="updated">Updated Sep 20, 2026.</p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="wrap">
+    <div class="ledger-wrap">
+      <table class="ledger" id="ledger">
+        <thead><tr><th>#</th><th>Need</th><th>For</th><th>Amount</th><th>Status</th><th>Date</th><th>Thread</th></tr></thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+    <p class="small" style="margin-top:0.8rem">Queued: named and priced, waiting on the organization's confirmation. Organizations are named when they confirm. A need enters the list when it is posted on @GiveGlimpse with a photo.</p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="wrap">
+    <span class="eyebrow">What the statuses mean</span>
+    <div class="receipt">
+      <div class="row"><div class="k posted">Posted</div><div class="v">The organization, the item, the price, a photo of the need.</div></div>
+      <div class="row"><div class="k funded">Funded</div><div class="v">The fee payout that covers it. Paid's public reply on X is in the thread.</div></div>
+      <div class="row"><div class="k bought">Bought</div><div class="v">The store receipt, dated, in the thread.</div></div>
+      <div class="row"><div class="k proven">Proven</div><div class="v">The organization's photo of the item in use.</div></div>
+      <div class="row"><div class="k overdue">Overdue</div><div class="v">Bought, and the photo hasn't come yet. Stays marked until it does.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="wrap">
+    <span class="eyebrow">Where the money is, at each step</span>
+    <div class="flow">
+      <div class="row"><div class="who">On chain</div><div>A trade on $GIVE leaves a creator fee in the token's fee account.</div></div>
+      <div class="row"><div class="who">Paid</div><div>Claims the fee, converts it to dollars, holds until a payout milestone. <span class="small"><a href="https://usepaid.app/payments">Paid's public payments ledger.</a></span></div></div>
+      <div class="row"><div class="who">The founder</div><div>The payout lands in Derrick Woepking's personal X Money account. Paid replies on X with the amount.</div></div>
+      <div class="row"><div class="who">The store</div><div>The exact item gets bought. The dated receipt goes in the thread.</div></div>
+      <div class="row"><div class="who">The nonprofit</div><div>Sends the photo. The entry is marked proven.</div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-links">
+      <a href="./">Home</a>
+      <a href="./chapter-one.html">Story</a>
+      <a href="./vision.html">Vision</a>
+      <a href="https://x.com/GiveGlimpse">@GiveGlimpse</a>
+      <a href="./privacy/">Privacy</a>
+      <a href="./terms/">Terms</a>
+    </div>
+    <p class="footer-legal">Glimpse is not a nonprofit or 501(c)(3). Nothing here is tax-deductible. Fees from $GIVE are the founder's personal income; he buys each need himself. $GIVE is not an investment and confers no rights. Paid and X Money are independent services. Glimpse is not affiliated with X Corp.</p>
+  </div>
+</footer>
+
+<script>
+// The list. One object per need. Edit this array; the page renders itself.
+// status: queued | posted | funded | bought | proven | overdue   thread: the X post URL
+var NEEDS = [
+  { n: 1, need: "Bunkbeds for kids entering foster care", org: "Foster-care supply org, Illinois (named on confirmation)", amount: 500, status: "queued", date: "", thread: "" },
+  { n: 2, need: "Starter dignity kit for a kid entering foster care", org: "Foster closet, Illinois (named on confirmation)", amount: 100, status: "queued", date: "", thread: "" },
+  { n: 3, need: "Literacy kit for an after-school program", org: "Children's group, Iowa (named on confirmation)", amount: 100, status: "queued", date: "", thread: "" },
+  { n: 4, need: "Reentry starter kit", org: "Reentry org, Iowa (named on confirmation)", amount: 250, status: "queued", date: "", thread: "" }
+];
+var UPDATED = "Sep 20, 2026";
+
+(function () {
+  var rows = document.getElementById('rows');
+  var funded = 0, dollars = 0, proven = 0;
+  var order = { queued: 0, posted: 1, funded: 2, bought: 3, proven: 4, overdue: 3 };
+  if (!NEEDS.length) rows.innerHTML = '<tr><td colspan="7" class="empty">The first need opens the list.</td></tr>';
+  NEEDS.forEach(function (x) {
+    if (order[x.status] >= 2) { funded += 1; dollars += x.amount; }
+    if (x.status === 'proven') proven += 1;
+    var tr = document.createElement('tr');
+    tr.innerHTML =
+      '<td>' + x.n + '</td>' +
+      '<td>' + x.need + '</td>' +
+      '<td>' + x.org + '</td>' +
+      '<td class="amt">$' + x.amount + '</td>' +
+      '<td><span class="k ' + x.status + '">' + x.status + '</span></td>' +
+      '<td>' + (x.date || '<span class="small">—</span>') + '</td>' +
+      '<td>' + (x.thread ? '<a href="' + x.thread + '">on X</a>' : '<span class="small">—</span>') + '</td>';
+    rows.appendChild(tr);
+  });
+  document.getElementById('t-funded').textContent = funded;
+  document.getElementById('t-dollars').textContent = '$' + dollars;
+  document.getElementById('t-proven').textContent = proven;
+  document.getElementById('updated').textContent = 'Updated ' + UPDATED + '. Totals count needs at funded or later.';
+})();
+</script>
+</body>
+</html>
