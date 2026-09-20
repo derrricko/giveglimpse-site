@@ -1,93 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Glimpse — Privacy Policy</title>
-  <style>
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      max-width: 680px;
-      margin: 0 auto;
-      padding: 2rem 1.5rem;
-      color: #1a1a1a;
-      line-height: 1.7;
-    }
-    h1 { font-size: 1.75rem; margin-bottom: 0.25rem; }
-    h2 { font-size: 1.2rem; margin-top: 2rem; border-bottom: 1px solid #e0e0e0; padding-bottom: 0.5rem; }
-    .updated { color: #666; font-size: 0.9rem; margin-bottom: 2rem; }
-    ul { padding-left: 1.25rem; }
-    li { margin-bottom: 0.5rem; }
-    a { color: #5b5bd6; }
-    .disclaimer { background: #f9f9f9; border-left: 3px solid #5b5bd6; padding: 1rem 1.25rem; margin: 1.5rem 0; font-size: 0.92rem; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glimpse — Privacy</title>
+<meta name="description" content="What this site collects, which is almost nothing.">
+<link rel="canonical" href="https://derrricko.github.io/giveglimpse-site/privacy/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%235b5bd6'/%3E%3Ctext x='32' y='44' font-family='Menlo,monospace' font-weight='700' font-size='36' fill='white' text-anchor='middle'%3EG%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./../styles.css">
+<style>.legal h2 { font-size: 1.1rem; margin-top: 2rem; } .legal p, .legal li { max-width: 700px; } .legal ul { padding-left: 1.2rem; margin-top: 0.5rem; }</style>
 </head>
 <body>
-  <h1>Glimpse Privacy Policy</h1>
-  <p class="updated">Last updated: March 30, 2026</p>
-
-  <div class="disclaimer">
-    <strong>Important Notice:</strong> Glimpse is a new company operating in a rapidly evolving regulatory landscape. Our policies, practices, and operational structure may change as we grow and as applicable laws and regulations develop. This privacy policy reflects our current practices and will be updated as needed. Glimpse is not a nonprofit, 501(c)(3), or registered charity. Donations made through Glimpse are not tax-deductible.
+<nav>
+  <a href="./../" class="brand">Glimpse</a>
+  <div class="links">
+    <a href="./../chapter-one.html">Track record</a>
+    <a href="./../vision.html">Vision</a>
+    <a href="./../needs.html">Needs</a>
   </div>
+</nav>
+<section class="section legal" style="padding-top:2.25rem">
+  <div class="wrap">
+    <span class="eyebrow">Privacy</span>
+    <h1>What this site collects.</h1>
+    <p class="lede">Almost nothing. Updated September 20, 2026.</p>
 
-  <p>Glimpse ("we", "us", "the app") is a direct stablecoin donation app and donor trust platform built on Solana. We believe in transparency. Here is what data we collect, why, and how it is stored.</p>
+    <h2>This site</h2>
+    <p>giveglimpse.com is a static site. It has no accounts, no forms, no cookies set by Glimpse, and no analytics script. Nothing typed here is stored, because there is nowhere to type.</p>
+    <p>The site is hosted on GitHub Pages, which keeps standard server logs (IP address, browser, pages requested) under <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub's privacy statement</a>. Fonts load from Google Fonts, which receives the request under <a href="https://policies.google.com/privacy">Google's privacy policy</a>.</p>
 
-  <h2>1. What We Collect</h2>
-  <ul>
-    <li><strong>Wallet address (public key).</strong> When you connect your wallet via Mobile Wallet Adapter, we receive your Solana public key. We never request, access, or store your seed phrase or private key.</li>
-    <li><strong>On-chain transaction data.</strong> Your USDC donation transactions are recorded on the Solana blockchain. This data is public by nature of the network and includes: transaction signature, sender address, recipient address, amount, and timestamp.</li>
-    <li><strong>Donation metadata.</strong> We store the campaign you selected, any optional donation context you provided, any optional note for the recipient, and donation status in our backend database so the nonprofit partner can follow up with proof and updates.</li>
-    <li><strong>Chat messages.</strong> Messages you send in conversation threads are stored in our backend and scoped to the nonprofit partner connected to your donation. This includes text messages and any media (photos, receipts) you choose to share.</li>
-  </ul>
+    <h2>Links to other services</h2>
+    <p>Pages link to X, YouTube, pump.fun, and Paid (usepaid.app). Following a link puts the visitor under that service's terms and privacy policy, not this one. Nothing from those services runs on this site until a link is clicked.</p>
 
-  <h2>2. What We Do NOT Collect</h2>
-  <ul>
-    <li>No email addresses or passwords (wallet-only authentication)</li>
-    <li>No personal identity information (name, phone, SSN)</li>
-    <li>No device identifiers or advertising IDs</li>
-    <li>No third-party analytics or tracking SDKs</li>
-    <li>No cookies or browser fingerprinting</li>
-    <li>No location data</li>
-  </ul>
+    <h2>Video clips</h2>
+    <p>Short clips on the track-record page are hosted on this site and play only when pressed. No viewing data is collected.</p>
 
-  <h2>3. How We Store Your Data</h2>
-  <ul>
-    <li><strong>Backend:</strong> Supabase (PostgreSQL), hosted on AWS infrastructure. Row-level security ensures you can only access your own donations, conversations, and messages.</li>
-    <li><strong>Chat media:</strong> Stored in a private Supabase Storage bucket. Files are accessible only via time-limited signed URLs (1-hour expiry) and only to conversation participants.</li>
-    <li><strong>Authentication tokens:</strong> A JSON Web Token (JWT) is stored locally on your device. It contains your wallet address and an expiration timestamp. Tokens expire after 24 hours.</li>
-  </ul>
+    <h2>Email</h2>
+    <p>Messages sent to derrick@giveglimpse.com are kept as ordinary email and used only to reply.</p>
 
-  <h2>4. On-Chain Transparency</h2>
-  <p>Every USDC donation creates an on-chain receipt via a Solana Memo instruction. This receipt includes a truncated donor address, recipient address, amount, and timestamp. This data is permanently public on the Solana blockchain and cannot be deleted by us or anyone.</p>
+    <h2>Nonprofits and needs</h2>
+    <p>When a need is listed, the organization's name, the item, its price, and photos of the item are published on this site and on X. Photos never show a person's face. An organization can ask for a correction at any time by email; entries are corrected, not removed.</p>
 
-  <h2>5. Data Retention</h2>
-  <ul>
-    <li><strong>On-chain data:</strong> Permanent and immutable (inherent to Solana).</li>
-    <li><strong>Donations and conversations:</strong> Retained indefinitely to provide ongoing donor transparency and updates.</li>
-    <li><strong>Authentication challenges:</strong> Stored temporarily for replay protection, then expire naturally.</li>
-  </ul>
-
-  <h2>6. Data Sharing</h2>
-  <p>We do not sell, rent, or share your data with third parties. Your donation and chat data is only accessible to you and the nonprofit partner you donated to.</p>
-
-  <h2>7. Your Rights</h2>
-  <p>You can disconnect your wallet at any time, which removes your local authentication token. On-chain transaction data cannot be deleted due to the nature of blockchain technology. For questions about your off-chain data, contact us at the email below.</p>
-
-  <h2>8. Security</h2>
-  <p>We use row-level security policies, JWT-based authentication with Ed25519 signature verification, and server-side transaction validation. All donation recordings are verified against the Solana blockchain before being stored. We do not store any secrets or API keys in the client application.</p>
-
-  <h2>9. Children's Privacy</h2>
-  <p>Glimpse is not directed at children under 13. We do not knowingly collect data from children.</p>
-
-  <h2>10. Disclaimer</h2>
-  <p>Glimpse is a Public Benefit Corporation registered in Delaware. Glimpse is not a nonprofit, registered charity, or 501(c)(3) organization. Donations made through the Glimpse app are not tax-deductible. Glimpse does not provide financial, legal, or tax advice. Users should consult their own advisors regarding the tax implications of any donations. The regulatory landscape for blockchain-based platforms is evolving, and Glimpse's practices may change to comply with applicable laws.</p>
-
-  <h2>11. Changes</h2>
-  <p>If we update this policy, we will update the "Last updated" date above. Continued use of the app after changes constitutes acceptance.</p>
-
-  <h2>12. Contact</h2>
-  <p>Derrick Woepking<br>
-  Glimpse<br>
-  Email: <a href="mailto:derrick@giveglimpse.com">derrick@giveglimpse.com</a></p>
+    <h2>Changes</h2>
+    <p>This page changes when the site changes. The date at the top is the record.</p>
+  </div>
+</section>
+<footer>
+  <div class="wrap">
+    <div class="footer-links">
+      <a href="./../">Home</a>
+      <a href="./../chapter-one.html">Track record</a>
+      <a href="./../vision.html">Vision</a>
+      <a href="./../needs.html">Needs</a>
+      <a href="./../terms/">Terms</a>
+      <a href="mailto:derrick@giveglimpse.com">Contact</a>
+    </div>
+    <p class="footer-legal">Glimpse · Muscatine, Iowa.</p>
+  </div>
+</footer>
 </body>
 </html>
