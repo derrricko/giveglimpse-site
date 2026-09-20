@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Glimpse — Chapter one</title>
-<meta name="description" content="How Glimpse got here, in the founder's own words: a gas station in 2021, a video in 2024, a token he didn't plan, an app that got told no. Kept in full.">
+<meta name="description" content="How I got here: a gas station in 2021, a video in 2024, a coin I didn't plan, an app that got told no. Kept in full, in my own words.">
 <meta property="og:title" content="Glimpse — Chapter one">
-<meta property="og:description" content="How Glimpse got here, in the founder's own words. Kept in full so nobody has to ask.">
+<meta property="og:description" content="How I got here, in my own words. Kept in full so nobody has to ask.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://giveglimpse.com/chapter-one.html">
 <meta name="twitter:card" content="summary">
@@ -32,20 +32,17 @@ nav .links { display: flex; gap: 1.25rem; }
 nav .links a { color: var(--purple); text-decoration: none; white-space: nowrap; }
 .wrap { max-width: 760px; margin: 0 auto; padding: 0 1.25rem; }
 
-/* intro */
 .intro { padding: 2.5rem 0 2rem; }
 .tag { font-family: var(--display); font-weight: 700; font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--purple); }
 .intro h1 { font-family: var(--display); font-size: clamp(1.5rem, 6.2vw, 2.5rem); line-height: 1.2; margin-top: 0.8rem; max-width: 680px; }
 .intro p { margin-top: 1rem; max-width: 600px; }
 .intro .gloss { margin-top: 1.25rem; font-size: 0.82rem; color: var(--muted); max-width: 600px; }
 
-/* acts */
 .act-head { position: sticky; top: 0; z-index: 5; background: var(--ink); color: var(--white); }
 .act-head .wrap { display: flex; justify-content: space-between; align-items: baseline; padding-top: 0.6rem; padding-bottom: 0.6rem; font-family: var(--display); font-weight: 700; font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; }
 .act-head .n { color: rgba(255,255,255,0.55); }
 .act-head .r { color: rgba(255,255,255,0.55); font-family: var(--text); font-weight: 400; text-transform: none; letter-spacing: 0; font-size: 0.74rem; white-space: nowrap; }
 
-/* spine */
 .spine { position: relative; padding: 2.5rem 0 3rem 1.25rem; }
 .spine::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: var(--rule); }
 @media (min-width: 720px) { .spine { padding-left: 2rem; } }
@@ -61,25 +58,26 @@ nav .links a { color: var(--purple); text-decoration: none; white-space: nowrap;
 .q p + p { margin-top: 0.7rem; }
 .q cite { display: block; font-style: normal; font-size: 0.74rem; color: var(--muted); margin-top: 0.55rem; }
 .q cite a { color: var(--muted); }
-.media { margin-top: 1.2rem; max-width: 600px; }
+.media { margin-top: 1.1rem; max-width: 600px; }
+.media + .media { margin-top: 0.9rem; }
+video { display: block; width: 100%; background: #0e0e1a; aspect-ratio: 16 / 9; }
 .frame { position: relative; width: 100%; aspect-ratio: 16 / 9; background: #0e0e1a; }
 .frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 .frame .soon { position: absolute; inset: 0; display: grid; place-items: center; color: rgba(255,255,255,0.6); font-family: var(--display); font-weight: 700; font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; text-align: center; padding: 1rem; }
 .cap { margin-top: 0.5rem; font-size: 0.76rem; color: var(--muted); display: flex; justify-content: space-between; gap: 1rem; }
+.cap a { color: var(--muted); }
 .xslot { min-height: 160px; max-width: 550px; }
 .xslot blockquote.twitter-tweet { margin: 0; }
 .xslot a.fb { display: inline-block; font-size: 0.8rem; }
 .so { margin-top: 1rem; font-size: 0.95rem; font-weight: 600; max-width: 600px; }
 .so span { color: var(--muted); font-weight: 400; }
 
-/* door: the one box */
 .door { background: var(--ink); color: var(--white); box-shadow: 10px 10px 0 var(--purple); padding: 1.9rem 1.5rem; margin: 2.5rem 0 3rem; }
 .door .k { font-family: var(--display); font-weight: 700; font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--purple); }
 .door h2 { font-family: var(--display); font-size: clamp(1.35rem, 5vw, 1.9rem); line-height: 1.25; margin: 0.45rem 0 0.9rem; }
 .door p { line-height: 1.7; color: rgba(255,255,255,0.88); max-width: 600px; }
 .btn { display: inline-block; margin-top: 1.4rem; padding: 13px 22px; text-decoration: none; font-family: var(--display); font-weight: 700; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; background: var(--white); color: var(--ink); }
 
-/* the note on tokens */
 .note { padding: 0 0 2rem; max-width: 600px; font-size: 0.9rem; }
 .note h3 { font-family: var(--display); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--purple); margin-bottom: 0.6rem; }
 .note p + p { margin-top: 0.6rem; }
@@ -109,9 +107,9 @@ footer { padding: 1rem 0 3rem; border-top: 1px solid var(--rule); margin-top: 1r
 <section class="intro">
   <div class="wrap">
     <div class="tag">Chapter one · 2021 → 2026</div>
-    <h1>How Glimpse got here, in the founder's own words.</h1>
-    <p>A gas station in 2021. A video in 2024. A coin he didn't plan. An app that got told no. Every line below is dated and sourced, most of it from the streams themselves. Nothing hidden, nothing deleted.</p>
-    <p class="gloss">A few words, for anyone new: Solana is a blockchain. The Seeker is Solana's phone. pump.fun is a site where anyone can launch a coin and stream live. A dApp Store is an app store for blockchain apps.</p>
+    <h1>How I got here, in my own words.</h1>
+    <p>A gas station in 2021. A video in 2024. A coin I didn't plan. An app that got told no. Every line below is dated and linked to where I said it, most of it clipped straight from the streams. Nothing hidden, nothing deleted.</p>
+    <p class="gloss">A few words, if you're new: Solana is a blockchain. The Seeker is Solana's phone. pump.fun is a site where anyone can launch a coin and stream live. A dApp Store is an app store for blockchain apps.</p>
   </div>
 </section>
 
@@ -124,11 +122,15 @@ footer { padding: 1rem 0 3rem; border-top: 1px solid var(--rule); margin-top: 1r
       <div class="when">Late November 2021 · a gas station in Iowa</div>
       <h2>Emmanuel.</h2>
       <div class="q">
-        <p>"I ran into an Ethiopian migrant at the gas station. It was late November and it was really cold. I was on break from college, and I was prompted by the Lord to give him a ride."</p>
-        <p>"I gave him a car. It was a $3,500 Toyota that I put new tires on and paid for the first few months of insurance, but this changed the trajectory of his life."</p>
-        <cite>Derrick, on stream, Mar 2 and Feb 25, 2026</cite>
+        <p>"It was a cold day, late November. He was standing outside a gas station and I was in a hurry to get home. I was prompted by the Lord to give him a ride home. It was inconvenient, but I did."</p>
+        <p>"To make a long story short, I gave him a car. It was a $3,500 Toyota that I put new tires on and paid for the first few months of insurance, but this changed the trajectory of his life."</p>
+        <cite>Me, on stream, Feb 25, 2026, 11:53. Clip below.</cite>
       </div>
-      <p class="so">His life didn't change because of a gala or a matching program. <span>"It's because one singular person showed up. That's the goal of Glimpse."</span></p>
+      <div class="media">
+        <video controls preload="metadata" playsinline src="/clips/emmanuel-feb25.mp4"></video>
+        <div class="cap"><span>Feb 25, 2026 · 11:53 → 12:43</span><span>51s</span></div>
+      </div>
+      <p class="so">His life didn't change because of a gala or a matching program. <span>One person showed up. That's the goal of Glimpse.</span></p>
     </div>
 
     <div class="beat">
@@ -136,13 +138,13 @@ footer { padding: 1rem 0 3rem; border-top: 1px solid var(--rule); margin-top: 1r
       <h2>The original video.</h2>
       <div class="q">
         <p>"I walked around with this piece of paper in the front of my Carhartt for probably six months to a year, hoping that someone would randomly stop me on the street and I would be able to explain to them the seven-page document of how I plan to change the world. And that's the first time I've ever said that out loud."</p>
-        <cite>"This will reshape the crypto industry," 17:16</cite>
+        <cite><a href="https://youtu.be/j9T9OfV4Y-U?t=1036">"This will reshape the crypto industry," 17:16</a></cite>
       </div>
       <div class="media">
-        <div class="frame"><iframe src="https://www.youtube-nocookie.com/embed/j9T9OfV4Y-U" title="This will reshape the crypto industry" allow="accelerometer; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
-        <div class="cap"><span>28 minutes, two years before the first line of code.</span><span>Jan 2024</span></div>
+        <div class="frame"><iframe src="https://www.youtube-nocookie.com/embed/j9T9OfV4Y-U?start=1036" title="This will reshape the crypto industry" allow="accelerometer; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
+        <div class="cap"><span>Starts at the quote. <a href="https://youtu.be/j9T9OfV4Y-U">Full video, 28 min.</a></span><span>Jan 2024</span></div>
       </div>
-      <p class="so">He'd tried it as an NFT project in 2022. <span>"None of it worked because the tech wasn't ready, the tooling wasn't ready, and I couldn't find a technical founder. And I tried to fundraise and that didn't work."</span></p>
+      <p class="so">I'd already tried it as an NFT project in 2022. <span>The tech wasn't ready, the tooling wasn't ready, I couldn't find a technical founder, and the fundraise went nowhere.</span></p>
     </div>
 
     <div class="beat">
@@ -150,7 +152,11 @@ footer { padding: 1rem 0 3rem; border-top: 1px solid var(--rule); margin-top: 1r
       <h2>Three years door to door.</h2>
       <div class="q">
         <p>"I door-knocked for three years. Coding for fourteen to sixteen hours a day and building this app is a walk in the park."</p>
-        <cite>On stream, Feb 27, 2026</cite>
+        <cite>On stream, Feb 27, 2026, 29:30. Clip below.</cite>
+      </div>
+      <div class="media">
+        <video controls preload="metadata" playsinline src="/clips/door-to-door-feb27.mp4"></video>
+        <div class="cap"><span>Feb 27, 2026 · 29:30</span><span>16s</span></div>
       </div>
       <p class="so">Married. A son, October 2024. A sales job. <span>And the same seven pages.</span></p>
     </div>
@@ -167,36 +173,54 @@ footer { padding: 1rem 0 3rem; border-top: 1px solid var(--rule); margin-top: 1r
       <div class="when">January 18, 2026</div>
       <h2>First line of code.</h2>
       <div class="q">
-        <p>"Until late 2025, early 2026, there was no capability of me being able to build this app. Now I have a functional app that I'm still working out the kinks on."</p>
-        <cite>On stream, Feb 24, 2026</cite>
+        <p>"It started out as an NFT project, transitioned it into a regular startup, tried to find co-founders, tried to submit to other hackathons. But until late 2025, early 2026, there was no capability of me being able to build this app."</p>
+        <cite>On stream, Feb 24, 2026, 1:13. Clip below.</cite>
       </div>
-      <p class="so">No technical background. AI as the teacher. <span>Four years to the week after he bought his first NFT.</span></p>
+      <div class="media">
+        <video controls preload="metadata" playsinline src="/clips/first-code-feb24.mp4"></video>
+        <div class="cap"><span>Feb 24, 2026 · 1:13</span><span>27s</span></div>
+      </div>
+      <p class="so">No technical background. AI as the teacher. <span>Four years to the week after I bought my first NFT.</span></p>
     </div>
 
     <div class="beat">
       <div class="when">Mid-February 2026 · Salt Lake City</div>
       <h2>A week at mtnDAO.</h2>
       <div class="q">
-        <p>"I sold the Seeker that I got airdropped so I could go to Salt Lake City, spend a week away from my one-year-old and my wife, so I could build this app."</p>
-        <p>"Met the majority of the entire Solana Mobile team, workshopped my idea around. This is probably like the fifth or sixth version."</p>
-        <cite>On stream, Feb 25 and Feb 27, 2026</cite>
+        <p>"mtnDAO is Solana's biggest kind of co-working event. Hundreds of devs go there and you just work, you grind it out. Met some incredible people, met the majority of the entire Solana Mobile team, workshopped my idea around. This is probably like the fifth or sixth version."</p>
+        <cite>On stream, Feb 27, 2026, 19:38. Clip below.</cite>
       </div>
-      <p class="so">Fourteen-hour days for a week, at Solana's biggest co-working event. <span>The app came back simple.</span></p>
+      <div class="media">
+        <video controls preload="metadata" playsinline src="/clips/mtndao-feb27.mp4"></video>
+        <div class="cap"><span>Feb 27, 2026 · 19:38</span><span>30s</span></div>
+      </div>
+      <p class="so">I sold the Seeker I'd been airdropped to pay for the trip, and spent a week away from my wife and my one-year-old. <span>Fourteen-hour days. The app came back simple.</span></p>
     </div>
 
     <div class="beat">
       <div class="when">February 24, 2026 · 9:46 PM</div>
-      <h2>The first stream, and the coin he didn't plan.</h2>
+      <h2>The first stream, and the coin I didn't plan.</h2>
       <div class="q">
         <p>"I wasn't even planning on launching on pump.fun, to be honest. This project was only created for Solana Mobile. I really didn't have a desire to create a token behind it."</p>
+        <cite>On stream, Feb 25, 2026, 6:03. Clip below.</cite>
+      </div>
+      <div class="media">
+        <video controls preload="metadata" playsinline src="/clips/no-plan-feb25.mp4"></video>
+        <div class="cap"><span>Feb 25, 2026 · 6:03</span><span>22s</span></div>
+      </div>
+      <div class="q">
         <p>"I made a presentation, I started reading it off, and the whole chat thought that I was AI. That's why I tanked right away. I didn't even read the chat."</p>
-        <cite>On stream, Feb 25, 2026, looking back one day</cite>
+        <cite>On stream, Feb 25, 2026, 17:15. Clip below.</cite>
+      </div>
+      <div class="media">
+        <video controls preload="metadata" playsinline src="/clips/tanked-feb25.mp4"></video>
+        <div class="cap"><span>Feb 25, 2026 · 17:15</span><span>25s</span></div>
       </div>
       <div class="media">
         <div class="frame" data-yt=""><div class="soon">Full stream · uploading</div></div>
-        <div class="cap"><span>The first stream. $GLIMPSE goes live; he locks his own supply on air so he can't sell it.</span><span>61 min</span></div>
+        <div class="cap"><span>The whole first stream. $GLIMPSE goes live; I lock my own supply on air so I can't sell it.</span><span>61 min</span></div>
       </div>
-      <p class="so">"I have no idea how it's going to work. I can guarantee, however, that your donation will go directly to the person in need."</p>
+      <p class="so">I had no idea how it was going to work. <span>What I could guarantee was that a donation would go straight to the person in need.</span></p>
     </div>
 
   </div></div>
@@ -212,13 +236,17 @@ footer { padding: 1rem 0 3rem; border-top: 1px solid var(--rule); margin-top: 1r
       <h2>Launch day.</h2>
       <div class="q">
         <p>"I've never launched a token before. I have no idea what you guys are talking about. So let's work on this together."</p>
-        <cite>On stream, Feb 25, 2026, 53:46</cite>
+        <cite>On stream, Feb 25, 2026, 53:46. Clip below.</cite>
+      </div>
+      <div class="media">
+        <video controls preload="metadata" playsinline src="/clips/launch-feb25.mp4"></video>
+        <div class="cap"><span>Feb 25, 2026 · 53:41</span><span>12s</span></div>
       </div>
       <div class="media">
         <div class="frame" data-yt=""><div class="soon">Full stream · uploading</div></div>
         <div class="cap"><span>Launch day, start to finish.</span><span>61 min</span></div>
       </div>
-      <p class="so">"Ten-year vision, guys. This is kind of audacious."</p>
+      <p class="so">Ten-year vision. <span>Audacious, and I said so.</span></p>
     </div>
 
     <div class="beat">
@@ -231,22 +259,25 @@ footer { padding: 1rem 0 3rem; border-top: 1px solid var(--rule); margin-top: 1r
       <div class="media"><div class="xslot">
         <blockquote class="twitter-tweet" data-dnt="true" data-theme="light"><a class="fb" href="https://x.com/GiveGlimpse/status/2027063417219973333">See the post on X</a></blockquote>
       </div></div>
-      <p class="so">"When I was a kid, my parents supported this little girl in Africa through our church. I can remember the notes we would get back from them."</p>
+      <p class="so">When I was a kid, my parents sponsored a little girl in Africa through our church. <span>I still remember the notes we got back from her.</span></p>
     </div>
 
     <div class="beat">
       <div class="when">February 27, 2026</div>
       <h2>"I was created to create this."</h2>
       <div class="q">
-        <p>"It's been on my mind, in my heart for years. I feel like I was literally created to create this."</p>
-        <p>"Purpose isn't found in a 5x, purpose isn't found in money. When I lay in bed and I see them both sleeping next to me, they're the only things that matter."</p>
-        <cite>On stream, Feb 27, 2026</cite>
+        <p>"I've been building this for a while. It's been on my mind, in my heart for years. I feel like I was literally created to create this. And I am just honestly excited to bring it to life."</p>
+        <cite>On stream, Feb 27, 2026, 6:39. Clip below.</cite>
+      </div>
+      <div class="media">
+        <video controls preload="metadata" playsinline src="/clips/created-feb27.mp4"></video>
+        <div class="cap"><span>Feb 27, 2026 · 6:39</span><span>19s</span></div>
       </div>
       <div class="media">
         <div class="frame" data-yt=""><div class="soon">Full stream · uploading</div></div>
         <div class="cap"><span>The demo, and the early versions from minute 17.</span><span>38 min</span></div>
       </div>
-      <p class="so">"No work on Sunday. Tomorrow, head down. Got to get this app out by March 2nd."</p>
+      <p class="so">Purpose isn't in a 5x. <span>It's the two of them asleep next to me. No work on Sunday. Then head down: the app had to be out by March 2.</span></p>
     </div>
 
     <div class="beat">
@@ -254,14 +285,17 @@ footer { padding: 1rem 0 3rem; border-top: 1px solid var(--rule); margin-top: 1r
       <h2>Live.</h2>
       <div class="q">
         <p>"Glimpse is finally live after over a month of development, sleepless nights, countless hours spent on the computer. It's live and it can process donations."</p>
-        <p>"One of the biggest things that held me back was legislation uncertainty. Who owns the token, how will you be taxed, will the donors get exemptions? I don't have a law degree."</p>
-        <cite>On stream, Mar 2, 2026</cite>
+        <cite>On stream, Mar 2, 2026, 0:00. Clip below.</cite>
+      </div>
+      <div class="media">
+        <video controls preload="metadata" playsinline src="/clips/live-mar02.mp4"></video>
+        <div class="cap"><span>Mar 2, 2026 · 0:00</span><span>19s</span></div>
       </div>
       <div class="media">
         <div class="frame" data-yt=""><div class="soon">Full stream · uploading</div></div>
         <div class="cap"><span>Final tests. Submitted to the Solana dApp Store on air.</span><span>49 min</span></div>
       </div>
-      <p class="so">Top 10 coin on pump.fun that week. <span>Still no one funded.</span></p>
+      <p class="so">Top 10 coin on pump.fun that week. <span>What had held me back longest was legal uncertainty: who owns the token, how it's taxed, whether donors get exemptions. I don't have a law degree. And still no one funded.</span></p>
     </div>
 
     <div class="beat">
@@ -274,7 +308,7 @@ footer { padding: 1rem 0 3rem; border-top: 1px solid var(--rule); margin-top: 1r
       <div class="media"><div class="xslot">
         <blockquote class="twitter-tweet" data-dnt="true" data-theme="light"><a class="fb" href="https://x.com/GiveGlimpse/status/2031061047906357406">Watch the demo on X</a></blockquote>
       </div></div>
-      <p class="so">Deadline extended a day. Demo shipped. <span>"The goal is a Seeker in the hands of every nonprofit in America."</span></p>
+      <p class="so">Deadline extended a day. Demo shipped. <span>The goal was a Seeker in the hands of every nonprofit in America.</span></p>
     </div>
 
     <div class="beat">
@@ -284,7 +318,7 @@ footer { padding: 1rem 0 3rem; border-top: 1px solid var(--rule); margin-top: 1r
         <p>"Glimpse is not a nonprofit today. Donations are not tax-deductible. The legal structure is still being built carefully. I am not going to fake certainty to sound impressive. No fake dates. No fake promises. I would rather build this right than fast."</p>
         <cite><a href="https://x.com/GiveGlimpse/status/2031529228999536934">@GiveGlimpse, Mar 11</a></cite>
       </div>
-      <p class="so">The most honest thread of the era. <span>And the last big one.</span></p>
+      <p class="so">The most honest thread I wrote that spring. <span>And the last big one.</span></p>
     </div>
 
   </div></div>
@@ -302,7 +336,7 @@ footer { padding: 1rem 0 3rem; border-top: 1px solid var(--rule); margin-top: 1r
         <p>"Submitting an app is not for the faint of heart. V1 of the app is supposed to be bare bones. From here we build from the ground up. There are many unknowns. Only the beginning."</p>
         <cite><a href="https://x.com/GiveGlimpse/status/2036604575327899881">@GiveGlimpse, Mar 25</a></cite>
       </div>
-      <p class="so">Two days later, the app store said no. <span>Five days after that, the last post for five months.</span></p>
+      <p class="so">Two days later, the app store said no. <span>Five days after that, my last post for five months.</span></p>
     </div>
 
     <div class="beat">
@@ -310,9 +344,9 @@ footer { padding: 1rem 0 3rem; border-top: 1px solid var(--rule); margin-top: 1r
       <h2>What it cost.</h2>
       <div class="q">
         <p>"It was very hard accepting the fact that my idea just was not good enough. I wanted to will it to success, but at times it felt like pushing a square peg into a round hole."</p>
-        <cite>Derrick, September 2026</cite>
+        <cite><a href="https://x.com/DerrickWKing">From my article, September 2026</a></cite>
       </div>
-      <p class="so">He made nothing on the launch and lost what he put in. <span>Months of not sleeping over people with no faces. Lesson kept: speculators are not donors. Belief follows proof.</span></p>
+      <p class="so">I made nothing on the launch and lost what I put in. <span>Months of not sleeping over people with no faces. What I kept: speculators are not donors. Belief follows proof.</span></p>
     </div>
 
     <div class="beat">
@@ -322,7 +356,7 @@ footer { padding: 1rem 0 3rem; border-top: 1px solid var(--rule); margin-top: 1r
         <p>"I have a kid, a wife, and I start a new role in AI training and enablement at a Fortune 1000. The goal is the same. I am going to make it. Same grinder from 2021 with a different mentality. Grateful, never greedy."</p>
         <cite><a href="https://x.com/DerrickWKing/status/2074145037168918771">@DerrickWKing, Jul 6</a></cite>
       </div>
-      <p class="so">Over the summer, a rebuilt engine: verified receipts, proof photos, one need at a time. <span>Nonprofits found. None funded. Moving the money was the wall.</span></p>
+      <p class="so">Over the summer I rebuilt the engine: verified receipts, proof photos, one need at a time. <span>Found nonprofits. Funded none. Moving the money was the wall.</span></p>
     </div>
 
   </div></div>
@@ -333,13 +367,13 @@ footer { padding: 1rem 0 3rem; border-top: 1px solid var(--rule); margin-top: 1r
     <div class="k">Chapter two · September 19, 2026</div>
     <h2>Build for X, not beside it.</h2>
     <p>"Why are we creating separate applications and trying to take attention off of the largest social media app in the world, instead of building for it?"</p>
-    <p style="margin-top:0.8rem">$GIVE. Trading fees fund one nonprofit need at a time. X is the ledger. The photo is the proof. First receipt is next.</p>
+    <p style="margin-top:0.8rem">$GIVE. Trading fees fund one nonprofit need at a time. X is the ledger. The photo is the proof. The first receipt is next.</p>
     <a href="/" class="btn">Chapter two starts here</a>
   </div>
 
   <div class="note">
     <h3>A note on the two coins</h3>
-    <p><strong>$GLIMPSE</strong> is the coin from chapter one, launched Feb 24, 2026 on the first stream. It belongs to that era. pump.fun won't route its fees, so it can't fund needs. It stays exactly as it is, and nothing is promised for it.</p>
+    <p><strong>$GLIMPSE</strong> is the coin from chapter one, launched Feb 24, 2026 on my first stream. It belongs to that era. pump.fun won't route its fees, so it can't fund needs. It stays exactly as it is, and I promise nothing for it.</p>
     <p><strong>$GIVE</strong> is chapter two: the coin whose only job is to fund things you can see.</p>
     <p class="ca">$GLIMPSE contract: Ab26LYP16ZyXvUJQqFYKKPU75GHhdzvhVnYtVUBFpump · $GIVE contract: on the home page the moment it exists.</p>
   </div>
@@ -354,7 +388,7 @@ footer { padding: 1rem 0 3rem; border-top: 1px solid var(--rule); margin-top: 1r
       <a href="/privacy">Privacy</a>
       <a href="/terms">Terms</a>
     </div>
-    <p class="footer-legal">Quotes are transcribed from the recordings named beside them, lightly punctuated. Glimpse is not a nonprofit or 501(c)(3). Nothing here is tax-deductible. Neither $GLIMPSE nor $GIVE is an investment; neither confers rights. Paid and X Money are independent services. Glimpse is not affiliated with X Corp.</p>
+    <p class="footer-legal">Quotes are transcribed from the clips and posts beside them, lightly punctuated. Glimpse is not a nonprofit or 501(c)(3). Nothing here is tax-deductible. Neither $GLIMPSE nor $GIVE is an investment; neither confers rights. Paid and X Money are independent services. Glimpse is not affiliated with X Corp.</p>
   </div>
 </footer>
 
