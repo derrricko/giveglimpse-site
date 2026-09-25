@@ -17,6 +17,55 @@
  motionToggle.addEventListener('click', () => {manualReduced = !manualReduced; updateMotion();});
  mediaPreference.addEventListener('change', updateMotion);
 
+ /* Opening sequence: finite, skippable, never blocks reading. Rest state is the designed hero. */
+ const hero = document.querySelector('.hero[data-beat]');
+ if (hero) {
+  const skip = hero.querySelector('.opening-skip');
+  const caption = hero.querySelector('.op-caption');
+  const beats = [
+   [0, ''],
+   [900, 'People can come together around something worth doing.'],
+   [6000, 'Glimpse is building a way to turn that purpose into real work.'],
+   [12000, 'Work becomes stories people want to follow.'],
+   [18000, 'Stories build an audience. Advertising helps sustain the business behind them. Contributions follow their own path.'],
+   [24000, 'And a record anyone can inspect. Nothing deleted.']
+  ];
+  const END = 29500;
+  let openingTimers = [];
+  const reduced = () => document.body.classList.contains('reduce-motion');
+  function setBeat(index, text) {
+   hero.dataset.beat = String(index);
+   caption.textContent = text;
+   caption.classList.remove('is-entering'); void caption.offsetWidth; caption.classList.add('is-entering');
+  }
+  function finishOpening() {
+   openingTimers.forEach(timer => clearTimeout(timer)); openingTimers = [];
+   if (!hero.classList.contains('is-playing')) return;
+   hero.dataset.beat = 'rest';
+   hero.classList.remove('is-playing'); hero.classList.add('was-played');
+   skip.hidden = true; caption.textContent = '';
+   try { sessionStorage.setItem('glimpse-opening', '1'); } catch {}
+   window.removeEventListener('scroll', onScroll);
+  }
+  function onScroll() { if (window.scrollY > 60) finishOpening(); }
+  function startOpening() {
+   if (reduced()) return;
+   let seen = false; try { seen = sessionStorage.getItem('glimpse-opening') === '1'; } catch {}
+   if (seen || window.scrollY > 60 || location.hash) return;
+   hero.classList.add('is-playing'); skip.hidden = false;
+   beats.forEach(([at, text], index) => openingTimers.push(setTimeout(() => setBeat(index, text), at)));
+   openingTimers.push(setTimeout(finishOpening, END));
+   window.addEventListener('scroll', onScroll, {passive:true});
+  }
+  skip.addEventListener('click', finishOpening);
+  document.addEventListener('keydown', event => { if (event.key === 'Escape') finishOpening(); });
+  document.addEventListener('visibilitychange', () => { if (document.hidden) finishOpening(); });
+  motionToggle.addEventListener('click', () => { if (reduced()) finishOpening(); });
+  mediaPreference.addEventListener('change', () => { if (mediaPreference.matches) finishOpening(); });
+  window.__glimpseOpening = { setBeat, finish: finishOpening };
+  startOpening();
+ }
+
  const missionButtons = [...document.querySelectorAll('[data-mission]')];
  const missionCopy = [...document.querySelectorAll('[data-mission-copy]')];
  const missionStage = document.querySelector('.mission-stage');

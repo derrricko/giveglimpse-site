@@ -334,3 +334,92 @@ html.reduce-motion{scroll-behavior:auto}
 @media(max-width:540px){.month.year span{font-size:22px}}
 .legal{max-width:760px}.legal h2{font-size:clamp(28px,3vw,40px);margin:38px 0 12px}.legal h2:first-child{margin-top:0}.legal p,.legal li{font-size:15px}.legal ul{padding-left:20px;margin:0}.legal li+li{margin-top:10px}.page-legal .subpage-hero .large-copy{margin-top:18px}
 .copy-feedback.is-error{color:#8a2d2d}
+/* ---- Opening sequence (home hero). Rest state = the designed hero. ---- */
+.hero h1.h1-question,.page-home .hero h1{font-size:clamp(64px,7.2vw,118px)}
+@media(max-width:1100px){.page-home .hero h1{font-size:clamp(64px,9vw,100px)}}
+@media(max-width:760px){.page-home .hero h1{font-size:72px}}
+@media(max-width:540px){.page-home .hero h1{font-size:64px}.page-home .hero-art{grid-row:1;border-bottom:1px solid var(--line)}.page-home .hero-status{grid-row:2}.page-home .hero-copy{grid-row:3}}
+.opening-skip{margin-left:auto;border:1px solid var(--ink);background:var(--paper);font:9px var(--mono);letter-spacing:.05em;padding:6px 10px;min-height:0;line-height:1.4}
+.opening-skip[hidden]{display:none}
+.hero-copy{transition:opacity 700ms var(--ease),transform 700ms var(--ease)}
+.hero.is-playing .hero-copy{opacity:0;transform:translateY(14px);pointer-events:none}
+.art-baseline{position:relative}
+.op-caption{font:500 14px/1.45 var(--body);color:var(--ink);max-width:78%;opacity:0;transition:opacity 260ms ease}
+.hero.is-playing .baseline-rest{display:none}
+.hero:not(.is-playing) .op-caption{display:none}
+.hero.is-playing .op-caption{opacity:1}
+.op-caption.is-entering{animation:copy-enter 320ms var(--ease)}
+.op-voices,.op-stories,.op-money,.op-pieces,.op-event-line,.op-record{position:absolute;opacity:0;pointer-events:none;transition:opacity 320ms ease}
+.hero:not(.is-playing) .op-voices,.hero:not(.is-playing) .op-stories,.hero:not(.is-playing) .op-money,.hero:not(.is-playing) .op-pieces,.hero:not(.is-playing) .op-event-line,.hero:not(.is-playing) .op-record{display:none}
+.object-sheet{transition:opacity 420ms ease,transform 600ms var(--ease)}
+.hero.is-playing .object-sheet{animation:none}
+.op-voices{z-index:6}
+/* beat 0: empty paper */
+.hero[data-beat="0"] .object-sheet{opacity:0}
+/* beat 1: voices converge into COMMON PURPOSE */
+.op-voices{inset:0;font:9px/1 var(--mono);letter-spacing:.08em}
+.op-voices span{position:absolute;left:50%;top:50%;padding:7px 9px;border:1px solid var(--ink);background:var(--paper);opacity:0;white-space:nowrap}
+.hero[data-beat="1"] .op-voices{opacity:1}
+.hero[data-beat="1"] .op-voices span{animation:voice-converge 4600ms var(--ease) both}
+.op-voices span:nth-child(1){--dx:-150px;--dy:-120px;animation-delay:0ms}
+.op-voices span:nth-child(2){--dx:140px;--dy:-135px;animation-delay:120ms}
+.op-voices span:nth-child(3){--dx:170px;--dy:20px;animation-delay:240ms}
+.op-voices span:nth-child(4){--dx:-170px;--dy:40px;animation-delay:360ms}
+.op-voices span:nth-child(5){--dx:-90px;--dy:150px;animation-delay:480ms}
+.op-voices span:nth-child(6){--dx:120px;--dy:140px;animation-delay:600ms}
+@keyframes voice-converge{0%{transform:translate(calc(-50% + var(--dx)*1.4),calc(-50% + var(--dy)*1.4));opacity:0}18%{transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy)));opacity:1}62%{transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy)));opacity:1}92%{transform:translate(-50%,-50%) scale(.6);opacity:.6}100%{transform:translate(-50%,-50%) scale(.5);opacity:0}}
+.hero[data-beat="1"] .sheet-mid,.hero[data-beat="1"] .sheet-front{opacity:0}
+.hero[data-beat="1"] .sheet-back{opacity:0;animation:back-arrive 700ms var(--ease) 3900ms both}
+/* beat 2: REAL WORK arrives with the three pieces + the real first-event line */
+.hero[data-beat="2"] .sheet-front{opacity:0}
+.hero[data-beat="2"] .sheet-mid{animation:mid-arrive 650ms var(--ease) both}
+.op-pieces{left:6%;right:6%;top:18%;display:flex;gap:4%;justify-content:space-between}
+.op-pieces .mission-piece{width:31%;min-height:0;height:auto;padding:9px;gap:14px;transform:none;background:var(--lavender);border-color:var(--accent)}
+.op-pieces .mission-piece strong{font-size:clamp(17px,2.1vw,27px)}
+.op-event-line{left:6%;right:6%;bottom:9%;font:9px/1.6 var(--mono);letter-spacing:.06em;border-top:1px solid var(--line);padding-top:10px}
+.hero[data-beat="2"] .op-pieces{opacity:1;transition-delay:700ms}
+.hero[data-beat="2"] .op-event-line{opacity:1;transition-delay:2400ms}
+/* beat 3: ONE REAL DAY becomes three stories */
+.hero[data-beat="3"] .object-sheet,.hero[data-beat="4"] .object-sheet{opacity:.18}
+.hero[data-beat="3"] .sheet-front,.hero[data-beat="4"] .sheet-front{opacity:0}
+.op-stories{inset:0;z-index:5}
+.hero[data-beat="3"] .op-stories{opacity:1}
+.op-stories .event-frame{width:76%;height:66%;padding:14px;z-index:4;animation:none}
+.op-stories .event-frame strong{font-size:clamp(44px,5.6vw,72px)}
+.op-stories .frame-corners{inset:8px}
+.op-stories .clip-frame{width:28%;height:58%;padding:10px;z-index:3;opacity:0;transform:translate(-50%,-50%) scale(.7)}
+.op-stories .clip-frame strong{font-size:clamp(18px,2.4vw,30px)}
+.op-stories .clip-frame>span:last-child{font-size:26px}
+.hero[data-beat="3"] .event-frame{animation:frame-out 500ms var(--ease) 2600ms both}
+@keyframes frame-out{to{transform:translate(-50%,-50%) scale(.8);opacity:0}}
+.hero[data-beat="3"] .clip-one{animation:clip-one-in 700ms var(--ease) 2800ms both}
+.hero[data-beat="3"] .clip-two{animation:clip-two-in 700ms var(--ease) 2900ms both}
+.hero[data-beat="3"] .clip-three{animation:clip-three-in 700ms var(--ease) 3000ms both}
+@keyframes clip-one-in{to{opacity:1;transform:translate(-160%,-50%) rotate(-6deg)}}
+@keyframes clip-two-in{to{opacity:1;transform:translate(-50%,-50%) rotate(2deg)}}
+@keyframes clip-three-in{to{opacity:1;transform:translate(60%,-50%) rotate(7deg)}}
+/* beat 4: two money paths that never merge */
+.op-money{left:8%;right:8%;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:14px;z-index:5}
+.op-card{border:1px solid var(--ink);background:var(--white);padding:12px 14px;display:flex;flex-direction:column;gap:8px}
+.op-card>span{font:9px/1.5 var(--mono);letter-spacing:.08em}
+.op-card strong{font:600 clamp(22px,2.6vw,34px)/.95 var(--display);letter-spacing:-.015em}
+.op-card+.op-card{border-color:var(--accent);background:var(--lavender)}
+.hero[data-beat="4"] .op-money{opacity:1}
+.hero[data-beat="4"] .op-card{opacity:0;animation:copy-enter 500ms var(--ease) both;animation-delay:200ms}
+.hero[data-beat="4"] .op-card+.op-card{animation-delay:2300ms}
+/* beat 5: the front sheet lands as the open record */
+.hero[data-beat="5"] .sheet-front{animation:sheet-arrive 700ms var(--ease) both}
+.hero[data-beat="5"] .record-symbol,.hero[data-beat="5"] .record-bracket{opacity:.1;transition:opacity 400ms ease}
+.op-record{left:17px;right:17px;top:50%;transform:translateY(-50%);z-index:2;font:10px/1.6 var(--mono);display:flex;flex-direction:column}
+.op-record>div{display:flex;justify-content:space-between;gap:12px;padding:6px 0;border-top:1px solid var(--line)}
+.op-record>div:first-child{border-top:0;padding-bottom:10px;letter-spacing:.06em}
+.op-record .pending{color:#8a6b00}
+.hero[data-beat="5"] .op-record{opacity:1;transition-delay:800ms}
+/* after play: no re-entry animation on the resting sheets */
+.hero.was-played .object-sheet{animation:none}
+.hero.was-played .record-symbol,.hero.was-played .record-bracket{opacity:1;transition:opacity 500ms ease}
+@media(max-width:540px){.op-voices span:nth-child(1){--dx:-95px;--dy:-100px}.op-voices span:nth-child(2){--dx:85px;--dy:-110px}.op-voices span:nth-child(3){--dx:95px;--dy:10px}.op-voices span:nth-child(4){--dx:-100px;--dy:25px}.op-voices span:nth-child(5){--dx:-60px;--dy:115px}.op-voices span:nth-child(6){--dx:70px;--dy:110px}.op-caption{font-size:13px;max-width:82%}.op-pieces .mission-piece strong{font-size:15px}.op-event-line{font-size:7px}.op-record{font-size:9px}.op-card strong{font-size:19px}}
+.money-path{margin-top:18px}.money-path dt{white-space:nowrap}
+.lifecycle{max-width:760px;font-size:15px;margin-top:28px}.lifecycle strong{font-weight:600}
+.before-record .facts-list{max-width:760px}
+.evidence{margin-top:22px;max-width:620px;color:var(--muted)}.evidence a{color:var(--ink)}
