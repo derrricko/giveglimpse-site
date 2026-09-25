@@ -14,7 +14,6 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
 button:active,.button:active{transform:scale(.98)}
 .skip{position:absolute;z-index:100;left:15px;top:-70px;padding:12px;background:var(--white)}
 .skip:focus{top:10px}
-.preview-label{display:flex;justify-content:space-between;gap:20px;padding:8px var(--gutter);background:var(--lavender);font:9px/1.5 var(--mono);letter-spacing:.05em}
 .masthead{padding:21px var(--gutter);display:flex;align-items:center;justify-content:space-between;gap:28px;border-bottom:1px solid var(--line)}
 .brand{font:700 34px/1 var(--body);letter-spacing:-2px;text-decoration:none;display:inline-flex;align-items:center;gap:14px;white-space:nowrap}
 .brand-mark{font:500 24px/1 var(--mono);letter-spacing:-5px;padding-right:7px;color:var(--accent)}
@@ -267,7 +266,7 @@ html.reduce-motion{scroll-behavior:auto}
 }
 @media(max-width:760px){
  .masthead{flex-wrap:wrap;padding-top:18px;padding-bottom:10px;gap:14px}.masthead nav{order:3;width:100%;margin:0;justify-content:space-between;gap:15px}.masthead nav a{font-size:11px}.motion-toggle{margin-left:auto;font-size:8px;min-height:35px}
- .brand{font-size:30px}.brand-mark{font-size:20px}.preview-label{font-size:8px}
+ .brand{font-size:30px}.brand-mark{font-size:20px}
  .hero-copy{padding:30px var(--gutter)}.hero h1{font-size:96px}.hero-art{padding:20px;min-height:450px}.record-object{height:310px;margin:25px 12px}.record-symbol{font-size:170px}.record-bracket{font-size:140px}
  .hero-actions{gap:12px}.hero-deck{font-size:14px}.hero-status{display:grid;grid-template-columns:1fr 1fr;gap:10px}.hero-status>*:nth-child(even){text-align:right;justify-self:end}
  .chapter-nav{gap:12px;padding:10px var(--gutter)}.chapter-nav a{font-size:10px;gap:6px}.chapter-nav a span{font-size:8px}
@@ -320,7 +319,7 @@ html.reduce-motion{scroll-behavior:auto}
  *,*:before,*:after{animation:none!important;transition:none!important}
  .button:hover,button:active,.button:active{transform:none}
 }
-@media print{.preview-label,.motion-toggle,.chapter-nav,.hero-art,.media-controls,.map-controls{display:none!important}body{color:black;background:white}.section{padding:30px 0}.mission-copy article[hidden]{display:block!important}.mission-copy article+article{margin-top:20px!important}.hero,.statement,.section-heading{display:block}h1{font-size:80px}.masthead nav{display:none}}
+@media print{.motion-toggle,.chapter-nav,.hero-art,.media-controls,.map-controls{display:none!important}body{color:black;background:white}.section{padding:30px 0}.mission-copy article[hidden]{display:block!important}.mission-copy article+article{margin-top:20px!important}.hero,.statement,.section-heading{display:block}h1{font-size:80px}.masthead nav{display:none}}
 .sequence-control{padding:15px 24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:20px;align-items:center}
 .sequence-play{min-height:44px;border:1px solid var(--accent);background:var(--lavender);padding:10px 16px;font:10px var(--mono);display:flex;gap:25px;align-items:center;transition:transform var(--fast) var(--ease)}
 .sequence-play[hidden]{display:none}
@@ -335,7 +334,7 @@ html.reduce-motion{scroll-behavior:auto}
 .legal{max-width:760px}.legal h2{font-size:clamp(28px,3vw,40px);margin:38px 0 12px}.legal h2:first-child{margin-top:0}.legal p,.legal li{font-size:15px}.legal ul{padding-left:20px;margin:0}.legal li+li{margin-top:10px}.page-legal .subpage-hero .large-copy{margin-top:18px}
 .copy-feedback.is-error{color:#8a2d2d}
 /* ---- Opening sequence (home hero). Rest state = the designed hero. ---- */
-.hero h1.h1-question,.page-home .hero h1{font-size:clamp(64px,7.2vw,118px)}
+.page-home .hero h1{font-size:clamp(64px,7.2vw,118px)}
 @media(max-width:1100px){.page-home .hero h1{font-size:clamp(64px,9vw,100px)}}
 @media(max-width:760px){.page-home .hero h1{font-size:72px}}
 @media(max-width:540px){.page-home .hero h1{font-size:64px}.page-home .hero-art{grid-row:1;border-bottom:1px solid var(--line)}.page-home .hero-status{grid-row:2}.page-home .hero-copy{grid-row:3}}
@@ -353,11 +352,10 @@ html.reduce-motion{scroll-behavior:auto}
 .hero:not(.is-playing) .op-voices,.hero:not(.is-playing) .op-stories,.hero:not(.is-playing) .op-money,.hero:not(.is-playing) .op-pieces,.hero:not(.is-playing) .op-event-line,.hero:not(.is-playing) .op-record{display:none}
 .object-sheet{transition:opacity 420ms ease,transform 600ms var(--ease)}
 .hero.is-playing .object-sheet{animation:none}
-.op-voices{z-index:6}
 /* beat 0: empty paper */
 .hero[data-beat="0"] .object-sheet{opacity:0}
 /* beat 1: voices converge into COMMON PURPOSE */
-.op-voices{inset:0;font:9px/1 var(--mono);letter-spacing:.08em}
+.op-voices{inset:0;z-index:6;font:9px/1 var(--mono);letter-spacing:.08em}
 .op-voices span{position:absolute;left:50%;top:50%;padding:7px 9px;border:1px solid var(--ink);background:var(--paper);opacity:0;white-space:nowrap}
 .hero[data-beat="1"] .op-voices{opacity:1}
 .hero[data-beat="1"] .op-voices span{animation:voice-converge 4600ms var(--ease) both}

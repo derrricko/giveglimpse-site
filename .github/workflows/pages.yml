@@ -14,9 +14,18 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+      - name: Pre-publish checks
+        run: python3 check.py
+      - name: Stage site files only (no repo tooling or notes)
+        run: |
+          mkdir -p _site
+          rsync -a --exclude '.git' --exclude '.github' --exclude '_site' \
+            --exclude 'check.py' --exclude 'TODOS.md' --exclude '.gitignore' \
+            --exclude '*.md' --exclude '*.py' ./ _site/
+          touch _site/.nojekyll
       - uses: actions/configure-pages@v4
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: _site
       - id: deployment
         uses: actions/deploy-pages@v4
