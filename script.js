@@ -2,6 +2,7 @@
 (() => {
  document.body.classList.add('js');
  const mediaPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+ if (!mediaPreference.addEventListener) mediaPreference.addEventListener = (type, fn) => mediaPreference.addListener(fn);
  let manualReduced = false;
  const motionToggle = document.querySelector('.motion-toggle') || document.createElement('button');
  function updateMotion() {

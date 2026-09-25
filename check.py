@@ -11,7 +11,7 @@ def err(f, m): errs.append(f'{f}: {m}')
 disclosures = {}
 for f in PAGES:
     p = ROOT/f; s = p.read_text(); d = p.parent
-    if 'noindex' in s: err(f, 'noindex present')
+    if 'noindex' in s and f != '404.html': err(f, 'noindex present')
     if 'PRIVATE DESIGN STUDY' in s or 'preview-label' in s: err(f, 'prototype label present')
     if 'Content-Security-Policy' not in s: err(f, 'missing CSP meta')
     if 'rel="canonical"' not in s: err(f, 'missing canonical')
@@ -19,6 +19,9 @@ for f in PAGES:
     if s.count('<h1') != 1: err(f, f'h1 count {s.count("<h1")}')
     if re.search(r'\sstyle="', s): err(f, 'inline style attribute (blocked by CSP)')
     if re.search(r'\son[a-z]+="', s): err(f, 'inline event handler (blocked by CSP)')
+    if re.search(r'<script(?![^>]*\ssrc=)', s): err(f, 'inline <script> block (blocked by CSP)')
+    if '<style' in s: err(f, 'inline <style> block (blocked by CSP)')
+    if 'javascript:' in s: err(f, 'javascript: URL (blocked by CSP)')
     for src in re.findall(r'<script[^>]+src="([^"]+)"', s):
         if src.startswith('http'): err(f, f'external script {src} (blocked by CSP)')
     m = re.search(r'<p class="disclosure">(.*?)</p>', s, re.S)
@@ -34,13 +37,24 @@ for f in PAGES:
         if not (q.is_file() or (q/'index.html').is_file()): err(f, f'broken link {h}')
     for a in re.findall(r'href="#([^"]+)"', s):
         if f'id="{a}"' not in s: err(f, f'missing anchor #{a}')
-    if 'funding' in f and CA not in s: err(f, 'contract address missing')
+    if 'funding' in f:
+        if CA not in s: err(f, 'contract address missing')
+        if 'only $GIVE contract address' not in s: err(f, 'contract shown without the only-address sentence')
+    elif CA in s: err(f, 'contract address appears outside funding.html')
 if len(set(disclosures.values())) > 1: err('footer', 'disclosure text differs between pages: ' + ', '.join(disclosures))
 for f in STUBS:
     p = ROOT/f
     if not p.is_file(): err(f, 'redirect stub missing'); continue
-    if 'http-equiv="refresh"' not in p.read_text(): err(f, 'stub has no refresh')
+    t = p.read_text()
+    if 'http-equiv="refresh"' not in t: err(f, 'stub has no refresh')
+    if 'noindex' not in t: err(f, 'stub is indexable')
+    m = re.search(r'url=([^"]+)"', t)
+    if m:
+        tgt = (p.parent/m.group(1).split('#')[0]).resolve()
+        if not (tgt.is_file() or (tgt/'index.html').is_file()): err(f, f'stub target missing {m.group(1)}')
 if (ROOT/'CNAME').read_text().strip() != 'giveglimpse.com': err('CNAME', 'wrong domain')
+for a in ['favicon.ico','favicon.svg','apple-touch-icon.png','og.png']:
+    if not (ROOT/a).is_file(): err(a, 'asset missing')
 if '--live' in sys.argv:
     base = sys.argv[sys.argv.index('--live')+1].rstrip('/')
     for path in ['/', '/event-01.html', '/record.html', '/funding.html', '/privacy/', '/terms/', '/about.html', '/og.png', '/style.css', '/script.js']:

@@ -1,0 +1,11 @@
+name: Pre-publish checks
+on:
+  pull_request:
+  push:
+    branches-ignore: [main]
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 check.py
