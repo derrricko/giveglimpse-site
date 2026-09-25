@@ -425,3 +425,4 @@ html.reduce-motion{scroll-behavior:auto}
 /* design review: 44px targets on small text links */
 .footer-nav a,.hero-status a,.chapter-nav a,.subpage-nav a,.footer-top>a{min-height:44px;display:inline-flex;align-items:center}
 .photo-credit a,.small a,.evidence a,.event-feature .small a{padding:10px 0;display:inline-block}
+h1,h2,h3,h4{text-wrap:balance}p,li,dd{text-wrap:pretty}
