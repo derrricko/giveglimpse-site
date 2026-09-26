@@ -1,13 +1,10 @@
-# TODOS — giveglimpse.com
+# Current follow-up items
 
-Format: what · why · context · effort (human → CC) · priority · depends on.
+Updated September 26, 2026. These are outstanding content dependencies, not instructions to expand the design.
 
-## P1
-- **Per-need atom inside the event record.** The briefs define the record per *event*; the old site's identity was one need, four words, one X thread a stranger can check in ten seconds. Design the per-need row (posted → funded → bought → proven, evidence link, X thread link, no name, no plate) inside `event-01.html#event-record` so the October 31 entry has a shape before the day. Effort M → S. Depends on: nothing; do before Oct 31.
+- Replace the historical Muscatine location image with authentic preparation imagery or confirmed partner material when supplied, with permission and accurate attribution.
+- Add the confirmed watch destination when available. Until then, event updates link to the official Glimpse X account.
+- Add treasury wallet evidence when supplied and verified. The 10% holding remains founder-reported.
+- After the event, add actual delivery, spending, receipts, footage, and unfinished work to the existing event page. Do not add fictional examples or empty accounting rows before evidence exists.
 
-## P2
-- **Home mechanism strip + "the honest part."** Declined on 2026-09-25 to keep the approved home page intact. After the first real record exists: three sentences under the hero stating the mechanism in one breath (community names a need → a local business does the work on a live show → receipt and photo go on the record), and one "honest part" block after the money tiles (no donor yet; fees are the founder's income; advertising is company income; nothing promised to holders). Effort S → S. Depends on: Event 01 record having at least one entry.
-
-## Not scheduled (2026-09-25)
-- Labeled example entry on Event 01 ("example, not a record").
-- Shared head/footer template across the seven pages; Safari and 320px device pass of the opening sequence.
+Earlier proposals for a separate record index, an additional homepage mechanism strip, and placeholder per-need entries are superseded by the current simpler structure. See REVISION-NOTES.md for the accepted design decisions.

@@ -3,8 +3,8 @@
 Fails (exit 1) on anything that would ship broken or un-indexable."""
 import re, sys, pathlib, urllib.request
 ROOT = pathlib.Path(__file__).parent
-PAGES = ['index.html','event-01.html','record.html','funding.html','privacy/index.html','terms/index.html','404.html']
-STUBS = ['about.html','vision.html','needs.html','receipts.html','chapter-one.html','partners.html','how-it-works.html','the-generosity-compact.html','founding-five/index.html']
+PAGES = ['index.html','event-01.html','funding.html','privacy/index.html','terms/index.html','404.html']
+STUBS = ['record.html','about.html','vision.html','needs.html','receipts.html','chapter-one.html','partners.html','how-it-works.html','the-generosity-compact.html','founding-five/index.html']
 CA = 'EoZVprU5NM1pBWqJszVQmSt7rQ7fLGPAsHUq75mjxb3z'
 errs = []
 def err(f, m): errs.append(f'{f}: {m}')

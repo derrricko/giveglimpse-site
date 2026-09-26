@@ -18,114 +18,30 @@
  motionToggle.addEventListener('click', () => {manualReduced = !manualReduced; updateMotion();});
  mediaPreference.addEventListener('change', updateMotion);
 
- /* Opening sequence: finite, skippable, never blocks reading. Rest state is the designed hero. */
- const hero = document.querySelector('.hero[data-beat]');
- if (hero) {
-  const skip = hero.querySelector('.opening-skip');
-  const caption = hero.querySelector('.op-caption');
-  const beats = [
-   [0, ''],
-   [900, 'People can come together around something worth doing.'],
-   [6000, 'Glimpse is building a way to turn that purpose into real work.'],
-   [12000, 'Work becomes stories people want to follow.'],
-   [18000, 'Stories build an audience. Advertising helps sustain the business behind them. Contributions follow their own path.'],
-   [24000, 'And a record anyone can inspect. Nothing deleted.']
-  ];
-  const END = 29500;
-  let openingTimers = [];
-  const reduced = () => document.body.classList.contains('reduce-motion');
-  function setBeat(index, text) {
-   hero.dataset.beat = String(index);
-   caption.textContent = text;
-   caption.classList.remove('is-entering'); void caption.offsetWidth; caption.classList.add('is-entering');
+ /* Principles use one stable record. Controls choose the point of focus. */
+ function connectStudy(rootSelector, dataKey, buttonSelector, copySelector, buttonKey, copyKey) {
+  const study = document.querySelector(rootSelector);
+  if (!study) return;
+  const buttons = [...study.querySelectorAll(buttonSelector)];
+  const articles = [...study.querySelectorAll(copySelector)];
+  function select(value) {
+   study.dataset[dataKey] = value;
+   buttons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset[buttonKey] === value)));
+   articles.forEach(article => { article.hidden = article.dataset[copyKey] !== value; });
   }
-  function finishOpening() {
-   openingTimers.forEach(timer => clearTimeout(timer)); openingTimers = [];
-   if (!hero.classList.contains('is-playing')) return;
-   hero.dataset.beat = 'rest';
-   hero.classList.remove('is-playing'); hero.classList.add('was-played');
-   skip.hidden = true; caption.textContent = '';
-   try { sessionStorage.setItem('glimpse-opening', '1'); } catch {}
-   window.removeEventListener('scroll', onScroll);
-  }
-  function onScroll() { if (window.scrollY > 60) finishOpening(); }
-  function startOpening() {
-   if (reduced()) return;
-   let seen = false; try { seen = sessionStorage.getItem('glimpse-opening') === '1'; } catch {}
-   if (seen || window.scrollY > 60 || location.hash) return;
-   hero.classList.add('is-playing'); skip.hidden = false;
-   beats.forEach(([at, text], index) => openingTimers.push(setTimeout(() => setBeat(index, text), at)));
-   openingTimers.push(setTimeout(finishOpening, END));
-   window.addEventListener('scroll', onScroll, {passive:true});
-  }
-  skip.addEventListener('click', finishOpening);
-  document.addEventListener('keydown', event => { if (event.key === 'Escape') finishOpening(); });
-  document.addEventListener('visibilitychange', () => { if (document.hidden) finishOpening(); });
-  motionToggle.addEventListener('click', () => { if (reduced()) finishOpening(); });
-  mediaPreference.addEventListener('change', () => { if (mediaPreference.matches) finishOpening(); });
-  window.__glimpseOpening = { setBeat, finish: finishOpening };
-  startOpening();
+  buttons.forEach(button => button.addEventListener('click', () => select(button.dataset[buttonKey])));
+  select('0');
  }
-
- const missionButtons = [...document.querySelectorAll('[data-mission]')];
- const missionCopy = [...document.querySelectorAll('[data-mission-copy]')];
- const missionStage = document.querySelector('.mission-stage');
- function selectMission(index, animate = true) {
-  missionButtons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.mission === index)));
-  missionStage.dataset.stage = index;
-  missionCopy.forEach(article => {
-   const selected = article.dataset.missionCopy === index;
-   article.hidden = !selected;
-   article.classList.toggle('is-entering', selected && animate);
-  });
- }
- missionButtons.forEach(button => button.addEventListener('click', () => selectMission(button.dataset.mission)));
- if (missionStage) selectMission('0', false);
-
- const mediaButtons = [...document.querySelectorAll('[data-media]')];
- const mediaIllustration = document.querySelector('.media-explainer');
- const playButton = document.querySelector('.sequence-play');
- let sequenceTimers = [];
- let playing = false;
- function showMedia(state) {
-  mediaIllustration.dataset.mediaState = state;
-  mediaButtons.forEach(item => item.setAttribute('aria-pressed', String(item.dataset.media === state)));
-  document.querySelectorAll('[data-media-copy]').forEach(copy => {
-   copy.style.display = copy.dataset.mediaCopy === state ? 'block' : 'none';
-  });
- }
- function stopSequence() {
-  sequenceTimers.forEach(timer => clearTimeout(timer));
-  sequenceTimers = [];
-  playing = false;
-  if (playButton) playButton.innerHTML = 'Play the sequence <span aria-hidden="true">↗</span>';
- }
- mediaButtons.forEach(button => button.addEventListener('click', () => {
-  stopSequence();
-  showMedia(button.dataset.media);
- }));
- if (playButton) {
-  playButton.hidden = false;
-  playButton.addEventListener('click', () => {
-   if (playing) {stopSequence(); return;}
-   if (document.body.classList.contains('reduce-motion')) {showMedia('business'); return;}
-   showMedia('event');
-   playing = true;
-   playButton.textContent = 'Stop sequence';
-   sequenceTimers.push(setTimeout(() => showMedia('stories'), 1600));
-   sequenceTimers.push(setTimeout(() => showMedia('business'), 3700));
-   sequenceTimers.push(setTimeout(stopSequence, 4000));
-  });
-  if ('IntersectionObserver' in window) {
-   const sequenceObserver = new IntersectionObserver(entries => {
-    if (!entries[0].isIntersecting) stopSequence();
-   }, {threshold:0});
-   sequenceObserver.observe(mediaIllustration);
-  }
-  document.addEventListener('visibilitychange', () => {if(document.hidden) stopSequence();});
-  document.addEventListener('keydown', event => {if (event.key === 'Escape') stopSequence();});
-  mediaPreference.addEventListener('change', stopSequence);
-  motionToggle.addEventListener('click', stopSequence);
+ connectStudy('.trust-study', 'principle', '[data-principle-button]', '[data-principle-copy]', 'principleButton', 'principleCopy');
+ // Trace the four connections once. Never gate text or scrolling on the animation.
+ const cycle = document.querySelector('.community-cycle');
+ if (cycle && 'IntersectionObserver' in window) {
+  const cycleObserver = new IntersectionObserver(entries => {
+   if (!entries.some(entry => entry.isIntersecting)) return;
+   cycle.classList.add('cycle-traced');
+   cycleObserver.disconnect();
+  }, {threshold:0.25});
+  cycleObserver.observe(cycle);
  }
 
  const chapters = [...document.querySelectorAll('[data-chapter]')];
