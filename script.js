@@ -67,6 +67,49 @@
   startOpening();
  }
 
+ /* Undertaking 001: the hero object counts down to a real date, reads LIVE only when set by hand, and rests as the record. */
+ const countdown = document.querySelector('.countdown');
+ if (countdown) {
+  const EVENT = {
+   date: '2026-10-31',          // Saturday, October 31, 2026 · Muscatine, Iowa (America/Chicago). Days only until the time is fixed.
+   startsAt: null,              // Set once the stream time is real, e.g. '2026-10-31T10:00:00-05:00'. Then hours show on the last day.
+   live: false,                 // Set to true by hand while the stream is on. Never inferred from the clock.
+   streamUrl: 'https://x.com/GiveGlimpse',
+   record: false                // Set to true after the event: the countdown goes, the card is the record.
+  };
+  const num = countdown.querySelector('.count-num'), unit = countdown.querySelector('.count-unit'), label = countdown.querySelector('.count-label'), link = countdown.querySelector('.count-link');
+  const stateLabel = document.querySelector('.art-state');
+  const baseline = document.querySelector('.baseline-rest');
+  const baselines = { before: 'Counting down to the first stream.<br>Then this becomes the record.', live: 'The first stream is on.<br>This card becomes the record.', record: 'The first stream has happened.<br>This is the record.' };
+  const DAY = 86400000;
+  const ymd = date => new Intl.DateTimeFormat('en-CA', {timeZone:'America/Chicago', year:'numeric', month:'2-digit', day:'2-digit'}).format(date);
+  const utc = s => Date.UTC(+s.slice(0,4), +s.slice(5,7) - 1, +s.slice(8,10));
+  function setState(state, text) { countdown.dataset.state = state; if (stateLabel) stateLabel.textContent = text; if (baseline) baseline.innerHTML = baselines[state]; }
+  function render() {
+   if (EVENT.live) {
+    countdown.hidden = false; setState('live', 'LIVE NOW');
+    num.textContent = 'LIVE'; unit.textContent = ''; label.textContent = 'STREAMING NOW · UNDERTAKING 001'; link.href = EVENT.streamUrl;
+    return;
+   }
+   const days = Math.round((utc(EVENT.date) - utc(ymd(new Date()))) / DAY);
+   if (EVENT.record || days < 0) { countdown.hidden = true; setState('record', 'THE RECORD'); return; }
+   countdown.hidden = false; setState('before', 'BEFORE THE STREAM');
+   if (days === 0) {
+    if (EVENT.startsAt) {
+     const hours = Math.max(0, Math.floor((new Date(EVENT.startsAt) - Date.now()) / 3600000));
+     num.textContent = String(hours); unit.textContent = hours === 1 ? 'HOUR' : 'HOURS';
+     label.textContent = 'UNTIL THE FIRST LIVE STREAM · TODAY';
+    } else { num.textContent = 'TODAY'; unit.textContent = ''; label.textContent = 'THE FIRST LIVE STREAM · SATURDAY, OCTOBER 31'; }
+    return;
+   }
+   num.textContent = String(days); unit.textContent = days === 1 ? 'DAY' : 'DAYS';
+   label.textContent = 'UNTIL THE FIRST LIVE STREAM · OCT 31';
+  }
+  render();
+  setInterval(render, 60000);
+  document.addEventListener('visibilitychange', () => { if (!document.hidden) render(); });
+ }
+
  const missionButtons = [...document.querySelectorAll('[data-mission]')];
  const missionCopy = [...document.querySelectorAll('[data-mission-copy]')];
  const missionStage = document.querySelector('.mission-stage');
