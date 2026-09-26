@@ -60,6 +60,7 @@ p+p{margin-top:20px}
 .kicker{display:flex;justify-content:space-between;gap:20px;border-top:1px solid var(--line);padding-top:14px;margin-bottom:50px;font:10px/1.7 var(--mono);letter-spacing:.06em}
 .kicker>span:last-child{text-align:right}
 .statement{display:grid;grid-template-columns:1fr 3.6fr;gap:35px}
+.statement>div:only-child{grid-column:2}
 .margin-note{font:10px/1.8 var(--mono);padding-top:8px;color:var(--muted)}
 .statement h2{font-size:clamp(60px,6.6vw,100px);margin-bottom:35px}
 .statement p{max-width:680px}
@@ -247,7 +248,7 @@ html.reduce-motion{scroll-behavior:auto}
  .hero-actions{gap:12px}.hero-deck{font-size:14px}.hero-status{display:grid;grid-template-columns:1fr 1fr;gap:10px}.hero-status>*:nth-child(even){text-align:right;justify-self:end}
  .chapter-nav{gap:12px;padding:10px var(--gutter)}.chapter-nav a{font-size:10px;gap:6px}.chapter-nav a span{font-size:10px}
  .section{padding-top:65px;padding-bottom:65px}.kicker{font-size:10px;margin-bottom:35px}
- .statement{grid-template-columns:1fr;gap:23px}.margin-note br{display:none}.statement h2{font-size:70px}
+ .statement{grid-template-columns:1fr;gap:23px}.statement>div:only-child{grid-column:auto}.margin-note br{display:none}.statement h2{font-size:70px}
  .conviction-map{grid-template-columns:1fr;margin-top:55px;gap:30px}.map-intro{display:grid;grid-template-columns:1fr 1fr;gap:15px 30px}.map-intro>.eyebrow{grid-column:1/-1}.map-intro h3{margin:0;font-size:40px}.map-intro h3 br{display:none}.map-intro p{font-size:12px}
  .mission-piece strong{font-size:40px}.mission-stage{min-height:250px}.mission-copy{min-height:160px}
  .section-heading{grid-template-columns:1fr;gap:30px}.section-heading h2{font-size:74px}.section-heading p{font-size:14px}
