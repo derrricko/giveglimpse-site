@@ -4,6 +4,7 @@
  const mediaPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
  if (!mediaPreference.addEventListener) mediaPreference.addEventListener = (type, fn) => mediaPreference.addListener(fn);
  let manualReduced = false;
+ try { manualReduced = sessionStorage.getItem('glimpse-reduce-motion') === '1'; } catch {}
  const motionToggle = document.querySelector('.motion-toggle') || document.createElement('button');
  function updateMotion() {
   const reduced = manualReduced || mediaPreference.matches;
@@ -15,7 +16,11 @@
  }
  if (motionToggle.isConnected) motionToggle.hidden = false;
  updateMotion();
- motionToggle.addEventListener('click', () => {manualReduced = !manualReduced; updateMotion();});
+ motionToggle.addEventListener('click', () => {
+  manualReduced = !manualReduced;
+  try { sessionStorage.setItem('glimpse-reduce-motion', manualReduced ? '1' : '0'); } catch {}
+  updateMotion();
+ });
  mediaPreference.addEventListener('change', updateMotion);
 
  /* Principles use one stable record. Controls choose the point of focus. */
