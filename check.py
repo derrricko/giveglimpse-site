@@ -52,6 +52,19 @@ for f in STUBS:
     if m:
         tgt = (p.parent/m.group(1).split('#')[0]).resolve()
         if not (tgt.is_file() or (tgt/'index.html').is_file()): err(f, f'stub target missing {m.group(1)}')
+# Recipient rule: no one receiving help is named, described, or put on camera. Categories + a place + a date endanger people.
+BANNED = ['domestic violence','shelter','single mother','single-parent','incarcerat','rehabilitat','named recipient','her story',r'\bplate']
+for f in PAGES + STUBS:
+    p = ROOT/f
+    if not p.is_file(): continue
+    t = p.read_text()
+    for b in BANNED:
+        if re.search(b, t, re.I): err(f, f'recipient rule: banned phrase "{b}"')
+ev = re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', ' ', (ROOT/'event-01.html').read_text())).lower()
+sents = re.split(r'[.·!?]', ev)
+if 'chosen by an organization' not in ev: err('event-01.html', 'recipient rule: missing "chosen by an organization"')
+if 'no name is ever asked, shown, or kept' not in ev and not any('never' in x and 'name' in x for x in sents): err('event-01.html', 'recipient rule: no sentence saying a name is never asked, shown, or kept')
+if 'never a person' not in ev and not any('never' in x and 'camera' in x for x in sents): err('event-01.html', 'recipient rule: no "never on camera" / "never a person" statement')
 if (ROOT/'CNAME').read_text().strip() != 'giveglimpse.com': err('CNAME', 'wrong domain')
 for a in ['favicon.ico','favicon.svg','apple-touch-icon.png','og.png']:
     if not (ROOT/a).is_file(): err(a, 'asset missing')
